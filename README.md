@@ -1,5 +1,5 @@
 [tuwel_course_address]: https://tuwel.tuwien.ac.at/course/view.php?id=8260
-[repository]: https://gitlab.com/pawe/iis-uebung
+[repository]: https://gitlab.com/pawe/iis
 [tiss_course_address]: https://tiss.tuwien.ac.at/course/educationDetails.xhtml?windowId=589&semester=2016W&courseNr=307421
 
 
