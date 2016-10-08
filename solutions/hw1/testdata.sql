@@ -40,7 +40,7 @@ INSERT INTO Projekte
   (Name, Budget)
 VALUES
   ('Automation', 150000),
-  ('NewNewProdukt', 4000000),
+  ('NewNewProduct', 4000000),
   ('RevolutionaryProduct', 500000000);
 
 -- Tag: YYYY-MM-DD
