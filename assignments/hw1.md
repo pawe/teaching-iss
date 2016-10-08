@@ -208,8 +208,9 @@ Auf Basis der gegebenen Tabellen erstellen Sie eine SQL-Abfrage...
     * Platzhalter: nicht relevant
     * Rückgabeformat: `(ssn, rate)`
 
- 9. ... mit der alle Mitarbeiter in einem Projekt abgefragt werden können. 
- Achten Sie darauf, dass Mitarbeiter nicht doppelt im Ergebnis vorkommen.
+ 9. ... mit der alle Mitarbeiter, die jemals in einem Projekt gearbeitet haben, 
+ abgefragt werden können. Achten Sie darauf, dass Mitarbeiter nicht doppelt im 
+ Ergebnis vorkommen.
     * Datei: `employees_in_project.sql`
     * Platzhalter: `$projektName`
     * Rückgabeformat: `(ssn)`
