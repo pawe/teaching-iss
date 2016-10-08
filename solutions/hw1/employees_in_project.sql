@@ -1,0 +1,5 @@
+-- Platzhalter:
+--   $projectName
+-- Rückgabeformat:
+--   (ssn)
+

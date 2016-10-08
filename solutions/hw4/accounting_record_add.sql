@@ -1,0 +1,3 @@
+-- Platzhalter
+--   $date, $text
+

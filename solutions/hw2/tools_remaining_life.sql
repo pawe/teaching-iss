@@ -1,0 +1,3 @@
+-- Rückgabeformat:
+--   (toolNumber, remainingLife)
+

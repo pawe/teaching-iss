@@ -1,0 +1,1 @@
+In diesem Ordner werden Datenbankfehler gespeichert, die bei Starten der Anwendung auftreten können.

@@ -1,0 +1,12 @@
+{
+    "extends": "standard",
+    "env": {
+        "mocha": true
+    },
+    "installedESLint": true,
+    "plugins": [
+        "standard",
+        "promise",
+        "mocha"
+    ]
+}

@@ -1,0 +1,5 @@
+-- Platzhalter:
+--   $departmentShort
+-- Rückgabeformat:
+--   (ssn)
+

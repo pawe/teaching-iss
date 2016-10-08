@@ -1,0 +1,30 @@
+#!/usr/bin/env node
+
+var fs = require('fs')
+var os = require('os')
+var async = require('async')
+
+// database setup
+var db = require('../config/db.js')
+
+var dbsetup = [
+  'lecture1/migration_up.sql',
+  'hw1/migration_up.sql',
+  'lecture2/migration_up.sql',
+  'hw3/migration_up.sql'
+]
+
+dbsetup.forEach(function (setup) {
+  db.withSQLFromFile(setup)
+    .exec(function (err) {
+      if (err) {
+        console.log('error in: ' + setup)
+        console.error(err.stack)
+        fs.appendFile('logs/dbsetup_error.txt',
+                      new Date().toISOString() + ': ' +
+                      err.message + os.EOL + '\t' +
+                      err.stack + os.EOL
+        )
+      }
+    })
+})

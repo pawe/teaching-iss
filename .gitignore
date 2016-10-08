@@ -1,0 +1,9 @@
+.DS_Store
+node_modules/
+logs/*
+!logs/README.md
+database_backups/*
+!database_backups/README.md
+releases/*
+!releases/README.md
+npm-debug.log

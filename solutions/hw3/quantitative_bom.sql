@@ -1,0 +1,4 @@
+-- Platzhalter:
+--   $assembly
+-- Rückgabeformat:
+--   (element, totalQuantity)

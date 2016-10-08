@@ -1,0 +1,1 @@
+Hier werden die Datenbankdateien gespeichert. Für jeden Start der Anwendung wird eine neue Datei erstellt.

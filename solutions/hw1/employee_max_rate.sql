@@ -1,0 +1,3 @@
+-- Rückgabeformat:
+--   (ssn, rate)
+

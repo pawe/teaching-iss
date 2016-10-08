@@ -1,0 +1,10 @@
+extends layout
+
+block vars
+  - var title='Beispiele zur zweiten Hausübung'
+
+block content
+  .container
+    .row(style="margin-top:2em;")
+      .col-xs-12
+        include:marked ../assignments/lecture2.md

@@ -1,0 +1,126 @@
+extends layout
+
+block content
+  .container(style='margin-top:1em;')
+    .row
+      .col-md-3.offset-md-3
+        form(action='/production/migrationup', method='POST')
+          input.form-control.btn.btn-secondary(type='submit', value='Tabellen erstellen')
+      .col-md-3
+        form(action='/production/dataintake', method='POST')
+          input.form-control.btn.btn-secondary(type='submit', value='Daten einlesen')
+      .col-md-3
+        form(action='/production/migrationdown', method='POST')
+          input.form-control.btn.btn-secondary(type='submit', value='Tabellen entfernen')
+
+
+    .row
+      .col-md-12
+        h4 1. Maschinenbetreuer
+        if (inCharge_error)
+          pre= inCharge_error
+        else
+          table.table.table-bordered.table-hover
+            tr
+              th Maschinennummer
+              th Maschinenbeschreibung
+              th(colspan=2) BetreuerIn
+            each machine in inCharge
+              tr
+                td= machine.machineNumber
+                td= machine.machineDescription
+                td= machine.forename
+                td= machine.surename
+    
+    
+    .row
+      .col-md-6
+        h4 2. Maschinenauswahl
+        if (machines_error)
+          pre= machines_error
+        else
+          form.form-control(action='/production', method='GET')
+            fieldset.form-group
+              label Maschine
+              select.form-control(name='machineNumber')
+                each machine in machines
+                  if (machine.machineNumber == selected_machine)
+                    option(selected='true', value=machine.machineNumber)= machine.machineNumber + ': ' + machine.machineDescription
+                  else
+                    option(value=machine.machineNumber)= machine.machineNumber + ': ' + machine.machineDescription
+            input.form-control.btn.btn-primary(type='submit', value='Anzeigen')     
+      
+
+      .col-md-6
+        h4 3. Eingesetzte Werkzeuge
+        if (toolsOnMachine_error)
+          pre= toolsOnMachine_error
+        else
+          table.table.table-bordered.table-hover
+            tr
+              th Werkzeugbeschreibung
+              th Maschinenbeschreibung
+            each toolOnMachine in toolsOnMachine
+              tr
+                td= toolOnMachine.toolDescription
+                td= toolOnMachine.machineDescription
+
+    .row
+      .col-md-8
+        h4 4. Einsatzorte
+        if (sites_error)
+          pre= sites_error
+        else
+          #map1(style='height:400px; max-width:100%')
+          script
+            | var mymap = L.map('map1').setView([48.201813, 16.364925], 12);
+            | L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            |  attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            | }).addTo(mymap);
+            each site in sites
+              | 
+              | L.marker([ #{site.latitude}, #{site.longitude} ]).addTo(mymap)
+      
+
+      .col-md-4
+        h4 5. Bewegungen
+        if (movements_error)
+          pre= movements_error
+        else
+          table.table.table-bordered.table-hover
+            tr
+              th Maschinennummer
+              th Anzahl Bewegungen
+            each movement in movements
+              tr
+                td= movement.machineNumber
+                td= movement.movements
+
+    .row
+      .col-md-6
+        h4 6. Gesamteinsatzzeit
+        if (operatingTimes_error)
+          pre= operatingTimes_error
+        else
+          table.table.table-bordered.table-hovered
+            tr
+              th Werkzeugnummer
+              th Gesamteinsatzzeit
+            each operatingTime in operatingTimes
+              tr
+                td= operatingTime.toolNumber
+                td= operatingTime.operatingTime
+
+      .col-md-6
+        h4 7. Restliche Lebensdauer
+        if (remainingLife_error)
+          pre= remainingLife_error
+        else
+          table.table.table-bordered.table-hovered
+            tr
+              th Werkzeugnummer
+              th Restlebensdauer
+            each remaining in remainingLife
+              tr
+                td= remaining.toolNumber
+                td= remaining.remainingLife

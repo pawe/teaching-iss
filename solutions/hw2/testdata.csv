@@ -1,0 +1,35 @@
+$rueckmeldeNummer,$datum,$uhrzeit,$werkzeugNummer,$maschinenNummer,$vorgangssdauer,$maschinenBezeichnung,$hauptstandort,$maschinenBetreuerSVNR,$maschinenBetreuerVorname,$maschinenBetreuerNachname,$werkzeugBezeichnung,$standzeit,$laengengrad,$breitengrad
+1234410,2016-09-18,07:21:25,M-4432,M0201,62,"Bearbeitungszentrum 2",HS08,19,Monika,"Müller","Schrupp Fräser 40/120",15000,,
+1234413,2016-09-18,07:21:25,,H0011,,"Mobiler HandlingRoboter ADD 22-1",HS08,21,Siegfried,Stinger,,,16.362252,48.200269
+1234414,2016-09-18,07:21:25,,H0012,,"Mobiler HandlingRoboter ADD 22-2",HS02,21,Siegfried,Stinger,,,16.367658,48.199014
+1234415,2016-09-18,07:21:25,,H0021,,"Mobiler HandlingRoboter ADD 22-3",HS08,21,Siegfried,Stinger,,,16.363388,48.200805
+1234421,2016-09-18,07:28:25,M-4442,M0200,43,"Bearbeitungszentrum 1",HS08,19,Monika,"Müller","Schrupp Fräser 20/80",10000,,
+1234423,2016-09-18,07:29:15,M-4432,M0200,18,"Bearbeitungszentrum 1",HS08,19,Monika,"Müller","Schrupp Fräser 40/120",15000,,
+1234424,2016-09-18,07:28:28,M-4484,M0201,681,"Bearbeitungszentrum 2",HS08,19,Monika,"Müller","Fräser 10/80",80000,,
+1234445,2016-09-18,07:29:15,S-1251,B0012,45,"Blechbearbeitungszentrum TR 220",HS02,20,Hugo,Hundt,"Stanzform A429 ",85000,,
+1234767,2016-09-18,07:31:05,S-1252,B0012,46,"Blechbearbeitungszentrum TR 220",HS02,20,Hugo,Hundt,"Stanzform A629 ",90000,,
+1234781,2016-09-18,07:31:02,M-3314,M0200,21,"Bearbeitungszentrum 1",HS08,19,Monika,"Müller","Drehmeißel HSS R1",80000,,
+1234791,2016-09-18,07:32:57,S-1201,B0012,51,"Blechbearbeitungszentrum TR 220",HS02,20,Hugo,Hundt,"Abkanntwerkzeug Profil 01 ",1000000,,
+1234792,2016-09-18,07:35:48,M-3314,M0200,144,"Bearbeitungszentrum 1",HS08,19,Monika,"Müller","Drehmeißel HSS R1",80000,,
+1234798,2016-09-18,07:36:35,M-4442,M0200,10,"Bearbeitungszentrum 1",HS08,19,Monika,"Müller","Schrupp Fräser 20/80",10000,,
+1234802,2016-09-18,07:38:24,S-1202,B0012,27,"Blechbearbeitungszentrum TR 220",HS02,20,Hugo,Hundt,"Abkanntwerkzeug Profil 01",1000000,,
+1234816,2016-09-18,07:39:10,S-1252,B0012,12,"Blechbearbeitungszentrum TR 220",HS02,20,Hugo,Hundt,"Stanzform A629 ",90000,,
+1234823,2016-09-18,07:39:20,S-1201,B0012,3,"Blechbearbeitungszentrum TR 220",HS02,20,Hugo,Hundt,"Abkanntwerkzeug Profil 01 ",1000000,,
+1239413,2016-09-19,08:41:12,,H0011,,"Mobiler HandlingRoboter ADD 22-1",HS08,21,Siegfried,Stinger,,,16.368173,48.199028
+1244414,2016-09-18,12:12:21,,H0012,,"Mobiler HandlingRoboter ADD 22-2",HS02,21,Siegfried,Stinger,,,16.367658,48.199014
+1334415,2016-09-20,09:16:25,,H0012,,"Mobiler HandlingRoboter ADD 22-2",HS02,21,Siegfried,Stinger,,,16.370136,48.195045
+1334474,2016-09-20,09:16:45,,H0012,,"Mobiler HandlingRoboter ADD 22-2",HS02,21,Siegfried,Stinger,,,16.370134,48.195043
+1433241,2016-09-18,07:40:42,M-4432,M0200,187,"Bearbeitungszentrum 1",HS08,19,Monika,"Müller","Schrupp Fräser 40/120",15000,,
+1433251,2016-09-18,07:41:35,S-1202,B0012,26,"Blechbearbeitungszentrum TR 220",HS02,20,Hugo,Hundt,"Abkanntwerkzeug Profil 01",1000000,,
+1433269,2016-09-18,07:42:00,S-1202,B0012,21,"Blechbearbeitungszentrum TR 220",HS02,20,Hugo,Hundt,"Abkanntwerkzeug Profil 01",1000000,,
+1434353,2016-09-18,07:45:45,M-4432,M0201,157,"Bearbeitungszentrum 2",HS08,19,Monika,"Müller","Schrupp Fräser 40/120",15000,,
+1434354,2016-09-18,07:49:39,S-1202,B0012,12,"Blechbearbeitungszentrum TR 220",HS02,20,Hugo,Hundt,"Abkanntwerkzeug Profil 01",1000000,,
+1434355,2016-09-18,07:50:12,M-4484,M0200,458,"Bearbeitungszentrum 1",HS08,19,Monika,"Müller","Fräser 10/80",80000,,
+1434356,2016-09-18,07:50:41,S-1250,B0012,12,"Blechbearbeitungszentrum TR 220",HS02,20,Hugo,Hundt,"Stanzform A229 ",80000,,
+1434357,2016-09-18,07:51:52,S-1251,B0012,48,"Blechbearbeitungszentrum TR 220",HS02,20,Hugo,Hundt,"Stanzform A429 ",85000,,
+1434358,2016-09-18,07:52:59,S-1252,B0012,42,"Blechbearbeitungszentrum TR 220",HS02,20,Hugo,Hundt,"Stanzform A629 ",90000,,
+1434359,2016-09-18,07:57:06,M-4432,M0201,320,"Bearbeitungszentrum 2",HS08,19,Monika,"Müller","Schrupp Fräser 40/120",15000,,
+1434360,2016-09-18,07:57:58,S-1252,B0012,41,"Blechbearbeitungszentrum TR 220",HS02,20,Hugo,Hundt,"Stanzform A629 ",90000,,
+1439413,2016-09-19,17:35:51,,H0011,,"Mobiler HandlingRoboter ADD 22-1",HS08,21,Siegfried,Stinger,,,16.366918,48.199214
+1464956,2016-09-18,07:59:59,M-3313,M0200,351,"Bearbeitungszentrum 1",HS08,19,Monika,"Müller","Drehmeißel PD N10",80000,,
+1534415,2016-09-19,06:45:42,,H0021,,"Mobiler HandlingRoboter ADD 22-3",HS08,21,Siegfried,Stinger,,,16.509735,48.2232

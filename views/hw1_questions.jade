@@ -1,0 +1,10 @@
+extends layout
+
+block vars
+  - var title='Erste Hausübung'
+
+block content
+  .container
+    .row(style="margin-top:2em;")
+      .col-xs-12
+        include:marked ../assignments/hw1_questions.md

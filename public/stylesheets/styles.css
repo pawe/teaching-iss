@@ -1,0 +1,26 @@
+/**
+ * didn't put a lot of thought in this. 
+ * Want to learn css? Find a proper resource!
+ * Oh god! There are style attributes all over 
+ * the place...
+**/
+.row {
+  padding-top:3em;
+}
+
+.row:first-of-type {
+  padding-top:0em;
+}
+
+form .row {
+  padding-top:0.6em;
+}
+
+form + h4 {
+  padding-top:1em;
+}
+
+li > p {
+  margin-top: 1rem;
+  margin-bottom: 0rem;
+}

@@ -1,0 +1,2 @@
+-- Rückgabeformat
+--   (partNumber, avgProductionTime)

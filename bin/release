@@ -1,0 +1,59 @@
+#!/usr/bin/env node
+
+var Mocha = require('mocha')
+var archiver = require('archiver')
+var fs = require('fs')
+
+var hw = process.argv[2]
+
+var hws = ['hw1', 'hw2', 'hw3', 'hw4']
+if (hws.indexOf(hw) === -1) {
+  console.log('Hausübung nicht gefunden')
+  process.exit(1)
+}
+
+// first we test
+var mocha = new Mocha({
+  reporter: 'spec'
+})
+var testFile = 'tests/' + hw + '-spec.js'
+
+mocha.addFile(testFile)
+
+mocha.run(function(failures) {
+  // whatever the results from the tests, we create a zip
+  
+  // try to delete old files
+  try {
+    fs.unlinkSync('releases/' + hw + '.zip')
+  } catch (err) {
+    // ignore for the moment
+  }
+
+  var output = fs.createWriteStream('releases/' + hw + '.zip')
+  var archive = archiver('zip')
+
+  output.on('close', function () {
+    console.log('releases/' + hw + '.zip erstellt.')
+    if (!failures) console.log('Laden sie diese Datei im TUWEL hoch. Danke!')
+  })
+
+  archive.on('error', function (err) {
+    throw err;
+  })
+
+  archive.pipe(output)
+
+  archive.bulk([
+    { expand: true, cwd: 'solutions/' + hw, src: ['**'], dest: '/'}
+  ])
+
+  archive.finalize();
+})
+
+
+
+
+
+
+

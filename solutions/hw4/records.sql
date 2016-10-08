@@ -1,0 +1,2 @@
+-- Rückgabeformat
+--  (record, text, date)
