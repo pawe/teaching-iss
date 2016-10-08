@@ -57,13 +57,13 @@ diese im Ordner `solutions/hw2`.
 
 
 #### Datenbanktabellen erstellen
-Fügen Sie der Datei `solutions/hw2/migrations_up.sql` die SQL-Befehle hinzu um 
+Fügen Sie der Datei `solutions/hw2/migration_up.sql` die SQL-Befehle hinzu um 
 Ihre Tabellen zu erstellen. Verwenden sie für die Speicherung der Mitarbeiter 
 die Tabelle aus der ersten Hausübung.
 
 Durch klicken auf die Schaltfläche "Tabellen erstellen" wird der SQL-Code in
 dieser Datei ausgeführt. Möchten Sie die Tabellen entfernen, ohne die Anwendung 
-neu zu starten, können Sie in der Datei `solutions/hw2/migrations_down.sql` 
+neu zu starten, können Sie in der Datei `solutions/hw2/migration_down.sql` 
 die entsprechenden Befehle hinterlegen (`DROP TABLE`). Zugänglich ist dies über 
 die Schaltfläche "Tabellen entfernen". 
 
