@@ -1,3 +1,3 @@
 -- Rückgabeformat
---  (projectname, budget, spent, remaining)
+--  (projectName, budget, spent, remaining)
 
