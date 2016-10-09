@@ -299,9 +299,9 @@ describe('Hausübung 4', function () {
           expect(err).to.not.be.ok()
           expect(results).to.have.length(3)
           expect(results).to.eql([
-            { number: 1, account: 'A', amount: 1000 },
-            { number: 2, account: 'NNP', amount: 2000 },
-            { number: 3, account: 'AK', amount: -3000 }
+            { number: 1, accountName: 'A', amount: 1000 },
+            { number: 2, accountName: 'NNP', amount: 2000 },
+            { number: 3, accountName: 'AK', amount: -3000 }
           ])
           done()
         })
