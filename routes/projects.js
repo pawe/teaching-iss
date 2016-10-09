@@ -3,7 +3,6 @@ var router = express.Router()
 var db = require('../config/db.js')
 var async = require('async')
 
-
 router.get('/', function (req, res, next) {
   async.series({
     projects: function (cb) {
@@ -86,7 +85,6 @@ router.post('/createProjects',
   }
 )
 
-
 router.post('/project_account', function (req, res, next) {
   async.series({
     startTransaction: function (cb) {
@@ -133,7 +131,6 @@ router.post('/project_account', function (req, res, next) {
     res.redirect('/projects')
   })
 })
-
 
 router.post('/account', function (req, res, next) {
   db.withSQLFromFile('hw4/account_add.sql')
@@ -216,7 +213,6 @@ router.post('/add_project_record', function (req, res, next) {
     res.redirect('/projects')
   })
 })
-
 
 router.post('/migrationdown', function (req, res, next) {
   db.withSQLFromFile('hw4/migration_down.sql')
