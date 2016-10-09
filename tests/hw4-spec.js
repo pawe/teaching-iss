@@ -133,7 +133,7 @@ describe('Hausübung 4', function () {
   })
 
   describe('Erste Testbuchung', function () {
-    var recordId
+    var record
     describe('Buchungssatz hinzufügen (`hw4/accounting_record_add.sql`)', function () {
       it('Buchungssatz hinzufügen', function (done) {
         db.withSQLFromFile('hw4/accounting_record_add.sql')
@@ -147,11 +147,11 @@ describe('Hausübung 4', function () {
       })
 
       it('letzen buchungssatznummer auslesen (INTEGER PRIMARY KEY AUTOINCREMENT)', function (done) {
-        db.get('SELECT last_insert_rowid() AS recordId;',
+        db.get('SELECT last_insert_rowid() AS record;',
           function (err, result) {
             expect(err).to.not.be.ok()
-            expect(result.recordId).to.eql(1)
-            recordId = result.recordId
+            expect(result.record).to.eql(1)
+            record = result.record
             done()
           })
       })
@@ -160,7 +160,7 @@ describe('Hausübung 4', function () {
       it('soll erste Buchungszeile ohne Fehler hinzufügen ', function (done) {
         db.withSQLFromFile('hw4/accounting_entry_line_add.sql')
           .run({
-            $recordId: recordId,
+            $record: record,
             $accountName: 'A',
             $amount: 1000
           },
@@ -173,7 +173,7 @@ describe('Hausübung 4', function () {
       it('soll zweite Buchungszeile ohne Fehler hinzufügen', function (done) {
         db.withSQLFromFile('hw4/accounting_entry_line_add.sql')
           .run({
-            $recordId: recordId,
+            $record: record,
             $accountName: 'NNP',
             $amount: 2000
           },
@@ -186,7 +186,7 @@ describe('Hausübung 4', function () {
       it('soll dritte Buchungszeile ohne Fehler hinzufügen', function (done) {
         db.withSQLFromFile('hw4/accounting_entry_line_add.sql')
           .run({
-            $recordId: recordId,
+            $record: record,
             $accountName: 'AK',
             $amount: -3000
           },
@@ -199,7 +199,7 @@ describe('Hausübung 4', function () {
   })
 
   describe('Zweite Testbuchung', function () {
-    var recordId
+    var record
     describe('Buchungssatz hinzufügen (`hw4/accounting_record_add.sql`)', function () {
       it('Buchungssatz hinzufügen', function (done) {
         db.withSQLFromFile('hw4/accounting_record_add.sql')
@@ -213,11 +213,11 @@ describe('Hausübung 4', function () {
       })
 
       it('letzen buchungssatznummer auslesen (INTEGER PRIMARY KEY AUTOINCREMENT)', function (done) {
-        db.get('SELECT last_insert_rowid() AS recordId;',
+        db.get('SELECT last_insert_rowid() AS record;',
           function (err, result) {
             expect(err).to.not.be.ok()
-            expect(result.recordId).to.eql(2)
-            recordId = result.recordId
+            expect(result.record).to.eql(2)
+            record = result.record
             done()
           })
       })
@@ -226,7 +226,7 @@ describe('Hausübung 4', function () {
       it('soll erste Buchungszeile ohne Fehler hinzufügen ', function (done) {
         db.withSQLFromFile('hw4/accounting_entry_line_add.sql')
           .run({
-            $recordId: recordId,
+            $record: record,
             $accountName: 'A',
             $amount: 50000
           },
@@ -239,7 +239,7 @@ describe('Hausübung 4', function () {
       it('soll zweite Buchungszeile ohne Fehler hinzufügen', function (done) {
         db.withSQLFromFile('hw4/accounting_entry_line_add.sql')
           .run({
-            $recordId: recordId,
+            $record: record,
             $accountName: 'NNP',
             $amount: 2000
           },
@@ -252,7 +252,7 @@ describe('Hausübung 4', function () {
       it('soll dritte Buchungszeile ohne Fehler hinzufügen', function (done) {
         db.withSQLFromFile('hw4/accounting_entry_line_add.sql')
           .run({
-            $recordId: recordId,
+            $record: record,
             $accountName: 'RP',
             $amount: 496004000
           },
@@ -265,7 +265,7 @@ describe('Hausübung 4', function () {
       it('soll vierte Buchungszeile ohne Fehler hinzufügen', function (done) {
         db.withSQLFromFile('hw4/accounting_entry_line_add.sql')
           .run({
-            $recordId: recordId,
+            $record: record,
             $accountName: 'AK',
             $amount: -496011000
           },
@@ -284,8 +284,8 @@ describe('Hausübung 4', function () {
           expect(err).to.not.be.ok()
           expect(results).to.have.length(2)
           expect(results).to.eql([
-            { recordId: 1, text: 'Testbuchugn 1', date: '2016-10-25' },
-            { recordId: 2, text: 'Testbuchung 2', date: '2016-10-26' }
+            { record: 1, text: 'Testbuchugn 1', date: '2016-10-25' },
+            { record: 2, text: 'Testbuchung 2', date: '2016-10-26' }
           ])
           done()
         })

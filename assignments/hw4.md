@@ -60,7 +60,7 @@ Erstellen Sie SQL Code, mit dem ...
 
   6. ... eine Buchungszeile hinzugefügt werden kann.
     * Datei: `accounting_entry_line_add.sql`
-    * Platzhalter: `$record`, `$accountName`, `$amount`` 
+    * Platzhalter: `$record`, `$accountName`, `$amount`
     * Rückgabeformat: nicht relevant
 
   7. ... alle Buchungensätze aufgelistet werden können. Sortiert nach der 
@@ -69,10 +69,11 @@ Erstellen Sie SQL Code, mit dem ...
     * Platzhalter: nicht relevant
     * Rückgabeformat: `(record, text, date)`
 
-  8. ... alle Buchugnszeilen für einen Buchungssatz aufgelistet werden können. Sortiert nach der Buchungszeilennummer aufsteigend.
+  8. ... alle Buchugnszeilen für einen Buchungssatz aufgelistet werden können. 
+  Aufsteigend nach der Buchungszeilennummer sortiert.
     * Datei: `entry_lines.sql`
     * Platzhalter: `$record`
-    * Rückgabeformat: `(number, account, amount)`
+    * Rückgabeformat: `(number, accountName, amount)`
 
   9. ... alle Projekte aufgelistet werden können. Die Rückgabe soll 
   Projektbudget, bereits verbuchte Kosten und Restbudget enthalten. Ergebnis

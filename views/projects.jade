@@ -166,7 +166,7 @@ block content
                 td= record.text
                 td= record.date
                 td
-                  a.btn.btn-secondary(href='/projects?selected_record=#{record.recordId}') Details
+                  a.btn.btn-secondary(href='/projects?selected_record=#{record.record}') Details
 
 
       .col-md-6
@@ -182,7 +182,7 @@ block content
             each el in entry_lines
               tr
                 td= el.number
-                td= el.account
+                td= el.accountName
                 td= el.amount
 
     .row

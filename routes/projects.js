@@ -113,18 +113,22 @@ router.post('/project_account', function (req, res, next) {
   },
   function (err, results) {
     if (err) {
-      // final commit if error
-      db.run('COMMIT;', function (dbErr) {
+      db.run('ROLLBACK;', function (dbErr) {
         if (dbErr) return next(dbErr)
         return next(err)
       })
-      return next(err)
     }
     if (results.createAccount[0]) {
-      return next(results.createAccount[0])
+      db.run('ROLLBACK;', function (dbErr) {
+        if (dbErr) return next(dbErr)
+        return next(results.createAccount[0])
+      })
     }
     if (results.addProjectToAccount[0]) {
-      return next(results.addProjectToAccount[0])
+      db.run('ROLLBACK;', function (dbErr) {
+        if (dbErr) return next(dbErr)
+        return next(results.addProjectToAccount[0])
+      })
     }
     res.redirect('/projects')
   })
@@ -154,12 +158,12 @@ router.post('/add_project_record', function (req, res, next) {
         cb)
     },
     function getLastInsertId (cb) {
-      db.get('SELECT last_insert_rowid() AS recordId', function (err, result) {
+      db.get('SELECT last_insert_rowid() AS record', function (err, result) {
         if (err) return cb(err)
-        cb(null, result.recordId)
+        cb(null, result.record)
       })
     },
-    function buildEntryLines (recordId, cb) {
+    function buildEntryLines (record, cb) {
       var projectEntrise = ['p1', 'p2', 'p3']
         .filter(function (p) {
           return (req.body[p] !== 'kein Konto')
@@ -167,7 +171,7 @@ router.post('/add_project_record', function (req, res, next) {
 
       var objectsToInsert = projectEntrise.map(function (p) {
         return {
-          $recordId: recordId,
+          $record: record,
           $accountName: req.body[p],
           $amount: parseFloat(req.body[p + '_costs'])
         }
@@ -180,7 +184,7 @@ router.post('/add_project_record', function (req, res, next) {
       }, { $amount: 0 })
 
       objectsToInsert.push({
-        $recordId: recordId,
+        $record: record,
         $accountName: req.body.account,
         $amount: -1 * totalcosts.$amount
       })
@@ -204,8 +208,7 @@ router.post('/add_project_record', function (req, res, next) {
   ],
   function (err) {
     if (err) {
-      // final commit if error
-      return db.run('COMMIT;', function (dbErr) {
+      return db.run('ROLLBACK;', function (dbErr) {
         if (dbErr) return next(dbErr)
         next(err)
       })
