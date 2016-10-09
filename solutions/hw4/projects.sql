@@ -1,2 +1,0 @@
--- Rückgabeformat:
---   (projectNames)
