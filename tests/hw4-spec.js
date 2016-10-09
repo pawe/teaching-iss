@@ -82,7 +82,7 @@ describe('Hausübung 4', function () {
           db.withSQLFromFile('hw4/project_account_add.sql')
             .run({
               $accountName: 'NNP',
-              $project: 'NewNewProdukt'
+              $project: 'NewNewProduct'
             }, function (err) {
               expect(err).to.not.be.ok()
               done()
@@ -315,15 +315,15 @@ describe('Hausübung 4', function () {
           expect(err).to.not.be.ok()
           expect(results).to.have.length(3)
           expect(results).to.eql([
-            { projectname: 'Automation',
+            { projectName: 'Automation',
               budget: 150000,
               spent: 51000,
               remaining: 99000 },
-            { projectname: 'RevolutionaryProduct',
+            { projectName: 'RevolutionaryProduct',
               budget: 500000000,
               spent: 496004000,
               remaining: 3996000 },
-            { projectname: 'NewNewProdukt',
+            { projectName: 'NewNewProduct',
               budget: 4000000,
               spent: 4000,
               remaining: 3996000 }
