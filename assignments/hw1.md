@@ -155,8 +155,10 @@ die Anwendung installiert haben. Beschrieben in der [README](/).
 ### Abfragen <a name="abfragen"></a>
 Ihre Abfragen sollen Funktionen zur Mitarbeiterverwaltung unterstützen. Die 
 Oberfläche ist nur Administratoren zugänglich. Melden Sie sich als `admin` 
-(Passwort: `admin`) an, damit Sie in der rechten oberen Ecke der Anwendung 
-einen Link "Org (HÜ1)" sehen.
+(Passwort: `admin`) an. Um sich anzumelden, finden sie in der rechten oberen 
+Ecke der Anwendung einen Link "Login (HÜ1)". Wenn Sie sich angemeldet haben, 
+sehen sie ebenfalls in der rechten oberen Ecke der Anwendung einen Link 
+"Org (HÜ1)".
 
 Die Dateien in der Sie Ihre Abfragen schreiben können, finden sie im Ordner 
 `solutions/hw1`.
@@ -171,7 +173,7 @@ Auf Basis der gegebenen Tabellen erstellen Sie eine SQL-Abfrage...
     
  2. ... mit der die Namen und Stundensätze aller Mitarbeiter abgefragt werden 
  können.
-    * Datei: `employee_all.sql`
+    * Datei: `employees_all.sql`
     * Platzhalter: nicht relevant
     * Rückgabeformat: `(ssn, surename, forename, rate)`
 
@@ -197,7 +199,7 @@ Auf Basis der gegebenen Tabellen erstellen Sie eine SQL-Abfrage...
     * Platzhalter: `$departmentShort`, `$ssn`
     * Rückgabeformat: nicht relevant
 
- 7. ... mit der ein Abteilung ohne Mitarbeiter aufgelöst werden kann.
+ 7. ... mit der eine Abteilung aus der Datenbank entfernt werden kann.
     * Datei: `department_remove.sql`
     * Platzhalter: `$departmentShort`
     * Rückgabeformat: nicht relevant
