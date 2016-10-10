@@ -5,12 +5,12 @@
   "scripts": {
     "start": "node ./bin/www --init-db",
     "test": "node ./node_modules/mocha/bin/mocha tests --reporter spec",
-    "test-lecture1": "node ./node_modules/mocha/bin/mocha tests/lecture1-spec.js --reporter spec",
-    "test-lecture2": "node ./node_modules/mocha/bin/mocha tests/lecture2-spec.js --reporter spec",
-    "test-hw1": "node ./node_modules/mocha/bin/mocha tests/hw1-spec.js --reporter spec",
-    "test-hw2": "node ./node_modules/mocha/bin/mocha tests/hw2-spec.js --reporter spec",
-    "test-hw3": "node ./node_modules/mocha/bin/mocha tests/hw3-spec.js --reporter spec",
-    "test-hw4": "node ./node_modules/mocha/bin/mocha tests/hw4-spec.js --reporter spec",
+    "test-lecture1": "node ./node_modules/mocha/bin/mocha tests/lecture1-spec.js --reporter spec -t 5000",
+    "test-lecture2": "node ./node_modules/mocha/bin/mocha tests/lecture2-spec.js --reporter spec -t 5000",
+    "test-hw1": "node ./node_modules/mocha/bin/mocha tests/hw1-spec.js --reporter spec -t 5000",
+    "test-hw2": "node ./node_modules/mocha/bin/mocha tests/hw2-spec.js --reporter spec -t 5000",
+    "test-hw3": "node ./node_modules/mocha/bin/mocha tests/hw3-spec.js --reporter spec -t 5000",
+    "test-hw4": "node ./node_modules/mocha/bin/mocha tests/hw4-spec.js --reporter spec -t 5000",
     "release": "node ./bin/release"
   },
   "dependencies": {
