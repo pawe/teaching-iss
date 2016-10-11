@@ -172,8 +172,8 @@ Auf Basis der gegebenen Tabellen erstellen Sie eine SQL-Abfrage...
     * Rückgabeformat: nicht relevant
     
  2. ... mit der die Namen und Stundensätze aller Mitarbeiter abgefragt werden 
- können. Beachten Sie, dass die Rückgabeformat nicht mit den 
- Spaltenbezeichnungen übereinstimmt.
+ können. Beachten Sie, dass die Rückgabeformatbezeichnungen nicht mit den 
+ Spaltenbezeichnungen übereinstimmen.
     * Datei: `employees_all.sql`
     * Platzhalter: nicht relevant
     * Rückgabeformat: `(ssn, surename, forename, rate)`
