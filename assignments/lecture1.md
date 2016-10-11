@@ -25,7 +25,7 @@ entspricht folgendem ER-Diagramm:
 ### Tabelle Anlegen
 Die Anwendung selbst führt den SQL Befehl in der Datei 
 `solutions/lecture1/setup-user.sql` aus. Dieser erstellt eine Tabelle mit der 
-Bezeichnugn "users". Die Tabelle hat drei Spalten, eine Spalte `login` für die 
+Bezeichnung "users". Die Tabelle hat drei Spalten, eine Spalte `login` für die 
 Benutzerkennung, eine Spalte `hashedpassword` für ein [kryptographisch gehashed](https://de.wikipedia.org/wiki/Kryptologische_Hashfunktion) Passwort und eine 
 dritte Spalte `admin`, um zu hinterlegen ob es sich bei einem Benutzer um einen 
 Administrator handelt. Per default ist ein neuer Benutzer kein Administrator.
