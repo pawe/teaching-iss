@@ -3,7 +3,7 @@
 [tiss_course_address]: https://tiss.tuwien.ac.at/course/educationDetails.xhtml?windowId=589&semester=2016W&courseNr=307421
 
 
-# Übung: Industriellen Informationssysteme (2016W)
+# Übung: Industrielle Informationssysteme (2016W)
 Diese Webanwendung ist Teil der Übung Industrielle Informationssysteme (307.421)
 in welcher Grundlagen relationaler Datenbanken, Datenmodellierung und SQL vermittelt
 werden. Diese Anwendung dient zur Illustration und als Kontext für Hausübungen 
