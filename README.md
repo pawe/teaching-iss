@@ -57,7 +57,7 @@ die entpackte Hausübung beispielsweise im Verzeichnis `\Users\pawe\Desktop\iis`
 können Sie mittels `cd \Users\pawe\Desktop\iis` dorthin wechseln.
 
 Mittels `dir` können Sie sich in der Windowskommandozeilenanwendung den Inhalt 
-eines Verzeichnises auflisten lassen. Gleiches erreichen Sie mit `ls` auf 
+eines Verzeichnisses auflisten lassen. Gleiches erreichen Sie mit `ls` auf 
 Unix basierenden Systemen (macOS, OS X, Linux oder in der Windows PowerShell).
 
 
