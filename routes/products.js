@@ -36,8 +36,8 @@ router.get('/', function (req, res, next) {
     partcount_in_assembly: function (cb) {
       db.withSQLFromFile('hw3/partcount_in_assembly.sql')
         .get({
-          $part: parseInt(req.query.teil, 10),
-          $assembly: parseInt(req.query.baugruppe, 10)
+          $part: req.query.teil,
+          $assembly: req.query.baugruppe
         },
         function () {
           cb(null, arguments)
