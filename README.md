@@ -52,6 +52,15 @@ Entpacken sie gegebenfalls die heruntergeladene Datei und öffnen sie den Ordner
 cd iis
 ```
 
+Mit `cd` (change directory) können Sie das Verzeichnis wechseln. Befindet sich 
+die entpackte Hausübung beispielsweise im Verzeichnis `\Users\pawe\Desktop\iis` 
+können Sie mittels `cd \Users\pawe\Desktop\iis` dorthin wechseln.
+
+Mittels `dir` können Sie sich in der Windowskommandozeilenanwendung den Inhalt 
+eines Verzeichnises auflisten lassen. Gleiches erreichen Sie mit `ls` auf 
+Unix basierenden Systemen (macOS, OS X, Linux oder in der Windows PowerShell).
+
+
 Die Anwendung benötigt Module. Diese können mit folgendem Befehl in der 
 Kommandozeile installiert werden. Npm (node package manager) wird mit nodejs
 mitinstalliert.

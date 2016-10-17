@@ -50,11 +50,12 @@ Markieren sie **Primär-** und *Fremdschlüssel*.
 
 #### Hinweis zur Erstellung des ER-Diagramms
 Wir lassen Ihnen frei mit welchen Programm Sie das ER Diagramm zeichnen. Eine 
- Möglichkeit ist [Dia](http://dia-installer.de/). 
+Möglichkeit ist [Dia](http://dia-installer.de/).
 
 #### Hinweis zur Dokumentation
 Speichern Sie Ihr ER Diagramm und Ihre Schemadefinition in einer PDF-Datei im 
-Verzeichnis `solutions/hw1`. Wie Sie die Hausübung abgeben können, ist [hier](#abgabe) beschrieben.
+Verzeichnis `solutions/hw1`. Wie Sie die Hausübung abgeben können, ist 
+[hier](#abgabe) beschrieben.
 
 
 ## Aufgabe 1.2: Mitarbeiterverwaltung
@@ -172,8 +173,9 @@ Auf Basis der gegebenen Tabellen erstellen Sie eine SQL-Abfrage...
     * Rückgabeformat: nicht relevant
     
  2. ... mit der die Namen und Stundensätze aller Mitarbeiter abgefragt werden 
- können. Beachten Sie, dass die Rückgabeformatbezeichnungen nicht mit den 
- Spaltenbezeichnungen übereinstimmen.
+ können. Beachten Sie, dass die Bezeichnungen im Rückgabeformat nicht mit den 
+ Spaltennamen in den vorhandenen Tabellen übereinstimmen. Sie können mit `AS`
+ die Spalten für die Rückgabe umbenennen.
     * Datei: `employees_all.sql`
     * Platzhalter: nicht relevant
     * Rückgabeformat: `(ssn, surename, forename, rate)`

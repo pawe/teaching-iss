@@ -1,4 +1,4 @@
-### Mögliche Fragen die Sie in der Abgabegesprächen beantworten können sollten
+### Mögliche Fragen (die Sie in der Abgabegesprächen beantworten können sollten)
 
-  * Buchungssatz Buchungszeile.
-  * 
+  * JOINs erklären.
+  * Buchungssatz, Buchungszeile. Wozu diese Aufteilung?
