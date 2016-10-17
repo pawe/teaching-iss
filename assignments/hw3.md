@@ -69,12 +69,12 @@ CREATE TABLE Fertigungsdaten (
 Mit der von Ihnen erstellten Ansichten, erstellen Sie folgende Abfragen. Die Dateien in die Sie Ihre Lösungen einfügen sollen, befinden sich im Ordner 
 `solutions/hw3`.
 
-  1. Erstellen Sie eine Strukturstückliste mit Mengen bezogen auf die jeweilig direkt übergeordnete Baugruppe.
+  1. Erstellen Sie eine Strukturstückliste mit Mengen bezogen auf die jeweilig direkt übergeordnete Baugruppe. Begrenzen Sie das Ergebnis auf 20 Zeilen.
     * Datei: `multilevel_bom.sql`
     * Platzhalter: `$assembly`
     * Rückgabeformat: `(level, element, quantity)`
     
-  2. Fragen Sie ab in welchen Baugruppen ein Element eingebaut ist: Verwendungsnachweis.
+  2. Fragen Sie ab in welchen Baugruppen ein Element eingebaut ist: Verwendungsnachweis. Begrenzen Sie das Ergebnis auf 20 Zeilen.
     * Datei: `part_in_assembly.sql`
     * Platzhalter: `$part`
     * Rückgabeformat: `(assembly, quantity)`
@@ -91,14 +91,14 @@ Mit der von Ihnen erstellten Ansichten, erstellen Sie folgende Abfragen. Die Dat
 
   5. Abfrage mit der alle Teile und Baugruppe ausgegeben werden können für die 
   Fertigungsdaten existieren. Die Produktstruktur muss für diese Abfrage nicht 
-  berücksichtigt werden.
+  berücksichtigt werden. Begrenzen Sie das Ergebnis auf 20 Zeilen.
     * Datei: `parts_with_production_data.sql`
     * Platzhalter: nicht relevant
     * Rückgabeformat: `(articelNumber)`
 
   6. Abfrage mit der alle Teile und Baugruppen ausgegeben werden können für die 
   keine Fertigungsdaten existieren. Die Produktstruktur muss für diese Abfrage 
-  nicht berücksichtigt werden.
+  nicht berücksichtigt werden. Begrenzen Sie das Ergebnis auf 20 Zeilen.
     * Datei: `parts_without_production_data.sql`
     * Platzhalter: nicht relevant
     * Rückgabeformat: `(articelNumber)`
