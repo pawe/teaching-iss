@@ -65,8 +65,6 @@ router.get('/', function (req, res, next) {
   function (err, results) {
     if (err) return next(err)
 
-    console.log(results)
-
     res.render('products', {
       title: 'Produktstruktur',
       user: req.user,
