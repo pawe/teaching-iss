@@ -118,12 +118,14 @@ describe('Hausübung 3', function () {
         db.withSQLFromFile('hw3/parts_average_production_time.sql')
           .all(function (err, results) {
             expect(err).to.not.be.ok()
-            expect(results).to.have.length(4)
+            expect(results).to.have.length(6)
             // not checking the actual values, because i'm not sure they are the same on every platform
             expect(results[0].partNumber).to.eql('Teil_0133/A')
             expect(results[1].partNumber).to.eql('Teil_0103/A')
             expect(results[2].partNumber).to.eql('Teil_0130/A')
+            expect(results[2].partNumber).to.eql('Teil_0131/A')
             expect(results[3].partNumber).to.eql('Teil_0160/A')
+            expect(results[3].partNumber).to.eql('Teil_0183/A')
             done()
           })
       })
