@@ -139,7 +139,7 @@ describe('Hausübung 4', function () {
         db.withSQLFromFile('hw4/accounting_record_add.sql')
           .run({
             $date: '2016-10-25',
-            $text: 'Testbuchugn 1'
+            $text: 'Testbuchung 1'
           }, function (err) {
             expect(err).to.not.be.ok()
             done()
@@ -284,7 +284,7 @@ describe('Hausübung 4', function () {
           expect(err).to.not.be.ok()
           expect(results).to.have.length(2)
           expect(results).to.eql([
-            { record: 1, text: 'Testbuchugn 1', date: '2016-10-25' },
+            { record: 1, text: 'Testbuchung 1', date: '2016-10-25' },
             { record: 2, text: 'Testbuchung 2', date: '2016-10-26' }
           ])
           done()

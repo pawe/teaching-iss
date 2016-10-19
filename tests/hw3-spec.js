@@ -33,39 +33,47 @@ describe('Hausübung 3', function () {
 
   describe('Abfragen', function () {
     describe('Strukturstückliste (`hw3/multilevel_bom.sql`)', function () {
-      it('soll ohne Fehler für Baugruppe 1 durchlaufen', function (done) {
+      it('soll ohne Fehler für Baugruppe "3D Drucker" durchlaufen', function (done) {
         db.withSQLFromFile('hw3/multilevel_bom.sql')
           .all({
-            $assembly: '1'
+            $assembly: '3D Drucker'
           }, function (err, results) {
             expect(err).to.not.be.ok()
-            console.log(results)
+            expect(results).to.have.length(20)
+            expect(results[0]).to.only.have.keys('level', 'element', 'quantity')
             done()
           })
       })
     })
     describe('Verwendungsnachweis (`hw3/part_in_assembly.sql`)', function () {
-      it('soll für Teil # 10 ohne Fehler durchlaufen', function (done) {
+      it('soll für "Teil_0079/A" ohne Fehler durchlaufen', function (done) {
         db.withSQLFromFile('hw3/part_in_assembly.sql')
           .all({
-            $part: 10
+            $part: 'Teil_0079/A'
           }, function (err, results) {
             expect(err).to.not.be.ok()
-            console.log(results)
+            expect(results).to.have.length(4)
+            // only first element is checked
+            expect(results[0]).to.only.have.keys('assembly', 'quantity')
+            var assemblies = results.map(function (row) { return row.assembly })
+            expect(assemblies).to.contain('B0028/A')
+            expect(assemblies).to.contain('B0033/A')
+            expect(assemblies).to.contain('B0037/A')
+            expect(assemblies).to.contain('B0064/A')
             done()
           })
       })
     })
     describe('Gesamtmenge eines Bauteil in einer Baugruppe', function () {
-      it('soll ohne Fehler für Baugruppe # 1 und Teil # 10 durchlaufen', function (done) {
+      it('soll ohne Fehler für Baugruppe "3D Drucker" und Teil "Teil_0079/A" durchlaufen', function (done) {
         db.withSQLFromFile('hw3/partcount_in_assembly.sql')
-          .all({
-            $assembly: 1,
-            $part: 10
+          .get({
+            $assembly: '3D Drucker',
+            $part: 'Teil_0079/A'
           },
           function (err, results) {
             expect(err).to.not.be.ok()
-            console.log(results)
+            expect(results.quantity).to.be(100)
             done()
           })
       })
@@ -74,11 +82,13 @@ describe('Hausübung 3', function () {
       it('soll ohne Fehler durchlaufen und erwartetes Ergebnis liefern', function (done) {
         db.withSQLFromFile('hw3/quantitative_bom.sql')
           .all({
-            $assembly: 1
+            $assembly: '3D Drucker'
           },
           function (err, results) {
             expect(err).to.not.be.ok()
-            console.log(results)
+            expect(results).to.have.length(20)
+            // only checking the first row
+            expect(results[0]).to.eql({ element: 'Teil_0119/A', totalQuantity: 115 })
             done()
           })
       })
@@ -98,7 +108,7 @@ describe('Hausübung 3', function () {
         db.withSQLFromFile('hw3/parts_without_production_data.sql')
           .all(function (err, results) {
             expect(err).to.not.be.ok()
-            expect(results).to.have.length(1)
+            expect(results).to.have.length(20)
             done()
           })
       })
@@ -108,16 +118,12 @@ describe('Hausübung 3', function () {
         db.withSQLFromFile('hw3/parts_average_production_time.sql')
           .all(function (err, results) {
             expect(err).to.not.be.ok()
-            expect(results).to.have.length(7)
-            expect(results).to.eql([
-              { partNumber: 14, avgProductionTime: 846.2857142857143 },
-              { partNumber: 11, avgProductionTime: 499.57142857142856 },
-              { partNumber: 13, avgProductionTime: 341.57142857142856 },
-              { partNumber: 10, avgProductionTime: 136.71428571428572 },
-              { partNumber: 15, avgProductionTime: 33.142857142857146 },
-              { partNumber: 12, avgProductionTime: 23.285714285714285 },
-              { partNumber: 16, avgProductionTime: 9 }
-            ])
+            expect(results).to.have.length(4)
+            // not checking the actual values, because i'm not sure they are the same on every platform
+            expect(results[0].partNumber).to.eql('Teil_0133/A')
+            expect(results[1].partNumber).to.eql('Teil_0103/A')
+            expect(results[2].partNumber).to.eql('Teil_0130/A')
+            expect(results[3].partNumber).to.eql('Teil_0160/A')
             done()
           })
       })
