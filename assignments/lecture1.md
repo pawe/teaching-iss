@@ -24,11 +24,13 @@ entspricht folgendem ER-Diagramm:
 
 ### Tabelle Anlegen
 Die Anwendung selbst führt den SQL Befehl in der Datei 
-`solutions/lecture1/setup-user.sql` aus. Dieser erstellt eine Tabelle mit der 
+`solutions/lecture1/migration_up.sql` aus. Dieser erstellt eine Tabelle mit der 
 Bezeichnung "users". Die Tabelle hat drei Spalten, eine Spalte `login` für die 
-Benutzerkennung, eine Spalte `hashedpassword` für ein [kryptographisch gehashed](https://de.wikipedia.org/wiki/Kryptologische_Hashfunktion) Passwort und eine 
-dritte Spalte `admin`, um zu hinterlegen ob es sich bei einem Benutzer um einen 
-Administrator handelt. Per default ist ein neuer Benutzer kein Administrator.
+Benutzerkennung, eine Spalte `hashedpassword` für ein 
+[kryptographisch gehashed](https://de.wikipedia.org/wiki/Kryptologische_Hashfunktion) 
+Passwort und eine dritte Spalte `admin`, um zu hinterlegen, ob es sich bei 
+einem Benutzer um einen Administrator handelt. Per default ist ein neuer 
+Benutzer kein Administrator.
 
 ```sql
 CREATE TABLE users (
@@ -52,17 +54,21 @@ INSERT INTO users (login, admin, hashedpassword)
 
 ### Abfragen
 
-#### INSERT INTO
+#### `INSERT INTO`
 Weitere Benutzer können mit folgedem SQL-Befehl angelegt werden. Wir können 
 hier auch die `admin` Spalte weglassen, da es per default 0 ist. Müssen dafür
 jedoch explizit angeben auf welche Spalten die Werte beziehen.
 
 ```sql
-INSERT INTO users(login, hashedpassword) 
+INSERT INTO users (login, hashedpassword) 
     VALUES ('paul', 'pbkdf2$10000$f78b825761dcfe0e651e293d332bbfc3610f63bbc58513b6874efe53d45e0992f6e66a5797b83902b33cd18f2d7d737570510d921ffb735a270af646e52f8b34$5de8e15d4c98269cf48129f15accff00dbc88aecb81b191a929aa463c0ceca9a263c374b752b2fffeebca55ff876221058af5651d64c0c0fb35e013e81528527');
 ```
 
-Nachdem wir aber nicht immer das selbe Passwort verwenden möchten und den hash nicht von Hand berechnen möchten lassen wir das von der Anwendung berechnen. Wenn sich ein Benuter registiert. Dazu führen wir Platzhalter (beginnen mit `$`) ein, diese werden dann von der Anwendung, bevor die Abfrage an die Datenbank gesendet wird, durch die eigentlichen Werte ersetzt.
+Nachdem wir aber nicht immer das selbe Passwort verwenden möchten und den Hash 
+nicht von Hand berechnen möchten lassen wir das von der Anwendung berechnen. 
+Wenn sich ein Benuter registiert. Dazu führen wir Platzhalter (beginnen mit 
+`$`) ein, diese werden dann von der Anwendung, bevor die Abfrage an die 
+Datenbank gesendet wird, durch die eigentlichen Werte ersetzt.
 
 SQL um Benutzer in der Datenbank zu hinterlegen (aus `solutions/lecture1/user_add.sql`). 
 
@@ -70,12 +76,12 @@ SQL um Benutzer in der Datenbank zu hinterlegen (aus `solutions/lecture1/user_ad
 -- Platzhalter:
 --   $login
 --   $hashedpassword
-INSERT INTO users(login, hashedpassword) 
+INSERT INTO users (login, hashedpassword) 
     VALUES ($login, $hashedpassword);
 ```
 
 
-#### SELECT hashedpassword
+#### `SELECT`
 Will sich ein Benutzer bei der Anwendung anmelden benötigt die Anwendung den 
 Passworthash aus der Datenbank, um es mit dem Passworthash, der aus der 
 Benutzereingabe berechnet zu vergleichen.
@@ -105,18 +111,18 @@ Die selbe Abfrage finden Sie in der Datei `solutions/lecture1/user_auth.sql`,
 welche bei der Anmeldung von Benutzern ausgeführt wird.
 
 
-#### AS Rückgabespalten umbenennen
+#### `AS` Rückgabespalten umbenennen
 ```sql
 -- Platzhalter:
 --   $login
 -- Rückgabgeformat
---   (gehastespasswort)
-SELECT hashedpassword AS gehastespasswort
+--   (Passworthash)
+SELECT hashedpassword AS Passworthash
   FROM users 
   WHERE login = $login;
 ```
 
-#### SELECT login, admin
+#### `SELECT login, admin`
 Gleiches gilt für die Abfrage von Benutzerinformationen, beispielsweise um sie 
 darzustellen oder herauszufinden ob es sich ein Benutzer um einen Administrator 
 handelt. (In der Datei `solutions/lecture1/user_find.sql`).
@@ -136,7 +142,7 @@ Also welche Spalten ausgewählt wurden. Mehrere Werte werden mit einem Komma
 getrennt.
 
 
-#### UPDATE 
+#### `UPDATE`
 Will man einen bestehenden Benutzer Administratorestatus geben, muss natürlich 
 keine neue Zeile eingefügt werde, sondern kann angepasst werden. 
 (In `solutions/lecture1/user_make_admin.sql`).
@@ -148,8 +154,9 @@ UPDATE users SET admin = 1 WHERE login = $login;
 ```
 
 
-#### DELETE 
-Auch soll es möglich sein Benutzer wieder aus dem System zu entfernen. (In `solutions/lecture1/user_remove.sql`).
+#### `DELETE`
+Auch soll es möglich sein Benutzer wieder aus dem System zu entfernen (in 
+`solutions/lecture1/user_remove.sql`).
 
 ```sql
 -- Platzhalter:
@@ -165,11 +172,16 @@ DELETE FROM users WHERE login = $login;
 
 ![Users](/public/images/org.png)
 
-
-Unterschied zum ersten Beispiel ist, dass wir jetzt mehrere Tabellen erstellen werden und die Beziehungen zwischen den Tabellen definieren können. Genauer, wir legen zusätzlich zu den Primärschlusseln Fremdschlüssel fest. D.h. welche Spalte in einer Tabelle sich auf ein Spalte in einer anderen Bezieht. Die Fremdschlüssel sind nicht Teil des ER Diagramm, sondern können aus den Beziehung angrenzenden Entitäten abgeleitet werden.
+Unterschied zum ersten Beispiel ist, dass wir jetzt mehrere Tabellen erstellen 
+werden und die Beziehungen zwischen den Tabellen definieren können. Genauer, 
+wir legen zusätzlich zu den Primärschlusseln Fremdschlüssel fest. D.h. welche 
+Spalte in einer Tabelle sich auf ein Spalte in einer anderen Bezieht. Die 
+Fremdschlüssel sind nicht Teil des ER Diagramm, sondern können aus den 
+Beziehung angrenzenden Entitäten abgeleitet werden.
 
 ### Schema
-Es gibt mehrere Möglichkeiten obiges ER Diagramm in ein Datenbankschema zu übersetzen. Hier ein davon:
+Es gibt mehrere Möglichkeiten obiges ER Diagramm in ein Datenbankschema zu 
+übersetzen. Hier ein davon:
 
 
 > Mitarbeiter (	**SVNR**,	Name, Stundensatz )
