@@ -75,7 +75,7 @@ router.get('/', function (req, res, next) {
   },
   function (err, results) {
     if (err) return next(err)
-    console.log(results)
+
     res.render('production', {
       title: 'Fertigungsdaten',
       user: req.user,

@@ -10,7 +10,8 @@ Softwareunternehmen um die von Ihnen gewünschten Funktionen umzusetzen. Um mit
 dem Softwarehersteller eine erfolgreiche Zusammenarbeit zu garantieren, 
 erstellen sie ein Entity Relationship (ER) Diagramm. Konkret soll die Software 
 das Speichern von Produkten, Produktfamilien, Produkten vom Mitbewerbern, 
-Mitbewerber sowie Händler die Produkte vertreiben ermöglichen.
+sowie die Mitbewerbern selbst ermöglichen. Die Datenbank soll folgende 
+Anforderungen erfüllen.
 
 
 ### Anforderungen
@@ -25,12 +26,11 @@ Mitbewerber sowie Händler die Produkte vertreiben ermöglichen.
     können mehrere Produkte zugehörig sein.
   * Eigene Produkte können mit mehreren Produkten vom Mitbewerber konkurrieren 
     und Produkte vom Mitbewerber können mit mehreren eigenen Produkten 
-    konkurrieren. 
+    konkurrieren.
+  * Ein Mitbewerberprodukt hat eine EAN und ein Beschreibung.
   * Ein Mitbewerber kann mehrere Konkurenzprodukte herstellen. Ein 
     Konkurrenzprodukt wird von einem Mitbewerber hergestellt.
-  * Ein Händler vertreibt mehrere Produkte (eigene sowie vom Mitbewerber). 
-    Produkte (eigene sowie die vom Mitbewerber) werden von mehreren Händlern 
-    vertrieben.
+  * Ein Mitbwerber hat einen eindeutigen Namen.
 
 
 ### ER Diagramm
@@ -117,8 +117,8 @@ Die Tabellen werden beim Start der Anwendung erstellt. D.h. für Ihre
 Beispielanfragen können Sie davon ausgehen, dass die Tabellen existieren.
 
 Um Testdaten einzufügen könne Sie im Administrationsbereich die Schaltfläche 
-`Testdaten einfügen` verwenden. Dafür ist es jedoch notwendig, dass die erste 
-Abfrage bereits richtig erstellt haben.
+`Testdaten einfügen` verwenden. Dafür ist es jedoch notwendig, dass Sie die 
+erste Abfrage bereits richtig erstellt haben.
 
 
 

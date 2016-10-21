@@ -11,7 +11,7 @@ oder einen Datenbankmanagementtool öffnen.
 
 
 ## Beispiel mit nur einer Tabelle
-Die Anwendung erlaub es Benutzern sich mit einem Login und Passwort anzumelden, 
+Die Anwendung erlaubt es Benutzern sich mit einem Login und Passwort anzumelden, 
 dazu müssen wir die Logins und Passwörter in der Datenbank ablegen können. Wir 
 speichern zu jedem Benutzer, ob es sich um einen Administrator handelt. Dies 
 entspricht folgendem ER-Diagramm:
@@ -27,9 +27,9 @@ Die Anwendung selbst führt den SQL Befehl in der Datei
 `solutions/lecture1/migration_up.sql` aus. Dieser erstellt eine Tabelle mit der 
 Bezeichnung "users". Die Tabelle hat drei Spalten, eine Spalte `login` für die 
 Benutzerkennung, eine Spalte `hashedpassword` für ein 
-[kryptographisch gehashed](https://de.wikipedia.org/wiki/Kryptologische_Hashfunktion) 
+[kryptographisch gehashtes](https://de.wikipedia.org/wiki/Kryptologische_Hashfunktion) 
 Passwort und eine dritte Spalte `admin`, um zu hinterlegen, ob es sich bei 
-einem Benutzer um einen Administrator handelt. Per default ist ein neuer 
+einem Benutzer um einen Administrator handelt. Per Vorgabe ist ein neuer 
 Benutzer kein Administrator.
 
 ```sql
@@ -41,7 +41,7 @@ CREATE TABLE users (
 ```
 
 Zusätlich legen wir einen 'admin' Benutzer an. Die Zeichen `--` leiten ein 
-einzeiliges Kommentar ein, d.h. der nachfolgende Text in der selben Zeile 
+einzeiliges Kommentar ein, d.h. der nachfolgende Text in derselben Zeile 
 wird von der Datenbank ignoriert.
 
 ```sql
@@ -55,8 +55,8 @@ INSERT INTO users (login, admin, hashedpassword)
 ### Abfragen
 
 #### `INSERT INTO`
-Weitere Benutzer können mit folgedem SQL-Befehl angelegt werden. Wir können 
-hier auch die `admin` Spalte weglassen, da es per default 0 ist. Müssen dafür
+Weitere Benutzer können mit folgendem SQL-Befehl angelegt werden. Wir können 
+hier auch die `admin` Spalte weglassen, da es per Vorgabe 0 ist. Müssen dafür
 jedoch explizit angeben auf welche Spalten die Werte beziehen.
 
 ```sql
@@ -64,7 +64,7 @@ INSERT INTO users (login, hashedpassword)
     VALUES ('paul', 'pbkdf2$10000$f78b825761dcfe0e651e293d332bbfc3610f63bbc58513b6874efe53d45e0992f6e66a5797b83902b33cd18f2d7d737570510d921ffb735a270af646e52f8b34$5de8e15d4c98269cf48129f15accff00dbc88aecb81b191a929aa463c0ceca9a263c374b752b2fffeebca55ff876221058af5651d64c0c0fb35e013e81528527');
 ```
 
-Nachdem wir aber nicht immer das selbe Passwort verwenden möchten und den Hash 
+Nachdem wir aber nicht immer dasselbe Passwort verwenden möchten und den Hash 
 nicht von Hand berechnen möchten lassen wir das von der Anwendung berechnen. 
 Wenn sich ein Benuter registiert. Dazu führen wir Platzhalter (beginnen mit 
 `$`) ein, diese werden dann von der Anwendung, bevor die Abfrage an die 
@@ -107,7 +107,7 @@ spezifizieren wir mit `WHERE` welche Zeilen zurückgegenen sollen. Da `login`
 der Primärschlüssel der Tabelle `users` ist und dementsprechend eindeutig sein 
 muss, gibt die Abfrage entweder keine Zeile zurück oder genau eine.
 
-Die selbe Abfrage finden Sie in der Datei `solutions/lecture1/user_auth.sql`, 
+Dieselbe Abfrage finden Sie in der Datei `solutions/lecture1/user_auth.sql`, 
 welche bei der Anmeldung von Benutzern ausgeführt wird.
 
 
@@ -132,7 +132,7 @@ handelt. (In der Datei `solutions/lecture1/user_find.sql`).
 --   $login
 -- Rückgabeformat:
 --   (login, admin)
-SELECT login, admin -- enspricht exakt dem Rückgabeformat
+SELECT login, admin -- entspricht exakt dem Rückgabeformat
   FROM users 
   WHERE login = $login;
 ```
@@ -143,7 +143,7 @@ getrennt.
 
 
 #### `UPDATE`
-Will man einen bestehenden Benutzer Administratorestatus geben, muss natürlich 
+Will man einen bestehenden Benutzer Administratorenstatus geben, muss natürlich 
 keine neue Zeile eingefügt werde, sondern kann angepasst werden. 
 (In `solutions/lecture1/user_make_admin.sql`).
 
@@ -174,8 +174,8 @@ DELETE FROM users WHERE login = $login;
 
 Unterschied zum ersten Beispiel ist, dass wir jetzt mehrere Tabellen erstellen 
 werden und die Beziehungen zwischen den Tabellen definieren können. Genauer, 
-wir legen zusätzlich zu den Primärschlusseln Fremdschlüssel fest. D.h. welche 
-Spalte in einer Tabelle sich auf ein Spalte in einer anderen Bezieht. Die 
+wir legen zusätzlich zu den Primärschlüsseln Fremdschlüssel fest. D.h. welche 
+Spalte in einer Tabelle sich auf eine Spalte in einer anderen Bezieht. Die 
 Fremdschlüssel sind nicht Teil des ER Diagramm, sondern können aus den 
 Beziehung angrenzenden Entitäten abgeleitet werden.
 
@@ -253,4 +253,4 @@ Die Datenbank kann beim Einfügen von Daten prüfen, ob die entsprechend referen
 PRAGMA foreign_keys = ON;
 ```
 
-die Überpfüung von Fremdschlüsselbeziehungen aktivieren.
+die Überprüfung von Fremdschlüsselbeziehungen aktivieren.

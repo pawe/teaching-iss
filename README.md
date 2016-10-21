@@ -39,7 +39,9 @@ selbst überprüfen.
 #### Installation NodeJS 
 Um die Anwendung auszuführen ist die Runtime NodeJS notwendig. NodeJS könnnen 
 Sie auf [nodejs.org](http://nodejs.org) herunterladen. Wählen sie die LTS (long 
-time support) Option und folgen Sie dort den Anweisungen.
+time support) Option und folgen Sie dort den Anweisungen. Die Anwendung wurde 
+auf Basis des Versionszweiges 4.6.X entwickelt, wir empfehlen Ihnen ebenfalls
+diese Version.
 
 #### Installation Anwendung und benötige Module
 Laden Sie die Zip-Datei entweder aus dem [TUWEL Kurs][tuwel_course_address] 
@@ -118,7 +120,7 @@ Gleiches gilt für die anderen Hausübungen: `npm run test-hw2`,
 Wir führen denselben Code aus um Ihre Abgabe auf Funktionstüchtigkeit zu
 überprüfen. Beachten Sie bitte, dass Sie Ihre Abfragen bei den Abgabegesprächen
 erklären müssen, d.h. ein erfolgreicher Durchlauf der Tests garantiert Ihnen 
-noch keine Punkte. Solche Tests können im allgemeinen auch nur Fehler 
+noch keine Punkte. Solche Tests können im Allgemeinen auch nur Fehler 
 aufzeigen, nicht die Abwesenheit Fehlern garantieren.
 
 
