@@ -84,9 +84,9 @@ COMMIT;
 
 `BEGIN` bis `COMMIT` bildet die Transaktion. Das bedeutet: entweder werden die Änderungen aller Befehle wirksam oder keine. Mehr Informationen finden Sie [hier](https://www.sqlite.org/lang_transaction.html). 
 
-Wir möchten nicht dass die Transaktion abbricht, wenn Daten in einer Tabelle schon vorhanden sind, d.h. wir geben zusätlich mit `OR IGNORE` an was passieren soll, wenn ein Konflikt eintritt. Bei unseren Testdaten sollte  nur "unique constraint" Konflikt auftretten können. Dokumentation zur INSERT finden sie auf [www.sqlite.org/lang_insert.html](https://www.sqlite.org/lang_insert.html) 
+Wir möchten nicht dass die Transaktion abbricht, wenn Daten in einer Tabelle schon vorhanden sind, d.h. wir geben zusätzlich mit `OR IGNORE` an was passieren soll, wenn ein Konflikt eintritt. Bei unseren Testdaten sollte  nur "unique constraint" Konflikt auftretten können. Dokumentation zur INSERT finden sie auf [www.sqlite.org/lang_insert.html](https://www.sqlite.org/lang_insert.html) 
 
-Wir gehen hier (etwas fragwürdigerweise), davon aus dass eine Name immer aus genau einem Vor- und genau einem Nachnamen bestehen die durch genau ein Leerzeichen getrennte sind. Mittels der Funktion `instr($name, ' ')` finden wird die Position des Leerzeichens, welche dann verwendet wird um mittels `substr()` den Namen aufzuteilen. Einmal den ersten Teil (Vorname) und ein zeitesmal den letzten Teil (Nachname). Dokumentation dieser Zeichenkettenfunktionen für SQLite finden sie [hier](https://www.sqlite.org/lang_corefunc.html).
+Wir gehen hier (etwas fragwürdiger Weise), davon aus dass eine Name immer aus genau einem Vor- und genau einem Nachnamen bestehen die durch genau ein Leerzeichen getrennte sind. Mittels der Funktion `instr($name, ' ')` finden wird die Position des Leerzeichens, welche dann verwendet wird um mittels `substr()` den Namen aufzuteilen. Einmal den ersten Teil (Vorname) und ein zweites Mal den letzten Teil (Nachname). Dokumentation dieser Zeichenkettenfunktionen für SQLite finden sie [hier](https://www.sqlite.org/lang_corefunc.html).
 
 
 ### Abfragen
@@ -94,7 +94,7 @@ Wir gehen hier (etwas fragwürdigerweise), davon aus dass eine Name immer aus ge
 #### Tabellen Verknüpfen (JOINS)
 Nachdem wir die Daten in zwei Tabellen aufgeteilt haben, verknüpfen wir die 
 Tabellen beim Abfragen mit einem `JOIN`. Wie die Tabellen miteinander verbunden 
-werden werden mit einer Bedingung bestimmen. Die Bedingung ist: Die Spalte SVNR 
+werden, wird mit einer Bedingung bestimmt. Die Bedingung ist: Die Spalte SVNR 
 der Tabelle Mitarbeiter soll mit den Werten in der Spalte Mitarbeiter der Tabelle 
 SprachFähigkeiten übereinstimmen.
 
@@ -104,27 +104,15 @@ FROM SprachFähigkeiten
 JOIN Mitarbeiter ON Mitarbeiter.SVNR = SprachFähigkeiten.Mitarbeiter
 ```
 
-
 Weitere Tabellen können mit weiteren JOINs verknüpft werden. Beispielsweise,
 wenn wir nur die Sprachfähigkeiten der Mitarbeiter in einem Projekt abfragen möchten.
 
-
 ```sql
--- oder doch projekte?
 SELECT SVNR, Vorname, Nachname, Sprache, Grad
-FROM Projekte
-JOIN Mitarbeiter ON Mitarbeiter.SVNR = SprachFähigkeiten.Mitarbeiter
-JOIN arbeitet_in ON Mitarbeiter.SVNR = arbeitet_in.Mitarbeiter
-JOIN Abteilung ON arbeitet_in.Abfrage = Abteiung.Name
-WHERE Abteilung.Name = 'Kon'
-```
-
-Alle mitarbeiter in einem Projekt mit ihrer besten sprache...
-
-```sql
-LEFT JOIN...
-```
-
+FROM arbeitet_in
+JOIN Mitarbeiter ON Mitarbeiter.SVNR = arbeitet_in.Mitarbeiter
+JOIN SprachFähigkeiten ON SprachFähigkeiten.Mitarbeiter = arbeitet_in.Mitarbeiter
+WHERE Abteilung = $deptShort
 ```
 
 
@@ -138,8 +126,9 @@ JOIN Mitarbeiter ON Mitarbeiter.SVNR = SprachFähigkeiten.Mitarbeiter
 ORDER BY Grad ASC
 ```
 
-Möchten wir die Reiehenfolge umkehren... DESC. Im obigen beispiel wurde nichts angegeben...
-per default ASC. ASC steht für Ascending (aufsteigend) und DESC für descenting (absteigend).
+Die Reihenfolge kann mit `DESC` umgekehrt werden. `ASC` steht für ascending 
+(aufsteigend) und `DESC` für descenting (absteigend). Wird weder `ASC` noch 
+`DESC` angegeben, wird aufsteigend (`ASC`) sortiert.
 
 
 ##### Aggregierungen
@@ -151,93 +140,26 @@ FROM SprachFähigkeiten
 GROUP BY Sprache
 ```
 
-Die ausgabe auch nach dem Aggregiertem wert 
+Die Ausgabe kann auch nach dem aggregierten Wert sortiert werden. Im folgendem 
+Beispiel wird (mit `2`) angegeben nach der wievielten Spalte der Rückgabe 
+sortiert werden soll.
 
 ```sql
 SELECT Sprache, AVG(Grad)
 FROM SprachFähigkeiten
 GROUP BY Sprache
-ORDER BY 2 -- steht für die zweite spalte der obigen abfrage, d.h. AVG(Grad)
+ORDER BY 2 -- steht für die zweite spalte der obigen Abfrage, d.h. AVG(Grad)
 ```
 
 
-Wer ist der jeweilige sprachlich begabteste mitarbeiter... 
+`COUNT` ist ebenfalls eine Aggregierung, hier wird sie verwendet um abzufragen,
+welcher Mitarbeiter wie viele Sprachen spricht. Zum Unterschied zu vorher, wird 
+hier die umbenannte Spaltenbezeichnung bei der Sortierung angegeben.
 
 ```sql
-SELECT Vorname, Nachname, AVG(Grad)
-FROM SprachFähigkeiten
-JOIN Mitarbeiter ON Mitarbeiter.SVNR = SprachFähigkeiten.Mitarbeiter
-GROUP BY Vorname, Nachname
-ORDER BY 3
+SELECT m.Vorname, m.Nachname, COUNT(Sprache) AS anzahlSprachen
+FROM Mitarbeiter m 
+JOIN SprachFähigkeiten sf ON sf.Mitarbeiter = m.SVNR 
+GROUP BY m.SVNR
+ORDER BY Nachname, Vorname, anzahlSprachen
 ```
-
-Mitarbeiter mit vielen Sprachen auf niedrigem niveau... Erweitern wir die metric für sprachliche begabung. Nachdem vermutlich personen die mehrere sprachen sprechen...
-
-```sql
-SELECT Vorname, Nachname, AVG(Grad), COUNT(*)
-FROM SprachFähigkeiten
-JOIN Mitarbeiter ON Mitarbeiter.SVNR = SprachFähigkeiten.Mitarbeiter
-GROUP BY Vorname, Nachname
-ORDER BY 4 DESC, 3
-```
-
-Komplexere berechnung der sprachlichen Begabung...
-
-```sql
-SELECT Vorname, Nachname, AVG(Grad) * COUNT(*)
-FROM SprachFähigkeiten
-JOIN Mitarbeiter ON Mitarbeiter.SVNR = SprachFähigkeiten.Mitarbeiter
-GROUP BY Vorname, Nachname
-ORDER BY 3
-```
-
-Haben wir viele Mitarbeiter und wir sind nur an den besten interssiert können wir die Anzahl an Rückgabezeilen beschränken
-
-```sql
-LIMIT...
-
-```
-
-Interessieren wir uns nicht für die besten sondern ... Anwendungsfall Pagination dann können wir zusätzlich mit Offset... angeben ab welcher Zeile...
-
-```sql
-LIMIT...
-OFFSET ..
-```
-
-
-
-Im ersten Beispiel kam schon ein Max for.. Durchschnittliche Stundensatz über alle mitarbeiter.
-
-```sql
-SELECT AVG(Stundensatz)
-FROM Mitarbeiter;
-```
-
-Möchten wir jetzt die durchschnittlichen Stundensätze per abteilung können wir mit `GROUP BY` angeben, dass die aggregierung (durchschnitt)  sich nur auf die mitarbeiter Mitarbeiter einzelner Abteilungen bezieht.
-
-```sql
-SELECT a.Beschreibung, AVG(Stundensatz)
-FROM Mitarbeiter m
-JOIN arbeitet_in ai ON m.SVNR = ai.Mitarbeiter
-JOIN Abteilungen a ON a.Name = ai.Abteilung
-GROUP BY a.Beschreibung;
-```
-
-Möchten wir auflisten den maximalen Stundensatz pro Abteilugn können wir das AVG durch MAX ersetzen. Wir können die Ausgabe zusätzlich noch mit GROUP BY sortieren. Von groß nach klein...
-
-```sql
-SELECT 
-  a.Beschreibung, 
-  MAX(Stundensatz) AS MaximalerStundensatzProAbteilung
-FROM Mitarbeiter m
-JOIN arbeitet_in ai ON m.SVNR = ai.Mitarbeiter
-JOIN Abteilungen a ON a.Name = ai.Abteilung
-GROUP BY a.Beschreibung
-ORDER BY MaximalerStundensatzProAbteilung DESC;
-```
-
-
-In welchem Projekt wird am besten englisch gesprochen?
-
-Unter allen französisch sprechenden... (WHERE vs HAVING)

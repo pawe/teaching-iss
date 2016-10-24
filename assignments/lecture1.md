@@ -112,6 +112,9 @@ welche bei der Anmeldung von Benutzern ausgeführt wird.
 
 
 #### `AS` Rückgabespalten umbenennen
+Wenn das Rückgabeformat nicht mit den Spaltennamen der Tabelle übereinstimmt, 
+kann mit `AS` die Rückgabe umbenannt werden. 
+
 ```sql
 -- Platzhalter:
 --   $login
@@ -132,7 +135,7 @@ handelt. (In der Datei `solutions/lecture1/user_find.sql`).
 --   $login
 -- Rückgabeformat:
 --   (login, admin)
-SELECT login, admin -- entspricht exakt dem Rückgabeformat
+SELECT login, admin -- entspricht dem Rückgabeformat
   FROM users 
   WHERE login = $login;
 ```
@@ -165,23 +168,22 @@ DELETE FROM users WHERE login = $login;
 ```
 
 
-
 ## Komplexeres Beispiel: Mitarbeiter, Abteilungen und Projekte
 
 ### ER Diagramm
 
 ![Users](/public/images/org.png)
 
-Unterschied zum ersten Beispiel ist, dass wir jetzt mehrere Tabellen erstellen 
-werden und die Beziehungen zwischen den Tabellen definieren können. Genauer, 
-wir legen zusätzlich zu den Primärschlüsseln Fremdschlüssel fest. D.h. welche 
-Spalte in einer Tabelle sich auf eine Spalte in einer anderen Bezieht. Die 
-Fremdschlüssel sind nicht Teil des ER Diagramm, sondern können aus den 
-Beziehung angrenzenden Entitäten abgeleitet werden.
+Der Unterschied zum ersten Beispiel ist, dass wir jetzt mehrere Tabellen 
+erstellen werden und die Beziehungen zwischen den Tabellen definieren 
+können. Genauer, wir legen zusätzlich zu den Primärschlüsseln 
+Fremdschlüssel fest. D.h. welche Spalte in einer Tabelle sich auf eine Spalte 
+in einer anderen Bezieht. Die Fremdschlüssel sind nicht Teil des ER Diagramm, 
+sondern können aus den Beziehung angrenzenden Entitäten abgeleitet werden.
 
 ### Schema
 Es gibt mehrere Möglichkeiten obiges ER Diagramm in ein Datenbankschema zu 
-übersetzen. Hier ein davon:
+übersetzen. Ein davon:
 
 
 > Mitarbeiter (	**SVNR**,	Name, Stundensatz )
@@ -198,7 +200,7 @@ Es gibt mehrere Möglichkeiten obiges ER Diagramm in ein Datenbankschema zu
 
 
 ### SQL - Data Definition Language (DDL)
-Das SQL um die Tabelen zu erstellen finden sich in der Datei 
+Das SQL um die Tabellen zu erstellen finden sich in der Datei 
 `solutions/lecture1/setup-org.sql`. 
 
 ```sql
@@ -247,7 +249,10 @@ CREATE TABLE arbeitet_an (
 
 
 ### Einfügen von Daten mit Fremdschlüsseln
-Die Datenbank kann beim Einfügen von Daten prüfen, ob die entsprechend referenzierten Datensätze aus anderen Tabelle vorhanden sind. Dieses Verhalten ist bei Verwendung dieser Übungsanwendung aktiviert, sollten sie mit anderen Tools arbeiten achten Sie bitte darauf, dass sie mit
+Die Datenbank kann beim Einfügen von Daten prüfen, ob die entsprechend 
+referenzierten Datensätze aus anderen Tabelle vorhanden sind. Dieses Verhalten 
+ist bei Verwendung dieser Übungsanwendung aktiviert, sollten sie mit anderen 
+Tools arbeiten achten Sie bitte darauf, dass sie mit
 
 ```sql
 PRAGMA foreign_keys = ON;

@@ -2,12 +2,14 @@
 
 CREATE VIEW Unternehmenshierarchie AS 
   SELECT 
-    Leiter.SVNR AS boss,
-    Mitarbeiter.SVNR AS employee
+    Leiter.Vorname AS Boss, 
+    Leiter.SVNR AS BossSVNR,
+    Mitarbeiter.Vorname AS Employee,
+    Mitarbeiter.SVNR AS EmployeeSVNR
   FROM Mitarbeiter
   LEFT OUTER JOIN arbeitet_in 
     ON Mitarbeiter.SVNR = arbeitet_in.Mitarbeiter
-  LEFT OUTER JOIN Abteilung 
-    ON arbeitet_in.Abteilung = Abteilung.Name
-  LEFT OUTER JOIN Mitarbeiter Leiter 
-    ON Abteilung.Manager = Leiter.SVNR;
+  LEFT OUTER JOIN Abteilungen
+    ON arbeitet_in.Abteilung = Abteilungen.Name
+  LEFT OUTER JOIN Mitarbeiter AS Leiter 
+    ON Abteilungen.Manager = Leiter.SVNR;

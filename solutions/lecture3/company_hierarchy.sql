@@ -9,7 +9,7 @@ WITH RECURSIVE
 SELECT 
   substr('..........', 1, level*2) || hierarchy.svnr AS level, 
   Mitarbeiter.name, 
-  Abteilung.Beschreibung AS Leitet
+  Abteilungen.Beschreibung AS Leitet
 FROM hierarchy
 JOIN Mitarbeiter ON hierarchy.svnr = Mitarbeiter.SVNR
-LEFT OUTER JOIN Abteilung ON hierarchy.svnr = Abteilung.Manager;
+LEFT OUTER JOIN Abteilungen ON hierarchy.svnr = Abteilungen.Manager;

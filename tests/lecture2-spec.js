@@ -44,7 +44,7 @@ describe('Lecture 2: Normalisierung', function () {
     })
   })
 
-  describe('Mitarbeiter einfügen', function () {
+  describe('Testdaten einfügen', function () {
     it('should run without any errors', function (done) {
       var testDataLang = []
       csv.fromPath('solutions/lecture2/testdata_lang.csv', { headers: true })
@@ -84,14 +84,81 @@ describe('Lecture 2: Normalisierung', function () {
       )
     })
 
-    it('should return', function (done) {
+    it('should return all employees with language skills sorted by grad ASC, svnr and sprache', function (done) {
+      db.withSQLFromFile('lecture2/sorted_language_skills.sql')
+        .all(function (err, results) {
+          expect(err).to.not.be.ok()
+          expect(results).to.eql([
+            { SVNR: 20,
+              Vorname: 'Hugo',
+              Nachname: 'Hundt',
+              Sprache: 'französisch',
+              Grad: 1 },
+            { SVNR: 19,
+              Vorname: 'Monika',
+              Nachname: 'Müller',
+              Sprache: 'englisch',
+              Grad: 2 },
+            { SVNR: 21,
+              Vorname: 'Siegfried',
+              Nachname: 'Stinger',
+              Sprache: 'portugisisch',
+              Grad: 2 },
+            { SVNR: 19,
+              Vorname: 'Monika',
+              Nachname: 'Müller',
+              Sprache: 'russisch',
+              Grad: 3 },
+            { SVNR: 21,
+              Vorname: 'Siegfried',
+              Nachname: 'Stinger',
+              Sprache: 'französisch',
+              Grad: 3 },
+            { SVNR: 21,
+              Vorname: 'Siegfried',
+              Nachname: 'Stinger',
+              Sprache: 'spanisch',
+              Grad: 3 },
+            { SVNR: 22,
+              Vorname: 'Anita',
+              Nachname: 'Almer',
+              Sprache: 'polnisch',
+              Grad: 3 }
+          ])
+          done()
+        })
+    })
+
+    it('should return all language skills in a department', function (done) {
+      db.withSQLFromFile('lecture2/language_skills_in_department.sql')
+        .all({ $deptShort: 'Kon' }, function (err, results) {
+          expect(err).to.not.be.ok()
+          // employees not added to departments
+          expect(results).to.be.empty()
+          done()
+        })
+    })
+
+    it('should return all languages and the average over all employyes', function (done) {
+      db.withSQLFromFile('lecture2/grouped_language_skills.sql')
+        .all(function (err, results) {
+          expect(err).to.not.be.ok()
+          expect(results).to.eql([
+            { Sprache: 'englisch', 'AVG(Grad)': 2 },
+            { Sprache: 'französisch', 'AVG(Grad)': 2 },
+            { Sprache: 'portugisisch', 'AVG(Grad)': 2 },
+            { Sprache: 'polnisch', 'AVG(Grad)': 3 },
+            { Sprache: 'russisch', 'AVG(Grad)': 3 },
+            { Sprache: 'spanisch', 'AVG(Grad)': 3 }
+          ])
+          done()
+        })
+    })
+
+    it('should return count of languages per employee, sorted by surename, forename, count of langs', function (done) {
       // TODO: put in .sql file
-      db.all(`SELECT m.Vorname, m.Nachname, COUNT(Sprache) AS anzahlSprachen
-              FROM Mitarbeiter m 
-              JOIN SprachFähigkeiten sf ON sf.Mitarbeiter = m.SVNR 
-              GROUP BY m.SVNR
-              ORDER BY Nachname, Vorname, anzahlSprachen`, // same as above
-        function (err, results) {
+      db.withSQLFromFile('lecture2/languages_count_per_employee.sql')
+        .all(function (err, results) {
           expect(err).to.not.be.ok()
           expect(results).to.eql(
             [

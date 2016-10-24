@@ -22,7 +22,7 @@ Informationen zur Durchführung der Lehrveranstaltung finden sich in
   * [Zur ersten Hausübung](/assignments/lecture1.md)
   * [Zur zweiten Hausübung](/assignments/lecture2.md)
   * [Zur dritten Hausübung](/assignments/lecture3.md)
-  * [Zur vierten Hausübung](/assignments/lecture4.md)
+
 
 #### Hinweis zur Bewertung
 Wir erwarten von Ihnen keinen auf Performance optimierten SQL Code. Wenn Ihre 
