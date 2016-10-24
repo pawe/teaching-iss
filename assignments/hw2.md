@@ -5,7 +5,7 @@
 Normalisierung, Tabellen verknüpfen und Aggregieren. [Beispiele aus dem 
 Vortrag](/assignments/lecture2.md).
 
-## Aufgabe 2.1: Normalisierung
+## Normalisierung
 In einem verteilten Fertigungsnetzwerk soll die Verwaltung von 
 Rückmeldungen aus der Fertigung über eine Datenbank-Anwendung realisiert 
 werden. Dabei sollen folgende Informationen geeignet verwaltet werden: 

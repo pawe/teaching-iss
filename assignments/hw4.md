@@ -3,10 +3,10 @@
 # Vierte Hausübung
 
 Buchungssatz und Buchungszeile. Viele einfache SQL Abfrage zur Wiederholung 
-und als Vorbereitung für den Übungstest. 
-[Vierter Vortrag](/assignments/lecture4.md)
+und als Vorbereitung für den Übungstest.
 
-## Aufgabe 4.1: Projektkosten
+
+## Projektkosten
 
 Sie möchten mit einer Anwendung ihre Projektkosten verwalten. Die Software 
 ermöglichen Ausgaben auf Projektkonten zu buchen.

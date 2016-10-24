@@ -3,7 +3,7 @@
 Erste Schritte mit Modellierung und einfache Datenbankabfragen. 
 [Beispiele aus dem Vortrag](/assignments/lecture1.md). 
 
-## Aufgabe 1.1: Konzeptioneller Datenbankentwurf
+## Konzeptioneller Datenbankentwurf
 Sie arbeiten in einer Produktentwicklungsabteilung und möchten Informationen 
 zur ihren und den Produkten ihrer Mitbewerber verwalten. Sie beauftragen ein 
 Softwareunternehmen um die von Ihnen gewünschten Funktionen umzusetzen. Um mit 
@@ -58,7 +58,7 @@ Verzeichnis `solutions/hw1`. Wie Sie die Hausübung abgeben können, ist
 [hier](#abgabe) beschrieben.
 
 
-## Aufgabe 1.2: Mitarbeiterverwaltung
+## Mitarbeiterverwaltung
 Ihre Aufgabe ist es einfache SQL <a href="#abfragen">Abfragen</a> zu erstellen. 
 Basis ist dieses ER Diagramm aus dem Vortrag zur Hausübung.
 
