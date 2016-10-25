@@ -81,7 +81,7 @@ Informationen zu geeigneten Einsatzmöglichen finden sie
 
 Die Installation sollte auf den meisten Systemen fehlerfrei durchlaufen.
 Sollten Sie eine Plattform verwenden, für die das SQLite Modul kein 
-kompeliertes Binary mitliefert melden Sie sich bitte unter 
+kompiliertes Binary mitliefert melden Sie sich bitte unter 
 paul.weissenbach@tuwien.ac.at.
 
 
@@ -93,7 +93,7 @@ im Terminal/in der Kommandozeile gestartet werden:
 npm start
 ```
 
-Wenn nichts anderes konfiguriert wurde, können Sie im Browser unter
+Wenn nichts Anderes konfiguriert wurde, können Sie im Browser unter
 [http://localhost:3000](http://localhost:3000) auf die Anwendung zugreifen.
 
 Beendet werden kann die Anwendung mit der Tastenkombination: 
