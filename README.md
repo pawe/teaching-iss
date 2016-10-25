@@ -37,7 +37,7 @@ Auch können Sie ihrer SQL Abfragen weitgehend mittels automatisierten Tests
 selbst überprüfen.
 
 #### Installation NodeJS 
-Um die Anwendung auszuführen ist die Runtime NodeJS notwendig. NodeJS könnnen 
+Um die Anwendung auszuführen ist die Runtime NodeJS notwendig. NodeJS können 
 Sie auf [nodejs.org](http://nodejs.org) herunterladen. Wählen sie die LTS (long 
 time support) Option und folgen Sie dort den Anweisungen. Die Anwendung wurde 
 auf Basis des Versionszweiges 4.6.X entwickelt, wir empfehlen Ihnen ebenfalls
