@@ -217,7 +217,7 @@ Auf Basis der gegebenen Tabellen erstellen Sie eine SQL-Abfrage...
  abgefragt werden können. Achten Sie darauf, dass Mitarbeiter nicht doppelt im 
  Ergebnis vorkommen.
     * Datei: `employees_in_project.sql`
-    * Platzhalter: `$projektName`
+    * Platzhalter: `$projectName`
     * Rückgabeformat: `(ssn)`
 
 
