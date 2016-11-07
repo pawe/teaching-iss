@@ -43,7 +43,7 @@ $rueckmeldeNummer,$datum,$uhrzeit,$werkzeugNummer,$maschinenNummer,$vorgangssdau
 
 
 #### Schema
-Extrahieren sie aus dem Ergebnissen Ihren vorhergehenden  Arbeitsschritten ein 
+Extrahieren sie aus den Ergebnissen Ihren vorhergehenden Arbeitsschritten ein 
 Datenbankschema (ohne Typen).
 
 > Tabellenbezeichnung (**Spalte1**, Spalte2, *Spalte3*, ... SpalteN)
@@ -71,14 +71,17 @@ die Schaltfläche "Tabellen entfernen".
 #### Datenbank befüllen
 Erstellen Sie eine Datenbanktransaktion um die Daten in Ihre Tabellen 
 einzufügen. Schreiben sie ihr SQL in die Datei: 
-`solutions/hw2/data_intake.sql`.
+`solutions/hw2/data_intake.sql`. Vergessen Sie nicht auch eventuell neue 
+Mitarbeiter in der Datenbank zu hinterlegen und bei einem `INSERT` anzugeben 
+was bei einem Konflikt geschehen soll (`INSERT OR IGNORE INTO ...`).
 
-Die Testdaten können dann mit der Schaltfläche 'Data importieren' in der 
-Datenbank hinzugefügt werden.
+Die Testdaten können dann mit der Schaltfläche 'Daten einlesen' in der 
+Datenbank hinzugefügt werden. 
 
 
 #### Abfragen
-Die im folgenden angegebenen Dateinamen beziehen sich auf den Pfad: `solutions/hw2`.
+Die im Folgenden angegebenen Dateinamen beziehen sich auf den Pfad: 
+`solutions/hw2`.
 
 Auf Basis der von Ihnen erstellten Tabellen schreiben Sie eine SQL-Abfrage...
 
@@ -94,7 +97,8 @@ Auf Basis der von Ihnen erstellten Tabellen schreiben Sie eine SQL-Abfrage...
     * Rückgabeformat: `(machineNumber, machineDescription)`
 
   3. ... mit der alle Werkzeuge die auf einer Maschine eingesetzt wurden 
-  abgefragt werden kann. Achten darauf, dass keine Ergebniszeilen doppelt vorkommen.
+  abgefragt werden kann. Achten Sie darauf, dass keine Ergebniszeilen doppelt 
+  vorkommen.
     * Datei: `machines_tools_used.sql`
     * Platzhalter: `$maschineNumber`
     * Rückgabeformat: `(machineDescription, toolDescription)`
@@ -106,19 +110,21 @@ Auf Basis der von Ihnen erstellten Tabellen schreiben Sie eine SQL-Abfrage...
     * Platzhalter: `$maschineNumber`
     * Rückgabeformat: `(longitude, latitude)`
 
-  5. ... mit der die Anzahl an Bewegungen einer Maschine ausgegeben werden kann.
-  Achten Sie darauf, dass auch Maschinen ohne Bewegung im Ergebnis enthalten 
-  sind. Erebnis absteigend sortiert nach der Anzahl an Bewegungen.
+  5. ... mit der die Anzahl an Bewegungen einer Maschine ausgegeben werden 
+  kann. Achten Sie darauf, dass auch Maschinen ohne Bewegung im Ergebnis 
+  enthalten sind. Ergebnis absteigend sortiert nach der Anzahl an Bewegungen.
     * Datei: `machine_movements.sql`
     * Platzhalter: nicht relevant
     * Rückgabeformat: `(machineNumber, movements)`
 
-  6. ... mit der die Gesamteinsatzzeit pro Werkzeug ausgegeben werden kann.
+  6. ... mit der die Gesamteinsatzzeit pro Werkzeug ausgegeben werden kann. 
+  Ergebnis absteigend sortiert nach der Gesamteinsatzzeit.
     * Datei: `tools_operating_time.sql`
     * Platzhalter: nicht relevant
     * Rückgabeformat: `(toolNumber, operatingTime)`
 
-  7. ... mit der die **drei** Werkzeuge mit der niedrigsten Restlebensdauer ausgegeben werden können.
+  7. ... mit der die **drei** Werkzeuge mit der niedrigsten Restlebensdauer 
+  ausgegeben werden können.
     * Datei: `tools_remaining_life.sql`
     * Platzhalter: nicht relevant
     * Rückgabeformat: `(toolNumber, remainingLife)`
