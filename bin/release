@@ -14,7 +14,8 @@ if (hws.indexOf(hw) === -1) {
 
 // first we test
 var mocha = new Mocha({
-  reporter: 'spec'
+  reporter: 'spec',
+  timeout: 5000
 })
 var testFile = 'tests/' + hw + '-spec.js'
 
