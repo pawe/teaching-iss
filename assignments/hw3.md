@@ -87,7 +87,7 @@ Mit der von Ihnen erstellten Ansichten, erstellen Sie folgende Abfragen. Die Dat
   4. Mengenstückliste: Abfrage der Gesamtmenge aller Elemente in der Hauptbaugruppe. Beschränken Sie das Ergebnis auf 20 Zeilen und sortieren Sie Ihr Ergebnis nach der Gesamtmenge absteigend.
     * Datei: `quantitative_bom.sql`
     * Platzhalter: `$assembly`
-    * Rückgabeformat: (element, totalQuantity) 
+    * Rückgabeformat: `(element, totalQuantity)` 
 
   5. Abfrage mit der alle Teile und Baugruppe ausgegeben werden können für die 
   Fertigungsdaten existieren. Die Produktstruktur muss für diese Abfrage nicht 

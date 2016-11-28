@@ -9,7 +9,7 @@ und als Vorbereitung für den Übungstest.
 ## Projektkosten
 
 Sie möchten mit einer Anwendung ihre Projektkosten verwalten. Die Software 
-ermöglichen Ausgaben auf Projektkonten zu buchen.
+ermöglicht Ausgaben auf Projektkonten zu buchen.
 
 ### Anforderungen
 
