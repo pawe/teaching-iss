@@ -2,7 +2,7 @@
 
 # Vierte Hausübung
 
-Buchungssatz und Buchungszeile. Viele einfache SQL Abfrage zur Wiederholung 
+Buchungssatz und Buchungszeile. Einfache SQL Abfrage zur Wiederholung 
 und als Vorbereitung für den Übungstest.
 
 
@@ -15,6 +15,7 @@ ermöglicht Ausgaben auf Projektkonten zu buchen.
 
   * Ein Konto gehört zu genau einem Projekt. Ein Projekt kann mehrere Konten 
   besitzen.
+  * Die Tabelle "Projekte" (siehe [erste Hausübung](/assignments/hw1.md) soll verwendet werden).
   * Eine Buchung auf ein Konto soll an entsprechender Stelle (allgemeines Konto) 
   immer einer Gegenbuchung aufweisen.
   * Kosten können auf mehrere Projektkonten aufgeteilt werden.
@@ -63,7 +64,7 @@ Erstellen Sie SQL Code, mit dem ...
     * Platzhalter: `$record`, `$accountName`, `$amount`
     * Rückgabeformat: nicht relevant
 
-  7. ... alle Buchungensätze aufgelistet werden können. Sortiert nach der 
+  7. ... alle Buchungssätze aufgelistet werden können. Sortiert nach der 
   eindeutigen Nummer.
     * Datei: `records.sql`
     * Platzhalter: nicht relevant
@@ -77,8 +78,9 @@ Erstellen Sie SQL Code, mit dem ...
 
   9. ... alle Projekte aufgelistet werden können. Die Rückgabe soll 
   Projektbudget, bereits verbuchte Kosten und Restbudget enthalten. Ergebnis
-  soll nach dem Restbudget aufsteigend sortiert sein. Falls die zwei Projekte
-  dasselbe Restbudget aufweisen, soll sie dem Gesamtbudget gereiht werden.
+  soll nach dem Restbudget aufsteigend sortiert sein. Falls zwei Projekte 
+  dasselbe Restbudget aufweisen, sollen sie nach dem Gesamtbudget absteigend 
+  gereiht werden.
     * Datei: `projects_budget_overview.sql`
     * Platzhalter: nicht relevant
     * Rückgabeformat: `(projectName, budget, spent, remaining)`
