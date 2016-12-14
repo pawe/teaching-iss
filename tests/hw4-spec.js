@@ -127,6 +127,10 @@ describe('Hausübung 4', function () {
         .all(function (err, results) {
           expect(err).to.not.be.ok()
           expect(results).to.have.length(3)
+          var projectAccounts = results.map(function (row) { return row.accountName })
+          expect(projectAccounts).to.contain('A')
+          expect(projectAccounts).to.contain('NNP')
+          expect(projectAccounts).to.contain('RP')
           done()
         })
     })
