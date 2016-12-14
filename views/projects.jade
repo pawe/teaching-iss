@@ -45,7 +45,11 @@ block content
       .col-md-12
         h4  Kosten
         if (accounts_error)
+          pre in accounts.sql
           pre= accounts_error
+        else if (project_accounts_error)
+          pre in projects_accounts.sql:
+          pre= project_accounts_error
         else
           form.form-control(action='/projects/add_project_record', method='POST')
             .container
