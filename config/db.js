@@ -7,16 +7,18 @@ var dbname = 'database_backups/iis.' + Date.now() + '.db'
 // set database
 var db = new sqlite3.Database(process.env.SQLITE_PATH || dbname)
 
+db.run('PRAGMA foreign_keys = ON;')
+
+var solutionFolder = 'solutions/'
+
+// LOGGING
 var logwritestream = fs.createWriteStream(process.env.SQLITE_PATH || dbname + '.log')
 
 db.on('trace', function (trace) {
   logwritestream.write(trace + '\n')
 })
 
-db.run('PRAGMA foreign_keys = ON;')
-
-var solutionFolder = 'solutions/'
-
+// CACHING
 var cacheQueries = process.env.CACHE_QUERIES || false
 var queryCache = {}
 

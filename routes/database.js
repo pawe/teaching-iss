@@ -1,6 +1,7 @@
 var express = require('express')
 var router = express.Router()
 var db = require('../config/db.js')
+var fs = require('fs')
 
 router.get('/schema', function (req, res, next) {
   var schema = ''
@@ -26,4 +27,8 @@ router.get('/version', function (req, res, next) {
   )
 })
 
+router.get('/logs', function (req, res, next) {
+  var logfile = db.filename + '.log'
+  fs.createReadStream(logfile).pipe(res)
+})
 module.exports = router
