@@ -32,4 +32,11 @@ router.get('/logs', function (req, res, next) {
   res.type('text/plain')
   fs.createReadStream(logfile, { encoding: 'utf8' }).pipe(res)
 })
+
+router.get('/download', function (req, res, next) {
+  res.setHeader('Content-disposition', 'attachment; filename=' + db.filename)
+  res.type('application/x-sqlite3')
+  fs.createReadStream(db.filename).pipe(res)
+})
+
 module.exports = router
