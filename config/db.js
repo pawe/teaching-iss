@@ -11,9 +11,12 @@ db.run('PRAGMA foreign_keys = ON;')
 
 var solutionFolder = 'solutions/'
 
+db.cacheQueries = true
+var queryCache = {}
 
 /*
   for several reasons this needs refactoring
+    * it's not a good idea to add stuff to an object you don't own (the db object)
 */
 
 function stripComments (query) {
@@ -27,7 +30,8 @@ db.withSQLFromFile = function (file) {
   var error
 
   try {
-    query = fs.readFileSync(solutionFolder + file, 'utf8')
+    query = (db.cacheQueries && queryCache[file]) || fs.readFileSync(solutionFolder + file, 'utf8')
+    if (db.cacheQueries) queryCache[file] = query
   } catch (err) {
     error = err // like I say, refactoring necessary
   }
