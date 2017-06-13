@@ -17,7 +17,7 @@ db.run('PRAGMA foreign_keys = ON;')
 
 var solutionFolder = 'solutions/'
 
-db.cacheQueries = true
+var cacheQueries = process.env.CACHE_QUERIES || false
 var queryCache = {}
 
 /*
@@ -36,8 +36,8 @@ db.withSQLFromFile = function (file) {
   var error
 
   try {
-    query = (db.cacheQueries && queryCache[file]) || fs.readFileSync(solutionFolder + file, 'utf8')
-    if (db.cacheQueries) queryCache[file] = query
+    query = (cacheQueries && queryCache[file]) || fs.readFileSync(solutionFolder + file, 'utf8')
+    if (cacheQueries) queryCache[file] = query
   } catch (err) {
     error = err // like I say, refactoring necessary
   }
