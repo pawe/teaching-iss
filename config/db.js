@@ -12,7 +12,7 @@ db.run('PRAGMA foreign_keys = ON;')
 var solutionFolder = 'solutions/'
 
 // LOGGING
-var logwritestream = fs.createWriteStream(process.env.SQLITE_PATH || dbname + '.log')
+var logwritestream = fs.createWriteStream(process.env.SQLITE_PATH || dbname + '.log', { defaultEncoding: 'utf8' })
 
 db.on('trace', function (trace) {
   logwritestream.write(trace + '\n')
@@ -46,7 +46,7 @@ db.withSQLFromFile = function (file) {
 
   return {
     run: function () {
-      // it's ugly. last element of arguments should be the callback
+      // it's ugly. last element of arguments is the callback
       if (error) {
         return arguments[arguments.length - 1](error)
       }

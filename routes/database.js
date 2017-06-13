@@ -29,6 +29,7 @@ router.get('/version', function (req, res, next) {
 
 router.get('/logs', function (req, res, next) {
   var logfile = db.filename + '.log'
-  fs.createReadStream(logfile).pipe(res)
+  res.type('text/plain')
+  fs.createReadStream(logfile, { encoding: 'utf8' }).pipe(res)
 })
 module.exports = router

@@ -22,3 +22,13 @@ html
       include header.jade
 
       block content
+
+    div.container.bg-faded(style='position:fixed; right:0px; bottom:0px;')
+      ul.nav.navbar-nav
+        li.nav-item Datenbank:
+        li.nav-item
+          a(href='/database/schema') Schema
+        li.nav-item
+          a(href='/database/logs') Logs
+        li.nav-item
+          a(href='/database/version') Version

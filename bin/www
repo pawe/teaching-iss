@@ -44,12 +44,12 @@ if (require.main === module) {
   if (process.argv.indexOf('--init-db') >= 0) {
     require('./init-db')
   }
-}
-else {
+} else {
   module.exports.boot = boot
   module.exports.shutdown = shutdown
   module.exports.port = port
 }
+
 /**
  * Normalize a port into a number, string, or false.
  */

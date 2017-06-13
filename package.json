@@ -8,11 +8,11 @@
     "test-lecture1": "node ./node_modules/mocha/bin/mocha tests/lecture1-spec.js --reporter spec -t 5000",
     "test-lecture2": "node ./node_modules/mocha/bin/mocha tests/lecture2-spec.js --reporter spec -t 5000",
     "test-lecture3": "node ./node_modules/mocha/bin/mocha tests/lecture3-spec.js --reporter spec -t 5000",
-    "test-hw1": "node ./node_modules/mocha/bin/mocha tests/hw1-spec.js --reporter spec -t 5000",
-    "test-hw2": "node ./node_modules/mocha/bin/mocha tests/hw2-spec.js --reporter spec -t 5000",
-    "test-hw3": "node ./node_modules/mocha/bin/mocha tests/hw3-spec.js --reporter spec -t 5000",
-    "test-hw4": "node ./node_modules/mocha/bin/mocha tests/hw4-spec.js --reporter spec -t 5000",
-    "release": "node ./bin/release"
+    "test-hw1": "node ./node_modules/cross-env/dist/bin/cross-env CACHE_QUERIES=true node ./node_modules/mocha/bin/mocha tests/hw1-spec.js --reporter spec -t 5000",
+    "test-hw2": "node ./node_modules/cross-env/dist/bin/cross-env CACHE_QUERIES=true node ./node_modules/mocha/bin/mocha tests/hw2-spec.js --reporter spec -t 5000",
+    "test-hw3": "node ./node_modules/cross-env/dist/bin/cross-env CACHE_QUERIES=true node ./node_modules/mocha/bin/mocha tests/hw3-spec.js --reporter spec -t 5000",
+    "test-hw4": "node ./node_modules/cross-env/dist/bin/cross-env CACHE_QUERIES=true node ./node_modules/mocha/bin/mocha tests/hw4-spec.js --reporter spec -t 5000",
+    "release": "node ./node_modules/cross-env/dist/bin/cross-env CACHE_QUERIES=true node ./bin/release"
   },
   "dependencies": {
     "async": "^2.0.1",
@@ -35,6 +35,7 @@
   },
   "devDependencies": {
     "archiver": "^1.1.0",
+    "cross-env": "^5.0.1",
     "eslint": "^3.3.1",
     "eslint-config-standard": "^6.0.0-beta.3",
     "eslint-plugin-mocha": "^4.3.0",
