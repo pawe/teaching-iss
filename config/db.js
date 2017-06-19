@@ -39,8 +39,14 @@ db.withSQLFromFile = function (file) {
   var error
 
   try {
-    query = (cacheQueries && queryCache[file]) || fs.readFileSync(solutionFolder + file, 'utf8')
-    if (cacheQueries) queryCache[file] = query
+    if (cacheQueries && !queryCache[file]) {
+      query = fs.readFileSync(solutionFolder + file, 'utf8')
+      queryCache[file] = query
+    } else if (cacheQueries) {
+      query = queryCache[file]
+    } else {
+      query = fs.readFileSync(solutionFolder + file, 'utf8')
+    }
   } catch (err) {
     error = err // like I say, refactoring necessary
   }
