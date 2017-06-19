@@ -1,4 +1,4 @@
-$rueckmeldeNummer,$datum,$uhrzeit,$werkzeugNummer,$maschinenNummer,$vorgangssdauer,$maschinenBezeichnung,$hauptstandort,$maschinenBetreuerSVNR,$maschinenBetreuerVorname,$maschinenBetreuerNachname,$werkzeugBezeichnung,$standzeit,$laengengrad,$breitengrad
+$rueckmeldeNummer,$datum,$uhrzeit,$werkzeugNummer,$maschinenNummer,$vorgangsdauer,$maschinenBezeichnung,$hauptstandort,$maschinenBetreuerSVNR,$maschinenBetreuerVorname,$maschinenBetreuerNachname,$werkzeugBezeichnung,$standzeit,$laengengrad,$breitengrad
 1234410,2016-09-18,07:21:25,M-4432,M0201,62,"Bearbeitungszentrum 2",HS08,19,Monika,"Müller","Schrupp Fräser 40/120",15000,,
 1234413,2016-09-18,07:21:25,,H0011,,"Mobiler HandlingRoboter ADD 22-1",HS08,21,Siegfried,Stinger,,,16.362252,48.200269
 1234414,2016-09-18,07:21:25,,H0012,,"Mobiler HandlingRoboter ADD 22-2",HS02,21,Siegfried,Stinger,,,16.367658,48.199014
