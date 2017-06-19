@@ -90,7 +90,7 @@ router.post('/createEmployees', onlyAdmins,
       db.withSQLFromFile('hw1/testdata.sql')
         .exec(function (err) {
           if (err) return next(err)
-          res.flash('success', 'Testdaten eingefügt')
+          req.flash('success', 'Testdaten eingefügt')
           res.redirect('/org')
         })
     })
@@ -119,7 +119,7 @@ router.post('/employee',
         },
         function (err) {
           if (err) return next(err)
-          res.flash('success', 'Mitarbeiter angelegt')
+          req.flash('success', 'Mitarbeiter angelegt')
           res.redirect('/org')
         })
     } else {
@@ -141,7 +141,7 @@ router.post('/employee_increase_rate',
       },
       function (err) {
         if (err) return next(err)
-        res.flash('success', 'Gehalt angepasst')
+        req.flash('success', 'Gehalt angepasst')
         res.redirect('/org')
       })
   }
@@ -159,6 +159,7 @@ router.post('/employee_to_department',
       },
       function (err) {
         if (err) return next(err)
+        req.flash('success', 'Mitarbeiter der Abteilung hinzugefügt')
         res.redirect('/org')
       })
   }
