@@ -141,7 +141,7 @@ router.post('/employee_increase_rate',
       },
       function (err) {
         if (err) return next(err)
-        req.flash('success', 'Gehalt angepasst')
+        req.flash('success', 'Stundensatz angepasst')
         res.redirect('/org')
       })
   }
@@ -165,7 +165,6 @@ router.post('/employee_to_department',
   }
 )
 
-
 // Abfrage 6
 router.post('/department_set_manager',
   onlyAdmins,
@@ -178,6 +177,7 @@ router.post('/department_set_manager',
       },
       function (err) {
         if (err) return next(err)
+        req.flash('success', 'Manager gesetzt')
         res.redirect('/org')
       })
   }
@@ -194,6 +194,7 @@ router.post('/department_remove',
       },
       function (err) {
         if (err) return next(err)
+        req.flash('success', 'Abteilung entfernt')
         res.redirect('/org')
       })
   }
