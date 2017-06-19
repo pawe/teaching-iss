@@ -83,7 +83,7 @@ describe('Hausübung 2', function () {
           .all(function (err, results) {
             expect(err).to.not.be.ok()
             expect(results).to.have.length(6)
-            expect(results[0]).to.only.have.keys('machineNumber', 'machineDescription', 'forename', 'surename')
+            expect(results[0]).to.only.have.keys('machineNumber', 'machineDescription', 'forename', 'surname')
             done()
           })
       })

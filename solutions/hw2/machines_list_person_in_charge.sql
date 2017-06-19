@@ -1,3 +1,3 @@
 -- Rückgabeformat:
---   (machineNumber, machineDescription, forename, surename)
+--   (machineNumber, machineDescription, forename, surname)
 
