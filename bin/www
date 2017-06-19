@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-var app = require('../app') //here it is
+var app = require('../app')
 var debug = require('debug')('iis:server')
 var http = require('http')
 
