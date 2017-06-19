@@ -1,2 +1,2 @@
 -- Rückgabeformat:
---   (articelNumber)
+--   (articleNumber)
