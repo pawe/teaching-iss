@@ -1,6 +1,6 @@
 -- Platzhalter:
 --   $ssn, 
---   $surename,
+--   $surname,
 --   $forename
 --   $rate
 

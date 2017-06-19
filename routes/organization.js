@@ -104,8 +104,8 @@ router.post('/employee',
     req.check('ssn', 'SVNR ist merkwürdig')
       .len(1, 10)
     req.sanitize('forename').trim()
-    req.sanitize('surename').trim()
-    req.check('surename', 'Kein Name gesetzt')
+    req.sanitize('surname').trim()
+    req.check('surname', 'Kein Name gesetzt')
       .notEmpty()
 
     var errors = req.validationErrors()
@@ -114,7 +114,7 @@ router.post('/employee',
         .run({
           $ssn: req.body.ssn,
           $forename: req.body.forename,
-          $surename: req.body.surename,
+          $surname: req.body.surname,
           $rate: req.body.rate
         },
         function (err) {

@@ -20,7 +20,7 @@ block content
             input.form-control(type='text', name='forename')
           fieldset.form-group
             label Nachname
-            input.form-control(type='text', name='surename')
+            input.form-control(type='text', name='surname')
           fieldset.form-group
             label Stundensatz
             input.form-control(type='text', name='rate')
@@ -35,7 +35,7 @@ block content
               label MitarbeiterIn
               select.form-control(name='ssn')
                 each employee in employees
-                  option(value=employee.ssn)= employee.surename
+                  option(value=employee.ssn)= employee.surname
             fieldset.form-group
               label Stundensatzerhöhung
               input.form-control(type='text', name='rateIncrement')
@@ -58,7 +58,7 @@ block content
               tr
                 td= employee.ssn
                 td= employee.forename
-                td= employee.surename
+                td= employee.surname
                 td= employee.rate
     .row
       .col-md-6
@@ -71,7 +71,7 @@ block content
               label MitarbeiterIn
               select.form-control(name='ssn')
                 each employee in employees
-                  option(value=employee.ssn)= employee.surename
+                  option(value=employee.ssn)= employee.surname
             fieldset.form-group
               label Abteilung
               select.form-control(name='departmentShort')
@@ -101,7 +101,7 @@ block content
               label MitarbeiterIn
               select.form-control(name='ssn')
                 each employee in employees
-                  option(value=employee.ssn)= employee.surename
+                  option(value=employee.ssn)= employee.surname
             fieldset.form-group
               label Abteilung
               select.form-control(name='departmentShort')

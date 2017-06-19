@@ -73,7 +73,7 @@ describe('Hausübung 1', function () {
         db.withSQLFromFile('hw1/employee_add.sql')
           .run({
             $ssn: 100,
-            $surename: 'Franz',
+            $surname: 'Franz',
             $forename: 'Führich',
             $rate: 40
           },
@@ -88,7 +88,7 @@ describe('Hausübung 1', function () {
         db.withSQLFromFile('hw1/employee_add.sql')
           .run({
             $ssn: 100,
-            $surename: 'Solte',
+            $surname: 'Solte',
             $forename: 'Egalsen',
             $rate: 40
           },
@@ -104,7 +104,7 @@ describe('Hausübung 1', function () {
           db.withSQLFromFile('hw1/employee_add.sql')
             .run({
               $ssn: 101,
-              $surename: 'Franz',
+              $surname: 'Franz',
               $forename: 'Führich',
               $rate: 45
             },
@@ -123,7 +123,7 @@ describe('Hausübung 1', function () {
           .all(function (err, result) {
             expect(err).to.not.be.ok()
             expect(result).to.have.length(24)
-            expect(result[0]).to.only.have.keys('ssn', 'forename', 'surename', 'rate')
+            expect(result[0]).to.only.have.keys('ssn', 'forename', 'surname', 'rate')
             done()
           })
       })

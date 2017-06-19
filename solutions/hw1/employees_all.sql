@@ -1,3 +1,3 @@
 -- Rückgabeformat:
---   (ssn, forename, surename, rate)
+--   (ssn, forename, surname, rate)
 
