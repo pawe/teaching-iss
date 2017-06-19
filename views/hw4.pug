@@ -1,0 +1,10 @@
+extends layout
+
+block vars
+  - var title='Vierte Hausübung'
+
+block content
+  .container
+    .row(style="margin-top:2em;")
+      .col-xs-12
+        include:marked ../assignments/hw4.md

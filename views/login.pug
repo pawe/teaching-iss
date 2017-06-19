@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  form.form-control(action='/users/login', method='POST', style="max-width:400px; margin: 30px auto")
+    input(type='hidden', name='_csrf', value=csrfToken)
+    .container
+      .row
+        .col-md-12
+          h4 Anmeldung
+      .row
+        .col-md-4
+          label Benutzer
+        .col-md-8
+          input.form-control(type='text', name='username')
+      .row
+        .col-md-4
+          label Passwort
+        .col-md-8
+          input.form-control(type='password', name='password')
+      .row
+        .col-md-12(style="padding-top:0.75rem;")
+          input.pull-xs-right.btn.btn-primary.btn-sm(type='submit', value="anmelden")
