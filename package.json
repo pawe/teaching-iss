@@ -8,10 +8,10 @@
     "test-lecture1": "node ./node_modules/mocha/bin/mocha tests/lecture1-spec.js --reporter spec -t 5000",
     "test-lecture2": "node ./node_modules/mocha/bin/mocha tests/lecture2-spec.js --reporter spec -t 5000",
     "test-lecture3": "node ./node_modules/mocha/bin/mocha tests/lecture3-spec.js --reporter spec -t 5000",
-    "test-hw1": "node ./node_modules/cross-env/dist/bin/cross-env CACHE_QUERIES=true node ./node_modules/mocha/bin/mocha tests/hw1-spec.js --reporter spec -t 5000",
-    "test-hw2": "node ./node_modules/cross-env/dist/bin/cross-env CACHE_QUERIES=true node ./node_modules/mocha/bin/mocha tests/hw2-spec.js --reporter spec -t 5000",
-    "test-hw3": "node ./node_modules/cross-env/dist/bin/cross-env CACHE_QUERIES=true node ./node_modules/mocha/bin/mocha tests/hw3-spec.js --reporter spec -t 5000",
-    "test-hw4": "node ./node_modules/cross-env/dist/bin/cross-env CACHE_QUERIES=true node ./node_modules/mocha/bin/mocha tests/hw4-spec.js --reporter spec -t 5000",
+    "test-hw1": "node ./node_modules/cross-env/dist/bin/cross-env CACHE_QUERIES=true node ./node_modules/mocha/bin/mocha tests/hw1-spec.js --reporter spec -t 50000",
+    "test-hw2": "node ./node_modules/cross-env/dist/bin/cross-env CACHE_QUERIES=true node ./node_modules/mocha/bin/mocha tests/hw2-spec.js --reporter spec -t 50000",
+    "test-hw3": "node ./node_modules/cross-env/dist/bin/cross-env CACHE_QUERIES=true node ./node_modules/mocha/bin/mocha tests/hw3-spec.js --reporter spec -t 50000",
+    "test-hw4": "node ./node_modules/cross-env/dist/bin/cross-env CACHE_QUERIES=true node ./node_modules/mocha/bin/mocha tests/hw4-spec.js --reporter spec -t 50000",
     "release": "node ./node_modules/cross-env/dist/bin/cross-env CACHE_QUERIES=true node ./bin/release"
   },
   "dependencies": {
