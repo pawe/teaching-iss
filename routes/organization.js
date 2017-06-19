@@ -3,7 +3,6 @@ var router = express.Router()
 var db = require('../config/db.js')
 var async = require('async')
 
-
 var onlyAdmins = function (req, res, next) {
   if (!req.isAuthenticated()) {
     return res.status(401).send('Login <a href="/users/login">here</a>, please.')
@@ -91,6 +90,7 @@ router.post('/createEmployees', onlyAdmins,
       db.withSQLFromFile('hw1/testdata.sql')
         .exec(function (err) {
           if (err) return next(err)
+          res.flash('success', 'Testdaten eingefügt')
           res.redirect('/org')
         })
     })
@@ -119,6 +119,7 @@ router.post('/employee',
         },
         function (err) {
           if (err) return next(err)
+          res.flash('success', 'Mitarbeiter angelegt')
           res.redirect('/org')
         })
     } else {
@@ -140,6 +141,7 @@ router.post('/employee_increase_rate',
       },
       function (err) {
         if (err) return next(err)
+        res.flash('success', 'Gehalt angepasst')
         res.redirect('/org')
       })
   }

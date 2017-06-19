@@ -21,6 +21,11 @@ html
     div.container
       include header.jade
 
+      - if (messages.success) 
+        .alert.alert-success.alert-dismissable
+          a.close(href='#', data-dismiss='alert', aria-label='close') &times;
+          | #{messages.success}
+
       block content
 
     div.container.bg-faded(style='position:fixed; right:0px; bottom:0px;')
