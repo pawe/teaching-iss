@@ -22,9 +22,10 @@ html
       include header.jade
 
       - if (messages.success) 
-        .alert.alert-success.alert-dismissable
-          a.close(href='#', data-dismiss='alert', aria-label='close') &times;
-          | #{messages.success}
+        .content
+          .alert.alert-success.alert-dismissable
+            a.close(href='#', data-dismiss='alert', aria-label='close') &times;
+            = messages.success
 
       block content
 
