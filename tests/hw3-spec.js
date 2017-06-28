@@ -64,7 +64,7 @@ describe('Hausübung 3', function () {
           })
       })
     })
-    describe('Gesamtmenge eines Bauteil in einer Baugruppe', function () {
+    describe('Gesamtmenge eines Bauteil in einer Baugruppe (`hw3/partcount_in_assembly.sql`)', function () {
       it('soll ohne Fehler für Baugruppe "3D Drucker" und Teil "Teil_0079/A" durchlaufen', function (done) {
         db.withSQLFromFile('hw3/partcount_in_assembly.sql')
           .get({

@@ -12,26 +12,30 @@
     "test-hw2": "node ./node_modules/cross-env/dist/bin/cross-env CACHE_QUERIES=true node ./node_modules/mocha/bin/mocha tests/hw2-spec.js --reporter spec -t 50000",
     "test-hw3": "node ./node_modules/cross-env/dist/bin/cross-env CACHE_QUERIES=true node ./node_modules/mocha/bin/mocha tests/hw3-spec.js --reporter spec -t 50000",
     "test-hw4": "node ./node_modules/cross-env/dist/bin/cross-env CACHE_QUERIES=true node ./node_modules/mocha/bin/mocha tests/hw4-spec.js --reporter spec -t 50000",
-    "release": "node ./node_modules/cross-env/dist/bin/cross-env CACHE_QUERIES=true node ./bin/release"
+    "release": "node ./node_modules/cross-env/dist/bin/cross-env CACHE_QUERIES=true node ./bin/release",
+    "report": "node ./node_modules/cross-env/dist/bin/cross-env CACHE_QUERIES=true node ./bin/create-report"
   },
   "dependencies": {
     "async": "^2.0.1",
     "body-parser": "~1.17.0",
     "cookie-parser": "~1.4.1",
     "debug": "~2.6.0",
+    "docxtemplater": "^3.1.3",
     "express": "~4.15.0",
     "express-flash": "0.0.2",
     "express-session": "^1.13.0",
     "express-validator": "^3.2.0",
     "fast-csv": "^2.1.0",
     "jstransformer-marked": "^1.0.1",
+    "jszip": "^2.6.1",
     "morgan": "^1.8.2",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "password-hash-and-salt": "^0.1.3",
     "pug": "^2.0.0-rc.2",
     "serve-favicon": "~2.4.2",
-    "sqlite3": "^3.1.8"
+    "sqlite3": "^3.1.8",
+    "xml-escape": "^1.1.0"
   },
   "devDependencies": {
     "archiver": "^1.3.0",

@@ -1,0 +1,195 @@
+#!/usr/bin/env node
+
+var fs = require('fs')
+var Docxtemplater = require('docxtemplater')
+var path = require('path')
+var Mocha = require('mocha')
+var JSZip = require('JSZip')
+// var archiver = require('archiver')
+var xmlEscape = require('xml-escape')
+var async = require('async')
+
+var student = require('../.student.json')
+
+var hw = process.argv[2]
+
+var hws = ['hw1', 'hw2', 'hw3', 'hw4']
+if (hws.indexOf(hw) === -1) {
+  console.log('Hausübung nicht gefunden')
+  process.exit(1)
+}
+
+var files = {
+  hw1: [
+    'employee_add.sql',
+    'employees_all.sql',
+    'employee_increase_rate.sql',
+    'employee_add_to_department.sql',
+    'employees_in_department.sql',
+    'department_set_manager.sql',
+    'department_remove.sql',
+    'employee_max_rate.sql',
+    'employees_in_project.sql'
+  ],
+  hw2: [
+    'migration_up.sql',
+    'data_intake.sql',
+    'machines_list_person_in_charge.sql',
+    'machines_all.sql',
+    'machines_tools_used.sql',
+    'machines_sites.sql',
+    'machine_movements.sql',
+    'tools_operating_time.sql',
+    'tools_remaining_life.sql'
+  ],
+  hw3: [
+    'migration_up_product_structure.sql',
+    'migration_up_average_production_time.sql',
+    'multilevel_bom.sql',
+    'part_in_assembly.sql',
+    'partcount_in_assembly.sql',
+    'quantitative_bom.sql',
+    'parts_with_production_data.sql',
+    'parts_without_production_data.sql',
+    'parts_average_production_time.sql'
+  ],
+  hw4: [
+    'migration_up.sql',
+    'account_add.sql',
+    'project_account_add.sql',
+    'project_accounts.sql',
+    'accounts.sql',
+    'accounting_record_add.sql',
+    'accounting_entry_line_add.sql',
+    'records.sql',
+    'entry_lines.sql',
+    'projects_budget_overview.sql'
+  ]
+}
+
+async.waterfall([
+  function (callback) {
+    try {
+      fs.unlinkSync('release/report' + hw + '.docx')
+    } catch (err) {
+      if (err.code === 'ENOENT') callback(null) // ignore if file does not exist
+      else { callback(err) }
+    }
+  },
+
+  function (callback) {
+    var mocha = new Mocha({
+      reporter: 'base',
+      timeout: 50000
+    })
+    var testFile = 'tests/' + hw + '-spec.js'
+    mocha.addFile(testFile)
+
+    var passes = []
+    var failures = []
+
+    function clean (test) {
+      return {
+        title: test.title,
+        fullTitle: test.fullTitle(),
+        duration: test.duration,
+        currentRetry: test.currentRetry(),
+        err: errorJSON(test.err || {})
+      }
+    }
+    function errorJSON (err) {
+      var res = {}
+      Object.getOwnPropertyNames(err).forEach(function (key) {
+        res[key] = err[key]
+      }, err)
+      return res
+    }
+
+    mocha.run()
+      .on('pass', function (test) {
+        passes.push(test)
+      })
+      .on('fail', function (test, err) {
+        // test.error = {}
+        // test.error['message'] = err.message
+        failures.push(test)
+      })
+      .on('end', function () {
+        callback(null, {
+          passes: passes.map(clean),
+          failures: failures.map(clean),
+          stats: this.stats
+        })
+      })
+  },
+
+  function (report, callback) {
+    var content = fs.readFileSync('templates/report-template-' + hw + '.docx', 'binary')
+
+    var zip = new JSZip(content)
+    var doc = new Docxtemplater().loadZip(zip)
+
+    var pre = '<w:p><w:r><w:t>'
+    var post = '</w:t></w:r></w:p>'
+    var lineBreak = '<w:br/>'
+
+    var contents = files[hw].map(filename => {
+      try {
+        var content = xmlEscape(fs.readFileSync(path.join('solutions/', hw, filename), 'utf8'))
+        return pre + content.replace(/(?:\r\n|\r|\n)/g, lineBreak) + post
+      } catch (err) {
+        return pre + 'keine Datei gefunden' + post
+      }
+    })
+
+    var potentialFailureFiles = []
+    report.failures.forEach(fail => {
+      var filename = fail.fullTitle.match(/\((.*)\)/i) && fail.fullTitle.match(/\((.*)\)/i)[1]
+      potentialFailureFiles.push({ filename: filename, message: fail.err.message })
+    })
+
+    // set the templateVariables
+    doc.setData({
+      'name': student.name,
+      'matrikelnummer': student.matrikelnummer,
+      'group': student.groupName,
+      'date': student.groupDatum,
+      'start': student.groupStart,
+      'end': student.groupEnde,
+      'passes': report.stats.passes,
+      'all': report.stats.tests,
+      'hasFailures': !!report.stats.failures,
+      'failureFiles': potentialFailureFiles,
+      'hw_1': contents[0],
+      'hw_1_file': files[hw][0],
+      'hw_2': contents[1],
+      'hw_2_file': files[hw][1],
+      'hw_3': contents[2],
+      'hw_3_file': files[hw][2],
+      'hw_4': contents[3],
+      'hw_4_file': files[hw][3],
+      'hw_5': contents[4],
+      'hw_5_file': files[hw][4],
+      'hw_6': contents[5],
+      'hw_6_file': files[hw][5],
+      'hw_7': contents[6],
+      'hw_7_file': files[hw][6],
+      'hw_8': contents[7],
+      'hw_8_file': files[hw][7],
+      'hw_9': contents[8],
+      'hw_9_file': files[hw][8],
+      'hw_10': contents[9],
+      'hw_10_file': files[hw][9]
+    })
+
+    doc.render()
+
+    var buf = doc.getZip()
+      .generate({ type: 'nodebuffer' })
+
+    fs.writeFile(path.join('releases', '/report_' + hw + '.docx'), buf, callback)
+  }
+], function (err, result) {
+  if (err) process.exit(1)
+  process.exit(0)
+})
