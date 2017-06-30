@@ -1,0 +1,26 @@
+#!/usr/bin/env node
+
+var Mocha = require('mocha')
+var archiver = require('archiver')
+var fs = require('fs')
+
+var hw = process.argv[2]
+
+var hws = ['hw1', 'hw2', 'hw3', 'hw4']
+if (hws.indexOf(hw) === -1) {
+  console.log('Hausübung nicht gefunden')
+  process.exit(1)
+}
+
+// first we test
+var mocha = new Mocha({
+  reporter: 'spec',
+  timeout: 50000
+})
+var testFile = 'tests/' + hw + '-spec.js'
+
+mocha.addFile(testFile)
+
+mocha.run(function() {
+  process.exit()
+})

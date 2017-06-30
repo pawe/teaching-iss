@@ -68,16 +68,16 @@ var files = {
 }
 
 async.waterfall([
-  function (callback) {
+  function deleteReportIfExists (callback) {
     try {
       fs.unlinkSync('release/report' + hw + '.docx')
     } catch (err) {
-      if (err.code === 'ENOENT') callback(null) // ignore if file does not exist
+      if (err.code === 'ENOENT') callback() // ignore if file does not exist
       else { callback(err) }
     }
   },
 
-  function (callback) {
+  function runTests (callback) {
     var mocha = new Mocha({
       reporter: 'base',
       timeout: 50000
@@ -123,7 +123,7 @@ async.waterfall([
       })
   },
 
-  function (report, callback) {
+  function renderReport (report, callback) {
     var content = fs.readFileSync('templates/report-template-' + hw + '.docx', 'binary')
 
     var zip = new JSZip(content)

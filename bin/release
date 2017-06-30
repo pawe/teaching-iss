@@ -15,20 +15,19 @@ if (hws.indexOf(hw) === -1) {
 // first we test
 var mocha = new Mocha({
   reporter: 'spec',
-  timeout: 5000
+  timeout: 50000
 })
 var testFile = 'tests/' + hw + '-spec.js'
 
 mocha.addFile(testFile)
 
-mocha.run(function(failures) {
+mocha.run(function (failures) {
   // whatever the results from the tests, we create a zip
-  
   // try to delete old files
   try {
     fs.unlinkSync('releases/' + hw + '.zip')
   } catch (err) {
-    // ignore for the moment
+    if (err.code !== 'ENOENT') process.exit(1)
   }
 
   var output = fs.createWriteStream('releases/' + hw + '.zip')
@@ -40,21 +39,14 @@ mocha.run(function(failures) {
   })
 
   archive.on('error', function (err) {
-    throw err;
+    throw err
   })
 
   archive.pipe(output)
 
   archive.bulk([
-    { expand: true, cwd: 'solutions/' + hw, src: ['**'], dest: '/'}
+    { expand: true, cwd: 'solutions/' + hw, src: ['**'], dest: '/' }
   ])
 
-  archive.finalize();
+  archive.finalize()
 })
-
-
-
-
-
-
-

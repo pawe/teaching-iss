@@ -1,7 +1,7 @@
 [tuwel_course_address]: https://tuwel.tuwien.ac.at/course/view.php?id=8260
-[repository]: https://gitlab.com/pawe/iis
-[tiss_course_address]: https://tiss.tuwien.ac.at/course/educationDetails.xhtml?windowId=589&semester=2016W&courseNr=307421
-
+[repository]: https://bitbucket.org/mivp/iis
+[tiss_course_address]: https://tiss.tuwien.ac.at/course/educationDetails.xhtml?windowId=589&semester=2017W&courseNr=307421
+[tiss_forum]: https://tiss.tuwien.ac.at/forum/subForumList.xhtml?windowId=ccb&forumId=2017W-307421
 
 # Übung: Industrielle Informationssysteme (2016W)
 Diese Webanwendung ist Teil der Übung Industrielle Informationssysteme (307.421)
@@ -39,9 +39,7 @@ selbst überprüfen.
 #### Installation NodeJS 
 Um die Anwendung auszuführen ist die Runtime NodeJS notwendig. NodeJS können 
 Sie auf [nodejs.org](http://nodejs.org) herunterladen. Wählen sie die LTS (long 
-time support) Option und folgen Sie dort den Anweisungen. Die Anwendung wurde 
-auf Basis des Versionszweiges 4.6.X entwickelt, wir empfehlen Ihnen ebenfalls
-diese Version.
+time support) Option und folgen Sie dort den Anweisungen.
 
 #### Installation Anwendung und benötige Module
 Laden Sie die Zip-Datei entweder aus dem [TUWEL Kurs][tuwel_course_address] 
@@ -107,15 +105,15 @@ sicherzustellen, dass diese die erwarteten Rückgaben liefern. Möchten Sie
 Ihre erste Hausübung überprüfen, führen sie folgenden Befehl aus:
 
 ```bash
-npm run test-hw1
+npm run test hw1
 ```
 
 Eine fehlerloser durchlauf der Tests sieht aus wie im folgendem Bild 
 dargestellt.
 ![Testen der ersten Hausübung](/public/images/run-script-test-hw1.gif)
 
-Gleiches gilt für die anderen Hausübungen: `npm run test-hw2`,
-`npm run test-hw3`, `npm run test-hw4`.
+Gleiches gilt für die anderen Hausübungen: `npm run test hw2`,
+`npm run test hw3`, `npm run test hw4`.
 
 Wir führen denselben Code aus um Ihre Abgabe auf Funktionstüchtigkeit zu
 überprüfen. Beachten Sie bitte, dass Sie Ihre Abfragen bei den Abgabegesprächen
@@ -130,7 +128,7 @@ aufzeigen, nicht die Abwesenheit Fehlern garantieren.
 npm run release hw1
 ```
 
-Ohne Bindestrich! Dieser Befehl führt die Tests durch und erstellt anschließend
+Dieser Befehl führt die Tests durch und erstellt anschließend
 eine Zip-Datei im Ordner `releases`, welche sie im TUWEL hochladen können. 
 Kontrollieren Sie den Inhalt bevor sie die Datei hochladen, es sollten alle 
 Dateien aus dem Ordner `solutions/hw1` enthalten sein. Gleiches gilt für die 
@@ -151,7 +149,7 @@ angestellt. Die Tests sind für die Überprüfung der Aufgaben ausgelegt.
 
 ## Kontakt
 Fragen und Anregungen bitte an paul.weissenbach@tuwien.ac.at. Studenten können 
-auch im [TISS Forum](https://tiss.tuwien.ac.at/forum/subForumList.xhtml?windowId=ccb&forumId=2016W-307421) bzw. bei den Tutorien Fragen stellen. 
+auch im [TISS Forum][tiss_forum] bzw. bei den Tutorien Fragen stellen. 
 Die Tutorienterminen sind im [TISS][tiss_course_address] eingetragen.
 
 
