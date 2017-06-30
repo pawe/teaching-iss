@@ -35,7 +35,11 @@ mocha.run(function (failures) {
 
   output.on('close', function () {
     console.log('releases/' + hw + '.zip erstellt.')
-    if (!failures) console.log('Laden sie diese Datei im TUWEL hoch. Danke!')
+    if (!failures) {
+      console.log('Laden sie diese Datei im TUWEL hoch. Danke!')
+      process.exit()
+    }
+    process.exit(1)
   })
 
   archive.on('error', function (err) {
