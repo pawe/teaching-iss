@@ -220,14 +220,16 @@ Auf Basis der gegebenen Tabellen erstellen Sie eine SQL-Abfrage...
     * Platzhalter: `$projectName`
     * Rückgabeformat: `(ssn)`
 
-  10. Für alle Instanzen der Anwendung... Erstellen Sie eine Abteilung mit Ihrem Nachnamen (wie in Tiss) und fügen sie dieser Abeitlung Mitarbeiter hinzu. Die Anzahl der Mitarbeiter in der Abteilung soll der Quersumme der letzten zwei Ziffern Ihrer Matrikelnummer entsprechen. 
+  10. Erstellen Sie eine Abteilung dessen Name Ihrer Matrikelnummer entspricht. Fügen Sie dann dieser Abeitlung Mitarbeiter hinzu. Die Anzahl der Mitarbeiter in der Abteilung soll der Quersumme der letzten zwei Ziffern Ihrer Matrikelnummer entsprechen. 
 
-  Beispielsweise ergibt die Matrikelnummer: 01236484
-  eine Anzahl von 8 + 4 = 12.
+  Beispielsweise ergibt die Matrikelnummer: 00123456
+  eine Anzahl von 5 + 6 = 11.
 
-  Damit die Tests erfolgreich durchlaufen, ändern Sie die Daten in der Datei .student.json. Welche nicht mit abgegeben wird. 
+  Hinterlegen Sie neue Mitarbeiter falls notwendig.
 
-    * Datei: `keine_ahnung.sql`
+  Damit die Tests bei Ihnen lokal erfolgreich durchlaufen, ändern Sie die Daten in der Datei .student.json Ihre Daten.
+
+    * Datei: `students_department.sql`
     * Platzhalter: nicht relevant
     * Rückgabeformat: nicht relevant
 

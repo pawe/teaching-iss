@@ -72,7 +72,7 @@ describe('Hausübung 1', function () {
       it('soll einen Mitarbeiter ohne Fehler hinzufügen ', function (done) {
         db.withSQLFromFile('hw1/employee_add.sql')
           .run({
-            $ssn: 100,
+            $ssn: 500,
             $surname: 'Franz',
             $forename: 'Führich',
             $rate: 40
@@ -87,7 +87,7 @@ describe('Hausübung 1', function () {
       it('soll Fehlschlagen, falls es die Personalnummer schon gibt', function (done) {
         db.withSQLFromFile('hw1/employee_add.sql')
           .run({
-            $ssn: 100,
+            $ssn: 500,
             $surname: 'Solte',
             $forename: 'Egalsen',
             $rate: 40
@@ -103,7 +103,7 @@ describe('Hausübung 1', function () {
         function (done) {
           db.withSQLFromFile('hw1/employee_add.sql')
             .run({
-              $ssn: 101,
+              $ssn: 501,
               $surname: 'Franz',
               $forename: 'Führich',
               $rate: 45
