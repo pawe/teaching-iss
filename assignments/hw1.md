@@ -167,58 +167,69 @@ Die Dateien in der Sie Ihre Abfragen schreiben können, finden sie im Ordner
 
 Auf Basis der gegebenen Tabellen erstellen Sie eine SQL-Abfrage...
 
- 1. ... mit der ein Mitarbeiter hinzugefügt werden kann. 
+  1. ... mit der ein Mitarbeiter hinzugefügt werden kann. 
     * Datei: `employee_add.sql` 
-    * Platzhalter: `$surename`, `$forename`, `$ssn`, `$rate` 
+    * Platzhalter: `$surname`, `$forename`, `$ssn`, `$rate` 
     * Rückgabeformat: nicht relevant
     
- 2. ... mit der die Namen und Stundensätze aller Mitarbeiter abgefragt werden 
- können. Beachten Sie, dass die Bezeichnungen im Rückgabeformat nicht mit den 
- Spaltennamen in den vorhandenen Tabellen übereinstimmen. Sie können mit `AS`
- die Spalten für die Rückgabe umbenennen.
+  2. ... mit der die Namen und Stundensätze aller Mitarbeiter abgefragt werden 
+  können. Beachten Sie, dass die Bezeichnungen im Rückgabeformat nicht mit den 
+  Spaltennamen in den vorhandenen Tabellen übereinstimmen. Sie können mit `AS`
+  die Spalten für die Rückgabe umbenennen.
     * Datei: `employees_all.sql`
     * Platzhalter: nicht relevant
-    * Rückgabeformat: `(ssn, surename, forename, rate)`
+    * Rückgabeformat: `(ssn, surname, forename, rate)`
 
- 3. ... mit der ein Stundensatz eines Mitarbeiters um einen bestimmten Betrag 
- erhöht werden kann.
+  3. ... mit der ein Stundensatz eines Mitarbeiters um einen bestimmten Betrag 
+  erhöht werden kann.
     * Datei: `employee_increase_rate.sql`
     * Platzhalter: `$ssn`, `$rateIncrement`
     * Rückgabeformat: nicht relevant
 
- 4. ... mit der ein Mitarbeiter einer Abteilung zugewiesen werden kann.
+  4. ... mit der ein Mitarbeiter einer Abteilung zugewiesen werden kann.
     * Datei: `employee_add_to_department.sql`
     * Platzhalter: `$ssn`, `$departmentShort`
     * Rückgabeformat: nicht relevant
 
- 5. ... mit der die Sozialversicherungsnummeren aller Mitarbeiter in einer 
- Abteilung abgefragt werden können.
+  5. ... mit der die Sozialversicherungsnummeren aller Mitarbeiter in einer 
+  Abteilung abgefragt werden können.
     * Datei: `employees_in_department.sql`
     * Platzhalter: `$departmentShort`
     * Rückgabeformat: `(ssn)`
 
- 6. ... mit der der Manager einer Abteilung geändert werden kann.
+  6. ... mit der der Manager einer Abteilung geändert werden kann.
     * Datei: `department_set_manager.sql`
     * Platzhalter: `$departmentShort`, `$ssn`
     * Rückgabeformat: nicht relevant
 
- 7. ... mit der eine Abteilung aus der Datenbank entfernt werden kann.
+  7. ... mit der eine Abteilung aus der Datenbank entfernt werden kann.
     * Datei: `department_remove.sql`
     * Platzhalter: `$departmentShort`
     * Rückgabeformat: nicht relevant
 
- 8. ... mit der der Mitarbeiter mit dem höchsten Stundensatz ausgegeben 
- wird.
+  8. ... mit der der Mitarbeiter mit dem höchsten Stundensatz ausgegeben 
+  wird.
     * Datei: `employee_max_rate.sql`
     * Platzhalter: nicht relevant
     * Rückgabeformat: `(ssn, rate)`
 
- 9. ... mit der alle Mitarbeiter, die jemals in einem Projekt gearbeitet haben, 
- abgefragt werden können. Achten Sie darauf, dass Mitarbeiter nicht doppelt im 
- Ergebnis vorkommen.
+  9. ... mit der alle Mitarbeiter, die jemals in einem Projekt gearbeitet haben, 
+  abgefragt werden können. Achten Sie darauf, dass Mitarbeiter nicht doppelt im 
+  Ergebnis vorkommen.
     * Datei: `employees_in_project.sql`
     * Platzhalter: `$projectName`
     * Rückgabeformat: `(ssn)`
+
+  10. Für alle Instanzen der Anwendung... Erstellen Sie eine Abteilung mit Ihrem Nachnamen (wie in Tiss) und fügen sie dieser Abeitlung Mitarbeiter hinzu. Die Anzahl der Mitarbeiter in der Abteilung soll der Quersumme der letzten zwei Ziffern Ihrer Matrikelnummer entsprechen. 
+
+  Beispielsweise ergibt die Matrikelnummer: 01236484
+  eine Anzahl von 8 + 4 = 12.
+
+  Damit die Tests erfolgreich durchlaufen, ändern Sie die Daten in der Datei .student.json. Welche nicht mit abgegeben wird. 
+
+    * Datei: `keine_ahnung.sql`
+    * Platzhalter: nicht relevant
+    * Rückgabeformat: nicht relevant
 
 
 #### Hinweis zur Abgabe <a name="abgabe"></a>

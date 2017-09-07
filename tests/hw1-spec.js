@@ -77,10 +77,10 @@ describe('Hausübung 1', function () {
             $forename: 'Führich',
             $rate: 40
           },
-            function (err) {
-              expect(err).not.to.be.ok()
-              done()
-            }
+          function (err) {
+            expect(err).not.to.be.ok()
+            done()
+          }
           )
       })
 
@@ -92,10 +92,10 @@ describe('Hausübung 1', function () {
             $forename: 'Egalsen',
             $rate: 40
           },
-            function (err) {
-              expect(err).to.be.ok()
-              done()
-            }
+          function (err) {
+            expect(err).to.be.ok()
+            done()
+          }
           )
       })
 
@@ -108,10 +108,10 @@ describe('Hausübung 1', function () {
               $forename: 'Führich',
               $rate: 45
             },
-              function (err) {
-                expect(err).not.to.be.ok()
-                done()
-              }
+            function (err) {
+              expect(err).not.to.be.ok()
+              done()
+            }
             )
         }
       )
@@ -315,6 +315,32 @@ describe('Hausübung 1', function () {
               done()
             }
           )
+      })
+    })
+
+    describe('Abfrage 10: Mitarbeiter in Projekt (hw1/students_department.sql)', function () {
+      it('soll mitarbeiter', function (done) {
+        db.withSQLFromFile('hw1/students_department.sql')
+          .exec(function (err) {
+            expect(err).not.to.be.ok()
+
+            var matrikelnummer = require('../.student.json').matrikelnummer
+
+            db.get('SELECT COUNT() as employee_count FROM arbeitet_in WHERE Abteilung = ?', matrikelnummer,
+              function (err, res) {
+                expect(err).not.to.be.ok()
+                // quersumme der letzten zwei Ziffern der Matrikelnummer
+                var expectedEmployeeCount = matrikelnummer
+                  .slice(-2)
+                  .split('')
+                  .reduce(function (accumulator, currentValue) {
+                    return accumulator + parseInt(currentValue, 10)
+                  }, 0)
+
+                expect(res).to.eq(expectedEmployeeCount)
+                done()
+              })
+          })
       })
     })
   })
