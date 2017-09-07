@@ -3,7 +3,7 @@
 [tiss_course_address]: https://tiss.tuwien.ac.at/course/educationDetails.xhtml?windowId=589&semester=2017W&courseNr=307421
 [tiss_forum]: https://tiss.tuwien.ac.at/forum/subForumList.xhtml?windowId=ccb&forumId=2017W-307421
 
-# Übung: Industrielle Informationssysteme (2016W)
+# Übung: Industrielle Informationssysteme (2017W)
 Diese Webanwendung ist Teil der Übung Industrielle Informationssysteme (307.421)
 in welcher Grundlagen relationaler Datenbanken, Datenmodellierung und SQL vermittelt
 werden. Diese Anwendung dient zur Illustration und als Kontext für Hausübungen 
@@ -29,12 +29,6 @@ Wir erwarten von Ihnen keinen auf Performance optimierten SQL Code. Wenn Ihre
 SQL Abfragen funktionieren haben Sie Ihr Ziel erreicht.
 
 ## Installation
-_Hinweis:_ Eine erfolgreiche Absolvierung der Übung ist auch ohne Installation
-dieser Webanwendung möglich. Wichtig sind die von Ihnen zu erstellenden
-Lösungen (ER-Modelle, Datenbankabfragen, etc.). Mit der Anwendung sehen sie 
-jedoch, wie ihre SQL Abfragen im Kontext einer Anwendung verwendet werden. 
-Auch können Sie ihrer SQL Abfragen weitgehend mittels automatisierten Tests 
-selbst überprüfen.
 
 #### Installation NodeJS 
 Um die Anwendung auszuführen ist die Runtime NodeJS notwendig. NodeJS können 
@@ -137,6 +131,18 @@ anderen Hausübungen `npm run release hw2`, `npm run release hw3` und
 erstellt.
 
 ![Release Homework](/public/images/run-release.gif)
+
+
+## Abgabedokument
+
+```bash
+npm run report hw1
+```
+
+Nach der Abgabe führen wir Ihre Lösungen aus und erstellen Berichte, die dann 
+als Gesprächsgrundlage beim Abgabegespräch dienen. Diese Berichte können Sie 
+auch mit obigem Befehl selbst erstellen. Im Ordner `releases` sollten Sie dann
+ein Worddokument finden.
 
 
 ## Warnung
