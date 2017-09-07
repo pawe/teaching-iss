@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 
 var Mocha = require('mocha')
-var archiver = require('archiver')
-var fs = require('fs')
 
 var hw = process.argv[2]
 
@@ -21,6 +19,6 @@ var testFile = 'tests/' + hw + '-spec.js'
 
 mocha.addFile(testFile)
 
-mocha.run(function() {
+mocha.run(function () {
   process.exit()
 })

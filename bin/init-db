@@ -2,7 +2,6 @@
 
 var fs = require('fs')
 var os = require('os')
-var async = require('async')
 
 // database setup
 var db = require('../config/db.js')
@@ -21,9 +20,9 @@ dbsetup.forEach(function (setup) {
         console.log('error in: ' + setup)
         console.error(err.stack)
         fs.appendFile('logs/dbsetup_error.txt',
-                      new Date().toISOString() + ': ' +
-                      err.message + os.EOL + '\t' +
-                      err.stack + os.EOL
+          new Date().toISOString() + ': ' +
+          err.message + os.EOL + '\t' +
+          err.stack + os.EOL
         )
       }
     })

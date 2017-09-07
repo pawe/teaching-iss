@@ -49,7 +49,12 @@ mocha.run(function (failures) {
   archive.pipe(output)
 
   archive.bulk([
-    { expand: true, cwd: 'solutions/' + hw, src: ['**'], dest: '/' }
+    {
+      expand: true,
+      cwd: 'solutions/' + hw,
+      src: ['**'],
+      dest: '/'
+    }
   ])
 
   archive.finalize()
