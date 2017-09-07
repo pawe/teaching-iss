@@ -1,19 +1,29 @@
-nav.navbar.navbar-light.bg-faded
+nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
+  button.navbar-toggler.navbar-toggler-right(
+    type='button', 
+    data-toggle='collapse',
+    data-target='#navbarSupportedContent', 
+    aria-controls='navbarSupportedContent',
+    aria-expanded='false',
+    aria-label='Toggle navigation')
+      span.navbar-toggler-icon
   a.navbar-brand(href="/") IIS Übung
-  ul.nav.navbar-nav
-    li.nav-item
-      a.nav-link(href="/production") Fertigungsdaten (HÜ2)
-    li.nav-item
-      a.nav-link(href="/products") Produktstruktur (HÜ3)
-    li.nav-item
-      a.nav-link(href="/projects") Buchungen (HÜ4)
 
-  ul.nav.navbar-nav(style='float: right')
-    if user && user.admin
+  .navbar-collapse#navbarSupportedContent
+    ul.navbar-nav.mr-auto
       li.nav-item
-        a.nav-link(href='/org') Org (HÜ1)
-    li.nav-item
-      if user
-        a.nav-link(href='/users/logout') Logout
-      else
-        a.nav-link(href='/users/login') Login (HÜ1)
+        a.nav-link(href="/production") Fertigungsdaten (HÜ2)
+      li.nav-item
+        a.nav-link(href="/products") Produktstruktur (HÜ3)
+      li.nav-item
+        a.nav-link(href="/projects") Buchungen (HÜ4)
+
+    ul.nav.navbar-nav(style='float:right;')
+      if user && user.admin
+        li.nav-item
+          a.nav-link(href='/org') Org (HÜ1)
+      li.nav-item
+        if user
+          a.nav-link(href='/users/logout') Logout
+        else
+          a.nav-link(href='/users/login') Login (HÜ1)

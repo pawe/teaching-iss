@@ -29,14 +29,16 @@ html
 
       block content
 
-    div.container.bg-faded(style='position:fixed; right:0px; bottom:0px;')
-      ul.nav.navbar-nav
-        li.nav-item Datenbank:
+    div.bg-faded(style='position:fixed; right:0px; bottom:0px;')
+      ul.nav
         li.nav-item
-          a(href='/database/schema') Schema
+          span.navbar-text
+            | Datenbank:
         li.nav-item
-          a(href='/database/logs') Logs
+          a.nav-link(href='/database/schema') Schema
         li.nav-item
-          a(href='/database/download') Download
+          a.nav-link(href='/database/logs') Logs
         li.nav-item
-          a(href='/database/version') Version
+          a.nav-link(href='/database/download') Download
+        li.nav-item
+          a.nav-link(href='/database/version') Version
