@@ -327,7 +327,7 @@ describe('Hausübung 1', function () {
             var matrikelnummer = require('../.student.json').matrikelnummer
 
             db.get('SELECT COUNT() as employee_count FROM arbeitet_in WHERE Abteilung = ?', matrikelnummer,
-              function (err, res) {
+              function (err, result) {
                 expect(err).not.to.be.ok()
                 // quersumme der letzten zwei Ziffern der Matrikelnummer
                 var expectedEmployeeCount = matrikelnummer
@@ -337,7 +337,7 @@ describe('Hausübung 1', function () {
                     return accumulator + parseInt(currentValue, 10)
                   }, 0)
 
-                expect(res).to.eq(expectedEmployeeCount)
+                expect(result.employee_count).to.eql(expectedEmployeeCount)
                 done()
               })
           })
