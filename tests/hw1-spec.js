@@ -8,7 +8,7 @@ describe('Vorbereitung der Tests', function () {
   // hook (https://mochajs.org/#hooks)
   describe('Erstellen der Datenbanktabellen (hw1/migration_up.sql)', function () {
     it('soll ohne Fehler durchlaufen', function (done) {
-      db.withSQLFromFile('hw1/migration_up.sql')
+      db.withSQLFromFile('../assignments/hw1/migration_up.sql')
         .exec(function (err) {
           expect(err).not.to.be.ok()
           done()

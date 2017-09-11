@@ -46,7 +46,7 @@ describe('Hausübung 2', function () {
 
   describe('Fertigungsrückmeldungen', function () {
     it('Organisationstabellen ohne Fehler erstellen (`hw1/migration_up.sql`)', function (done) {
-      db.withSQLFromFile('hw1/migration_up.sql')
+      db.withSQLFromFile('../assignments/hw1/migration_up.sql')
         .exec(function (err) {
           expect(err).not.to.be.ok()
           done()
