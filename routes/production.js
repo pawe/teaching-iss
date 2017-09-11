@@ -5,7 +5,6 @@ var async = require('async')
 var fs = require('fs')
 var csv = require('fast-csv')
 
-
 // if this is needed in a third place, deduplicate it
 function insertData (testdata, sql, callback) {
   // just a _quick and dirty_ replace.
@@ -98,7 +97,6 @@ router.get('/', function (req, res, next) {
   })
 })
 
-
 router.post('/migrationdown', function (req, res, next) {
   db.withSQLFromFile('hw2/migration_down.sql')
     .exec(function (err) {
@@ -117,7 +115,7 @@ router.post('/migrationup', function (req, res, next) {
 
 router.post('/dataintake', function (req, res, next) {
   var testdataProduction = []
-  csv.fromPath('assignments/hw2_testdata.csv', { headers: true })
+  csv.fromPath('assignments/hw2/testdata.csv', { headers: true })
     .on('data', function (data) {
       testdataProduction.push(data)
     })

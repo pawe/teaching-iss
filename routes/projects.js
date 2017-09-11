@@ -7,10 +7,10 @@ router.get('/', function (req, res, next) {
   async.series({
     projects: function (cb) {
       db.all('SELECT Name AS name FROM Projekte;',
-      function (err, results) {
-        if (err) return cb(err)
-        cb(null, results)
-      })
+        function (err, results) {
+          if (err) return cb(err)
+          cb(null, results)
+        })
     },
     accounts: function (cb) {
       db.withSQLFromFile('hw4/accounts.sql')
@@ -135,10 +135,10 @@ router.post('/project_account', function (req, res, next) {
 router.post('/account', function (req, res, next) {
   db.withSQLFromFile('hw4/account_add.sql')
     .run({ $accountName: req.body.account },
-    function (err) {
-      if (err) return next(err)
-      res.redirect('/projects')
-    })
+      function (err) {
+        if (err) return next(err)
+        res.redirect('/projects')
+      })
 })
 
 router.post('/add_project_record', function (req, res, next) {

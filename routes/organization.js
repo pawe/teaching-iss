@@ -71,7 +71,7 @@ router.get('/',
 )
 
 function addEmployees (callback) {
-  var employeesToInsert = require('../assignments/hw1_testdata.json')
+  var employeesToInsert = require('../assignments/hw1/testdata.json')
   async.each(employeesToInsert,
     function (employee, cb) {
       db.withSQLFromFile('hw1/employee_add.sql')
