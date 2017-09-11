@@ -62,7 +62,7 @@ describe('Hausübung 2', function () {
 
     it('Einfügen der Datensätze soll ohne Fehler durchlaufen (`hw2/data_intake.sql`)', function (done) {
       var testdataProduction = []
-      csv.fromPath('solutions/hw2/testdata.csv', { headers: true })
+      csv.fromPath('assignments/hw2_testdata.csv', { headers: true })
         .on('data', function (data) {
           testdataProduction.push(data)
         })

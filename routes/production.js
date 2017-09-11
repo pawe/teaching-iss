@@ -117,7 +117,7 @@ router.post('/migrationup', function (req, res, next) {
 
 router.post('/dataintake', function (req, res, next) {
   var testdataProduction = []
-  csv.fromPath('solutions/hw2/testdata.csv', { headers: true })
+  csv.fromPath('assignments/hw2_testdata.csv', { headers: true })
     .on('data', function (data) {
       testdataProduction.push(data)
     })
