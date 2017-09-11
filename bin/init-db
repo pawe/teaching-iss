@@ -8,9 +8,9 @@ var db = require('../config/db.js')
 
 var dbsetup = [
   'lecture1/migration_up.sql',
-  'hw1/migration_up.sql',
+  '../assignments/hw1/migration_up.sql',
   'lecture2/migration_up.sql',
-  'hw3/migration_up.sql'
+  '../assignments/hw3/migration_up.sql'
 ]
 
 dbsetup.forEach(function (setup) {
