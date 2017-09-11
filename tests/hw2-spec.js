@@ -28,7 +28,7 @@ function insertData (testdata, sql, callback) {
 
 describe('Hausübung 2', function () {
   describe('Dokumentation', function () {
-    it('Im Verzeichnis `solutions/hw2` soll eine PDF-Datei vorhanden sein',
+    it('Im Verzeichnis `solutions/hw2` soll genau eine PDF-Datei vorhanden sein',
       function (done) {
         fs.readdir('solutions/hw2', function (err, files) {
           expect(err).to.not.be.ok()
