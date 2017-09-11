@@ -13,6 +13,7 @@ describe('Hausübung 3', function () {
         })
     })
   })
+
   describe('Ansichten erstellen', function () {
     it('soll Ansicht Produktstruktur ohne Fehler erstellen (`hw3/migration_up_product_structure.sql`)', function (done) {
       db.withSQLFromFile('hw3/migration_up_product_structure.sql')
@@ -21,7 +22,6 @@ describe('Hausübung 3', function () {
           done()
         })
     })
-
     it('soll Ansicht DurchschnittlicheBearbeitungsdauer ohne Fehler erstellen (`hw3/migration_up_average_production_time.sql`)', function (done) {
       db.withSQLFromFile('hw3/migration_up_average_production_time.sql')
         .exec(function (err) {
@@ -45,6 +45,7 @@ describe('Hausübung 3', function () {
           })
       })
     })
+
     describe('Verwendungsnachweis (`hw3/part_in_assembly.sql`)', function () {
       it('soll für "Teil_0079/A" ohne Fehler durchlaufen', function (done) {
         db.withSQLFromFile('hw3/part_in_assembly.sql')
@@ -64,6 +65,7 @@ describe('Hausübung 3', function () {
           })
       })
     })
+
     describe('Gesamtmenge eines Bauteil in einer Baugruppe (`hw3/partcount_in_assembly.sql`)', function () {
       it('soll ohne Fehler für Baugruppe "3D Drucker" und Teil "Teil_0079/A" durchlaufen', function (done) {
         db.withSQLFromFile('hw3/partcount_in_assembly.sql')
@@ -78,6 +80,7 @@ describe('Hausübung 3', function () {
           })
       })
     })
+
     describe('Mengenstückliste (`hw3/quantitative_bom.sql`)', function () {
       it('soll ohne Fehler durchlaufen und erwartetes Ergebnis liefern', function (done) {
         db.withSQLFromFile('hw3/quantitative_bom.sql')
@@ -93,6 +96,7 @@ describe('Hausübung 3', function () {
           })
       })
     })
+
     describe('Elemente mit Daten aus der Fertigung (`hw3/parts_with_production_data.sql`)', function () {
       it('soll ohne Fehler 10 Zeilen zurückliefern', function (done) {
         db.withSQLFromFile('hw3/parts_with_production_data.sql')
@@ -103,6 +107,7 @@ describe('Hausübung 3', function () {
           })
       })
     })
+
     describe('Elemente ohne Daten aus der Fertigung (`hw3/parts_without_production_data.sql`)', function () {
       it('soll ohne Fehler eine Zeile zurückliefern', function (done) {
         db.withSQLFromFile('hw3/parts_without_production_data.sql')
@@ -113,6 +118,7 @@ describe('Hausübung 3', function () {
           })
       })
     })
+    
     describe('Durchschnittliche Bearbeitungszeiten (`hw3/parts_average_production_time.sql`)', function () {
       it('soll ohne Fehler das erwartete Ergebnis liefern', function (done) {
         db.withSQLFromFile('hw3/parts_average_production_time.sql')

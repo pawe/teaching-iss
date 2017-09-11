@@ -59,7 +59,6 @@ describe('Hausübung 2', function () {
           done()
         })
     })
-
     it('Einfügen der Datensätze soll ohne Fehler durchlaufen (`hw2/data_intake.sql`)', function (done) {
       var testdataProduction = []
       csv.fromPath('assignments/hw2_testdata.csv', { headers: true })
@@ -88,6 +87,7 @@ describe('Hausübung 2', function () {
           })
       })
     })
+
     describe('Alle Maschinen zurückgeben (`hw2/machines_all.sql`)', function () {
       it('soll ohne Fehler durchlaufen und erwartetes Ergebnis zurückliefern', function (done) {
         db.withSQLFromFile('hw2/machines_all.sql')
@@ -106,6 +106,7 @@ describe('Hausübung 2', function () {
           })
       })
     })
+
     describe('Werkzeuge die auf einer Maschine verwendet wurden (`hw2/machines_tools_used.sql`)', function () {
       it('soll ohne Fehler durchlaufen und erwartetes Ergebnis zurückliefern', function (done) {
         db.withSQLFromFile('hw2/machines_tools_used.sql')
@@ -119,6 +120,7 @@ describe('Hausübung 2', function () {
           })
       })
     })
+
     describe('Einsatzorte einer Maschine (`hw2/machines_sites.sql`)', function () {
       it('soll ohne Fehler durchlaufen und erwartetes Ergebnis für Maschine "H0011" liefern', function (done) {
         db.withSQLFromFile('hw2/machines_sites.sql')
@@ -136,6 +138,7 @@ describe('Hausübung 2', function () {
           })
       })
     })
+
     describe('Maschinenbewegungen (`hw2/machine_movements.sql`)', function () {
       it('soll ohne Fehler durchlaufen und 6 Ergebniszeilen liefern die nach der Anzahl an Bewegungen sortiert sind', function (done) {
         db.withSQLFromFile('hw2/machine_movements.sql')
@@ -153,6 +156,7 @@ describe('Hausübung 2', function () {
           })
       })
     })
+
     describe('Werkzeug Gesamteinsatzzeit (`hw2/tools_operating_time.sql`)', function () {
       it('soll ohne Fehler durchlaufen und das erwartete Ergebnis liefern', function (done) {
         db.withSQLFromFile('hw2/tools_operating_time.sql')
@@ -174,6 +178,7 @@ describe('Hausübung 2', function () {
           })
       })
     })
+
     describe('Restlebendauer der Werkzeuge (`hw2/tools_remaining_life.sql`)', function () {
       it('soll ohne Fehler durchlaufen, 3 Ergebniszeilen liefern, die mit dem erwarteten Ergebnis übereinstimmen', function (done) {
         db.withSQLFromFile('hw2/tools_remaining_life.sql')

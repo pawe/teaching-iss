@@ -66,7 +66,6 @@ describe('Hausübung 1', function () {
     )
   })
 
-
   describe('Aufgabe 1.2: Mitarbeiterverwaltung', function () {
     describe('Abfrage 1: Mitarbeiter hinzufügen (hw1/employee_add.sql)', function () {
       it('soll einen Mitarbeiter ohne Fehler hinzufügen ', function (done) {
@@ -83,7 +82,6 @@ describe('Hausübung 1', function () {
           }
           )
       })
-
       it('soll Fehlschlagen, falls es die Personalnummer schon gibt', function (done) {
         db.withSQLFromFile('hw1/employee_add.sql')
           .run({
@@ -98,7 +96,6 @@ describe('Hausübung 1', function () {
           }
           )
       })
-
       it('soll einen Mitarbeiter mit gleichem Namen aber unterschiedlicher Personalnummer ohne Fehler hinzufügen',
         function (done) {
           db.withSQLFromFile('hw1/employee_add.sql')
@@ -145,7 +142,6 @@ describe('Hausübung 1', function () {
             }
           )
       })
-
       it('soll den Stundensatz andere Mitarbeiter unberührt lassen', function (done) {
         db.get('SELECT Stundensatz AS rate FROM Mitarbeiter WHERE SVNR = $ssn;',
           { $ssn: 8 },
@@ -169,7 +165,6 @@ describe('Hausübung 1', function () {
             )
         }
       )
-
       it('soll Fehlschlagen, falls Mitarbeiter nicht exisitiert', function (done) {
         db.withSQLFromFile('hw1/employee_add_to_department.sql')
           .run({ $ssn: 999, $departmentShort: 'Kon' },
@@ -180,7 +175,6 @@ describe('Hausübung 1', function () {
             }
           )
       })
-
       it('soll Fehlschlagen, falls die Abteilung nicht existiert', function (done) {
         db.withSQLFromFile('hw1/employee_add_to_department.sql')
           .run({ $ssn: 21, $departmentShort: 'GibtsNicht' },
@@ -191,7 +185,6 @@ describe('Hausübung 1', function () {
             }
           )
       })
-
       it('soll Fehlschlagen, falls der Mitarbeiter bereits einer anderen Abteilung zugehörig ist',
         function (done) {
           db.withSQLFromFile('hw1/employee_add_to_department.sql')
@@ -205,7 +198,6 @@ describe('Hausübung 1', function () {
         }
       )
     })
-
 
     describe('Abfrage 5: Mitarbeiter in Abteilung (hw1/employees_in_department.sql)', function () {
       it('soll alle Mitarbeiter in einer Abeilung ohne Fehler auflisten',
@@ -255,7 +247,6 @@ describe('Hausübung 1', function () {
       })
     })
 
-
     describe('Abfrage 7: Auflösen einer Abteilung ohne Mitarbeiter (hw1/department_remove.sql)',
       function () {
         it('soll Abteilung ohne Fehler entfernen', function (done) {
@@ -267,7 +258,6 @@ describe('Hausübung 1', function () {
               }
             )
         })
-
         it('soll Fehlschlagen, wenn der Abteilung noch Mitarbeiter zugehörig sind', function (done) {
           db.withSQLFromFile('hw1/department_remove.sql')
             .run({ $departmentShort: 'Kon' },
@@ -278,7 +268,6 @@ describe('Hausübung 1', function () {
               }
             )
         })
-
         it('soll andere Abteilungen unberührt lassen', function (done) {
           db.get('SELECT COUNT() AS countDepartments FROM Abteilungen',
             function (err, result) {

@@ -49,10 +49,10 @@ describe('Hausübung 4', function () {
     it('soll ohne Fehler durchlaufen', function (done) {
       db.withSQLFromFile('hw4/account_add.sql')
         .run({$accountName: 'AK'},
-        function (err) {
-          expect(err).to.not.be.ok()
-          done()
-        })
+          function (err) {
+            expect(err).to.not.be.ok()
+            done()
+          })
     })
   })
 
@@ -60,51 +60,53 @@ describe('Hausübung 4', function () {
     it('soll ohne Fehler durchlaufen', function (done) {
       db.withSQLFromFile('hw4/account_add.sql')
         .run({$accountName: 'A'},
-        function (err) {
-          expect(err).to.not.be.ok()
-          db.withSQLFromFile('hw4/project_account_add.sql')
-            .run({
-              $accountName: 'A',
-              $project: 'Automation'
-            }, function (err) {
-              expect(err).to.not.be.ok()
-              done()
-            })
-        })
+          function (err) {
+            expect(err).to.not.be.ok()
+            db.withSQLFromFile('hw4/project_account_add.sql')
+              .run({
+                $accountName: 'A',
+                $project: 'Automation'
+              }, function (err) {
+                expect(err).to.not.be.ok()
+                done()
+              })
+          })
     })
   })
+
   describe('Weitere Konten erstellen und Projekten zuweisen (`hw4/project_account_add.sql`)', function () {
     it('soll ohne Fehler durchlaufen', function (done) {
       db.withSQLFromFile('hw4/account_add.sql')
         .run({$accountName: 'NNP'},
-        function (err) {
-          expect(err).to.not.be.ok()
-          db.withSQLFromFile('hw4/project_account_add.sql')
-            .run({
-              $accountName: 'NNP',
-              $project: 'NewNewProduct'
-            }, function (err) {
-              expect(err).to.not.be.ok()
-              done()
-            })
-        })
+          function (err) {
+            expect(err).to.not.be.ok()
+            db.withSQLFromFile('hw4/project_account_add.sql')
+              .run({
+                $accountName: 'NNP',
+                $project: 'NewNewProduct'
+              }, function (err) {
+                expect(err).to.not.be.ok()
+                done()
+              })
+          })
     })
     it('soll ohne Fehler durchlaufen', function (done) {
       db.withSQLFromFile('hw4/account_add.sql')
         .run({$accountName: 'RP'},
-        function (err) {
-          expect(err).to.not.be.ok()
-          db.withSQLFromFile('hw4/project_account_add.sql')
-            .run({
-              $accountName: 'RP',
-              $project: 'RevolutionaryProduct'
-            }, function (err) {
-              expect(err).to.not.be.ok()
-              done()
-            })
-        })
+          function (err) {
+            expect(err).to.not.be.ok()
+            db.withSQLFromFile('hw4/project_account_add.sql')
+              .run({
+                $accountName: 'RP',
+                $project: 'RevolutionaryProduct'
+              }, function (err) {
+                expect(err).to.not.be.ok()
+                done()
+              })
+          })
     })
   })
+
   describe('Alle Konten auflisten (`hw4/accounts.sql`)', function () {
     it('soll ohne Fehler alle (vier) Konten auflisten', function (done) {
       db.withSQLFromFile('hw4/accounts.sql')
@@ -121,6 +123,7 @@ describe('Hausübung 4', function () {
         })
     })
   })
+
   describe('Nur Projektkonten auflisten (`hw4/project_accounts.sql`)', function () {
     it('soll ohne Fehler die (drei) Projektkonten auflisten', function (done) {
       db.withSQLFromFile('hw4/project_accounts.sql')
@@ -149,7 +152,6 @@ describe('Hausübung 4', function () {
             done()
           })
       })
-
       it('letzen buchungssatznummer auslesen (INTEGER PRIMARY KEY AUTOINCREMENT)', function (done) {
         db.get('SELECT last_insert_rowid() AS record;',
           function (err, result) {
@@ -160,6 +162,7 @@ describe('Hausübung 4', function () {
           })
       })
     })
+
     describe('Buchugnszeile zu Buchungssatz hinzufügen (`hw4/accounting_entry_line_add.sql`)', function () {
       it('soll erste Buchungszeile ohne Fehler hinzufügen ', function (done) {
         db.withSQLFromFile('hw4/accounting_entry_line_add.sql')
@@ -173,7 +176,6 @@ describe('Hausübung 4', function () {
             done()
           })
       })
-
       it('soll zweite Buchungszeile ohne Fehler hinzufügen', function (done) {
         db.withSQLFromFile('hw4/accounting_entry_line_add.sql')
           .run({
@@ -186,7 +188,6 @@ describe('Hausübung 4', function () {
             done()
           })
       })
-
       it('soll dritte Buchungszeile ohne Fehler hinzufügen', function (done) {
         db.withSQLFromFile('hw4/accounting_entry_line_add.sql')
           .run({
@@ -215,7 +216,6 @@ describe('Hausübung 4', function () {
             done()
           })
       })
-
       it('letzen buchungssatznummer auslesen (INTEGER PRIMARY KEY AUTOINCREMENT)', function (done) {
         db.get('SELECT last_insert_rowid() AS record;',
           function (err, result) {
@@ -226,6 +226,7 @@ describe('Hausübung 4', function () {
           })
       })
     })
+
     describe('Buchugnszeile zu Buchungssatz hinzufügen (`hw4/accounting_entry_line_add.sql`)', function () {
       it('soll erste Buchungszeile ohne Fehler hinzufügen ', function (done) {
         db.withSQLFromFile('hw4/accounting_entry_line_add.sql')
@@ -239,7 +240,6 @@ describe('Hausübung 4', function () {
             done()
           })
       })
-
       it('soll zweite Buchungszeile ohne Fehler hinzufügen', function (done) {
         db.withSQLFromFile('hw4/accounting_entry_line_add.sql')
           .run({
@@ -252,7 +252,6 @@ describe('Hausübung 4', function () {
             done()
           })
       })
-
       it('soll dritte Buchungszeile ohne Fehler hinzufügen', function (done) {
         db.withSQLFromFile('hw4/accounting_entry_line_add.sql')
           .run({
@@ -265,7 +264,6 @@ describe('Hausübung 4', function () {
             done()
           })
       })
-
       it('soll vierte Buchungszeile ohne Fehler hinzufügen', function (done) {
         db.withSQLFromFile('hw4/accounting_entry_line_add.sql')
           .run({
@@ -295,20 +293,21 @@ describe('Hausübung 4', function () {
         })
     })
   })
+
   describe('Buchungszeilen für Buchungssatz #1 auflisten (`hw4/entry_lines.sql`)', function () {
     it('soll ohne Fehler das erwartete Ergebnis liefern', function (done) {
       db.withSQLFromFile('hw4/entry_lines.sql')
         .all({ $record: 1 },
-        function (err, results) {
-          expect(err).to.not.be.ok()
-          expect(results).to.have.length(3)
-          expect(results).to.eql([
-            { number: 1, accountName: 'A', amount: 1000 },
-            { number: 2, accountName: 'NNP', amount: 2000 },
-            { number: 3, accountName: 'AK', amount: -3000 }
-          ])
-          done()
-        })
+          function (err, results) {
+            expect(err).to.not.be.ok()
+            expect(results).to.have.length(3)
+            expect(results).to.eql([
+              { number: 1, accountName: 'A', amount: 1000 },
+              { number: 2, accountName: 'NNP', amount: 2000 },
+              { number: 3, accountName: 'AK', amount: -3000 }
+            ])
+            done()
+          })
     })
   })
 
