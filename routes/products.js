@@ -20,10 +20,10 @@ router.get('/', function (req, res, next) {
     },
     teile: function (cb) {
       db.all('SELECT Teilnummer, Bezeichnung FROM Teile;',
-      function (err, result) {
-        if (err) return cb(err)
-        cb(null, result)
-      })
+        function (err, result) {
+          if (err) return cb(err)
+          cb(null, result)
+        })
     },
     part_in_assembly: function (cb) {
       db.withSQLFromFile('hw3/part_in_assembly.sql')

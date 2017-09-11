@@ -116,7 +116,3 @@ Sie können die abzugebende Datei mit dem Kommandozeilenbefehl
 [TUWEL][tuwel_course_address]) finden Sie dann im Ordner `releases`. 
 Kontrollieren Sie den Inhalt der Zip-Datei bevor Sie sie hochladen.
 
-
-#### Hinweis zu den Abgabegesprächen
-Sie finden potentielle Fragen, die Sie bei den Abgabegesprächen beantworten 
-können sollten, [hier](/assignments/hw3_questions.md).

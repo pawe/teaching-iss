@@ -135,8 +135,3 @@ Sie können die abzugebende Datei mit dem Kommandozeilenbefehl
 `npm run release hw2` erstellen lassen. Eine ZIP-Datei zum hochladen (im 
 [TUWEL][tuwel_course_address]) finden Sie dann im Ordner `releases`. 
 Kontrollieren Sie den Inhalt der ZIP-Datei bevor Sie sie hochladen.
-
-
-#### Hinweis zu den Abgabegesprächen
-Sie finden potentielle Fragen, die Sie bei den Abgabegesprächen beantworten 
-können sollten, [hier](/assignments/hw2_questions.md).

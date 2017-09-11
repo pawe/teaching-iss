@@ -257,11 +257,6 @@ PRAGMA foreign_keys = ON;
 Bei Verwendung der Vorgabeanwendung ist dies bereits vorkonfiguriert.
 
 
-#### Hinweis zu den Abgabegesprächen
-Sie finden potentielle Fragen, die Sie bei den Abgabegesprächen beantworten 
-können sollten, [hier](/assignments/hw1_questions.md).
-
-
 #### Probleme, Unklarheiten
 Kommen Sie zu den Tutorien, schreiben Sie Ihre Fragen ins TISS Forum.
 
