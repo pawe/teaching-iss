@@ -60,7 +60,7 @@ router.get('/', function (req, res, next) {
 })
 
 function addEmployees (callback) {
-  var employeesToInsert = require('../solutions/hw1/testdata.json')
+  var employeesToInsert = require('../assignments/hw1/testdata.json')
   async.each(employeesToInsert,
     function (employee, cb) {
       db.withSQLFromFile('hw1/employee_add.sql')
@@ -76,7 +76,7 @@ router.post('/createProjects',
   function (req, res, next) {
     addEmployees(function (err) {
       if (err) return next(err)
-      db.withSQLFromFile('hw1/testdata.sql')
+      db.withSQLFromFile('../assignments/hw1/testdata.sql')
         .exec(function (err) {
           if (err) return next(err)
           res.redirect('/projects')

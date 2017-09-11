@@ -87,7 +87,7 @@ router.post('/createEmployees', onlyAdmins,
   function (req, res, next) {
     addEmployees(function (err) {
       if (err) return next(err)
-      db.withSQLFromFile('hw1/testdata.sql')
+      db.withSQLFromFile('../assignments/hw1/testdata.sql')
         .exec(function (err) {
           if (err) return next(err)
           req.flash('success', 'Testdaten eingefügt')
@@ -198,6 +198,18 @@ router.post('/department_remove',
           return next(err)
         }
         req.flash('success', 'Abteilung entfernt')
+        res.redirect('/org')
+      })
+  }
+)
+
+router.post('/create_dept_and_add_employees',
+  onlyAdmins,
+  function (req, res, next) {
+    db.withSQLFromFile('/hw1/...')
+      .exec(function (err) {
+        if (err) return next(err)
+        req.flash('success', 'SQL ausgeführt')
         res.redirect('/org')
       })
   }
