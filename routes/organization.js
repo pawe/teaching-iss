@@ -194,7 +194,7 @@ router.post('/department_remove',
       },
       function (err) {
         if (err) {
-          res.flash('info', 'Hinweis: Diese Fehlermeldung ist möglicherweise richtig.')
+          req.flash('info', 'Hinweis: Diese Fehlermeldung ist möglicherweise richtig.')
           return next(err)
         }
         req.flash('success', 'Abteilung entfernt')
