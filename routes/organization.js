@@ -193,7 +193,10 @@ router.post('/department_remove',
         $departmentShort: req.body.departmentShort
       },
       function (err) {
-        if (err) return next(err)
+        if (err) {
+          res.flash('info', 'Hinweis: Diese Fehlermeldung ist möglicherweise richtig.')
+          return next(err)
+        }
         req.flash('success', 'Abteilung entfernt')
         res.redirect('/org')
       })
