@@ -27,7 +27,7 @@ describe('Hausübung 4', function () {
       )
     })
     it('soll Projekte (u.a.) ohne Fehler in die Datenbank einfügen (`hw1/testdata.sql`)', function (done) {
-      db.withSQLFromFile('../assigements/hw1/testdata.sql')
+      db.withSQLFromFile('../assignments/hw1/testdata.sql')
         .exec(function (err) {
           expect(err).not.to.be.ok()
           done()
