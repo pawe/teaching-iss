@@ -50,7 +50,7 @@ describe('Vorbereitung der Tests', function () {
 
 describe('Hausübung 1', function () {
   describe('Aufgabe 1.1: Konzeptioneller Datenbankentwurf ', function () {
-    it('Im Verzeichnis `solutions/hw1` soll eine PDF-Datei vorhanden sein',
+    it('Im Verzeichnis `solutions/hw1` soll genau eine PDF-Datei vorhanden sein',
       function (done) {
         fs.readdir('solutions/hw1', function (err, files) {
           expect(err).to.not.be.ok()
@@ -59,7 +59,7 @@ describe('Hausübung 1', function () {
             function (filename) {
               return !!filename.match(patt1)
             })
-          expect(pdfs).to.not.be.empty()
+          expect(pdfs).to.have.length(1)
           done()
         })
       }

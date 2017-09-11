@@ -37,7 +37,7 @@ describe('Hausübung 2', function () {
             function (filename) {
               return !!filename.match(patt1)
             })
-          expect(pdfs).to.not.be.empty()
+          expect(pdfs).to.have.length(1)
           done()
         })
       }
