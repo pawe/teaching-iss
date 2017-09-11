@@ -17,7 +17,6 @@ dbsetup.forEach(function (setup) {
   db.withSQLFromFile(setup)
     .exec(function (err) {
       if (err) {
-        console.log('error in: ' + setup)
         console.error(err.stack)
         fs.appendFile('logs/dbsetup_error.txt',
           new Date().toISOString() + ': ' +

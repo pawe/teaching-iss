@@ -22,7 +22,7 @@ router.get('/version', function (req, res, next) {
     function (err, row) {
       if (err) return next(err)
       res.type('text/plain')
-      res.send(row.version)
+      res.send('sqlite: ' + row.version)
     }
   )
 })

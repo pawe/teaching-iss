@@ -22,7 +22,7 @@ describe('Vorbereitung der Tests', function () {
   describe('Mitarbeiter einfügen (hw1/employee_add.sql)',
     function () {
       it('Testdaten ohne Fehler hinzufügen', function (done) {
-        var employeesToInsert = require('../solutions/hw1/testdata.json')
+        var employeesToInsert = require('../assignments/hw1/testdata.json')
         async.each(employeesToInsert,
           function (employee, cb) {
             db.withSQLFromFile('hw1/employee_add.sql')
@@ -39,7 +39,7 @@ describe('Vorbereitung der Tests', function () {
 
   describe('Einfügen der restlichen Testdaten (hw1/testdata.sql)', function () {
     it('soll ohne Fehler durchlaufen', function (done) {
-      db.withSQLFromFile('hw1/testdata.sql')
+      db.withSQLFromFile('../assignments/hw1/testdata.sql')
         .exec(function (err) {
           expect(err).not.to.be.ok()
           done()

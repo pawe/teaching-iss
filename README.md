@@ -13,15 +13,15 @@ Informationen zur Durchführung der Lehrveranstaltung finden sich in
 [TUWEL][tuwel_course_address] und [TISS][tiss_course_address].
 
 #### Zu den Aufgaben
-  * [Erste Hausübung](/assignments/hw1.md)
-  * [Zweite Hausübung](/assignments/hw2.md)
-  * [Dritte Hausübung](/assignments/hw3.md)
-  * [Vierte Hausübung](/assignments/hw4.md)
+  * [Erste Hausübung](/assignments/hw1/hw1.md)
+  * [Zweite Hausübung](/assignments/hw2/hw2.md)
+  * [Dritte Hausübung](/assignments/hw3/hw3.md)
+  * [Vierte Hausübung](/assignments/hw4/hw4.md)
 
 #### Beispiele aus den Vorträgen
-  * [Zur ersten Hausübung](/assignments/lecture1.md)
-  * [Zur zweiten Hausübung](/assignments/lecture2.md)
-  * [Zur dritten Hausübung](/assignments/lecture3.md)
+  * [Zur ersten Hausübung](/assignments/lectures/lecture1.md)
+  * [Zur zweiten Hausübung](/assignments/lecture/lecture2.md)
+  * [Zur dritten Hausübung](/assignments/lecture/lecture3.md)
 
 
 #### Hinweis zur Bewertung

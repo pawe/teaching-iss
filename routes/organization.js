@@ -20,17 +20,17 @@ router.get('/',
       two_all_employees: function (cb) {
         db.withSQLFromFile('hw1/employees_all.sql')
           .all(function () {
-             // We want to display errors where the results should
-             // show up, that's why errors are not handeled here
+            // We want to display errors where the results should
+            // show up, that's why errors are not handeled here
             cb(null, arguments)
           })
       },
       three_departements: function (cb) {
         db.all('SELECT Manager AS ssn, Name AS departmentShort, Beschreibung AS department FROM Abteilungen',
-        function (err, results) {
-          if (err) return cb(err)
-          cb(null, results)
-        })
+          function (err, results) {
+            if (err) return cb(err)
+            cb(null, results)
+          })
       },
       employees_in_department: function (cb) {
         db.withSQLFromFile('hw1/employees_in_department.sql')
@@ -71,7 +71,7 @@ router.get('/',
 )
 
 function addEmployees (callback) {
-  var employeesToInsert = require('../solutions/hw1/testdata.json')
+  var employeesToInsert = require('../assignments/hw1_testdata.json')
   async.each(employeesToInsert,
     function (employee, cb) {
       db.withSQLFromFile('hw1/employee_add.sql')
