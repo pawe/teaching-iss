@@ -9,7 +9,7 @@ var db = new sqlite3.Database(process.env.SQLITE_PATH || dbname)
 
 db.run('PRAGMA foreign_keys = ON;')
 
-var solutionFolder = 'solutions/'
+var solutionFolder = process.env.SOLUTIONS_FOLDER || 'solutions/'
 
 // LOGGING
 var logwritestream = fs.createWriteStream(process.env.SQLITE_PATH || dbname + '.log', { defaultEncoding: 'utf8' })
@@ -58,7 +58,7 @@ db.withSQLFromFile = function (file) {
         return arguments[arguments.length - 1](error)
       }
       if (!stripComments(query)) {
-        return arguments[arguments.length - 1](new Error('No SQL Code found in: ' + solutionFolder + file))
+        return arguments[arguments.length - 1](new Error("File doesn't contain any SQL statements: " + solutionFolder + file))
       }
       return db.run.apply(db, [query].concat(Array.prototype.slice.call(arguments)))
     },
@@ -67,7 +67,7 @@ db.withSQLFromFile = function (file) {
         return arguments[arguments.length - 1](error)
       }
       if (!stripComments(query)) {
-        return arguments[arguments.length - 1](new Error('No SQL Code found in: ' + solutionFolder + file))
+        return arguments[arguments.length - 1](new Error("File doesn't contain any SQL statements: " + solutionFolder + file))
       }
       return db.exec.apply(db, [query].concat(Array.prototype.slice.call(arguments)))
     },
@@ -76,7 +76,7 @@ db.withSQLFromFile = function (file) {
         return arguments[arguments.length - 1](error)
       }
       if (!stripComments(query)) {
-        return arguments[arguments.length - 1](new Error('No SQL Code found in: ' + solutionFolder + file))
+        return arguments[arguments.length - 1](new Error("File doesn't contain any SQL statements: " + solutionFolder + file))
       }
       return db.get.apply(db, [query].concat(Array.prototype.slice.call(arguments)))
     },
@@ -85,7 +85,7 @@ db.withSQLFromFile = function (file) {
         return arguments[arguments.length - 1](error)
       }
       if (!stripComments(query)) {
-        return arguments[arguments.length - 1](new Error('No SQL Code found in: ' + solutionFolder + file))
+        return arguments[arguments.length - 1](new Error("File doesn't contain any SQL statements: " + solutionFolder + file))
       }
       return db.all.apply(db, [query].concat(Array.prototype.slice.call(arguments)))
     }

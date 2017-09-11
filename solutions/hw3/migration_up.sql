@@ -22,7 +22,7 @@ CREATE TABLE TeileEinbau (
 
 CREATE TABLE BaugruppenEinbau (
   Unterbaugruppe TEXT REFERENCES Baugruppen(Baugruppennummer),
-  Überbaugruppe TEXT REFERENCES Baugruppen(Baugruppennummer),
+  UEberbaugruppe TEXT REFERENCES Baugruppen(Baugruppennummer),
   Einbauanweisung TEXT
 );
 
@@ -673,7 +673,7 @@ INSERT INTO TeileEinbau (Teil, Baugruppe) VALUES
 ('Teil_0052/A', 'B0052/A'),
 ('Teil_0051/A', 'B0039/A'); 
 
-INSERT INTO BaugruppenEinbau (Unterbaugruppe, Überbaugruppe) VALUES 
+INSERT INTO BaugruppenEinbau (Unterbaugruppe, UEberbaugruppe) VALUES 
 ('Teil_0203/B', 'Teil_0186/A'),
 ('Teil_0203/B', 'Teil_0186/A'),
 ('Teil_0203/B', 'Teil_0186/A'),

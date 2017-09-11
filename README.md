@@ -52,7 +52,7 @@ können Sie mittels `cd \Users\pawe\Desktop\iis` dorthin wechseln.
 
 Mittels `dir` können Sie sich in der Windowskommandozeilenanwendung den Inhalt 
 eines Verzeichnisses auflisten lassen. Gleiches erreichen Sie mit `ls` auf 
-Unix basierenden Systemen (macOS, OS X, Linux oder in der Windows PowerShell).
+Unix basierenden Systemen (macOS, Linux oder in der Windows PowerShell).
 
 
 Die Anwendung benötigt Module. Diese können mit folgendem Befehl in der 

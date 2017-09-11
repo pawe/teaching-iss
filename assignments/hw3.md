@@ -33,7 +33,7 @@ CREATE TABLE TeileEinbau (
 
 CREATE TABLE BaugruppenEinbau (
   Unterbaugruppe NUMERIC REFERENCES Baugruppen(Baugruppennummer),
-  Überbaugruppe NUMERIC REFERENCES Baugruppen(Baugruppennummer),
+  UEberbaugruppe NUMERIC REFERENCES Baugruppen(Baugruppennummer),
   Einbauanweisung TEXT
 );
 ```
@@ -94,14 +94,14 @@ Mit der von Ihnen erstellten Ansichten, erstellen Sie folgende Abfragen. Die Dat
   berücksichtigt werden. Begrenzen Sie das Ergebnis auf 20 Zeilen.
     * Datei: `parts_with_production_data.sql`
     * Platzhalter: nicht relevant
-    * Rückgabeformat: `(articelNumber)`
+    * Rückgabeformat: `(articleNumber)`
 
   6. Abfrage mit der alle Teile und Baugruppen ausgegeben werden können für die 
   keine Fertigungsdaten existieren. Die Produktstruktur muss für diese Abfrage 
   nicht berücksichtigt werden. Begrenzen Sie das Ergebnis auf 20 Zeilen.
     * Datei: `parts_without_production_data.sql`
     * Platzhalter: nicht relevant
-    * Rückgabeformat: `(articelNumber)`
+    * Rückgabeformat: `(articleNumber)`
 
   7. Abfrage die die durchschnittliche Bearbeitungszeit eines Artikels 
   zurückgibt. Absteigend sortiert nach der durchschnittlichen Bearbeitungszeit.

@@ -14,7 +14,7 @@ router.get('/schema', function (req, res, next) {
       res.type('text/plain')
       res.send(schema)
     }
-    )
+  )
 })
 
 router.get('/version', function (req, res, next) {

@@ -149,7 +149,7 @@ einer kurzen Erklärung [hier](/assignments/lecture1.md)
 
 #### Hinweis zum Testen
 Sie können die von Ihnen erstellten Abfragen mit dem Kommandozeilenbefehl 
-`npm run test-hw1` automatisch überprüfen. Dazu müssen Sie natürlich 
+`npm run test hw1` automatisch überprüfen. Dazu müssen Sie natürlich 
 die Anwendung installiert haben. Beschrieben in der [README](/).
 
 
@@ -239,22 +239,6 @@ Sie können die abzugebende Datei mit dem Kommandozeilenbefehl
 `npm run release hw1` erstellen lassen. Eine Zip-Datei zum hochladen im TUWEL 
 finden Sie dann im Ordner `releases`. Kontrollieren Sie den Inhalt der 
 Zip-Datei bevor Sie sie hochladen.
-
-Falls Sie die Vorgabeanwendung nicht nutzen, speichern Sie alle 
-Abfragen in einzelnen Dateien und achten Sie darauf, dass die Dateinamen 
-stimmen, die Dateien UTF-8 codiert sind, Sie die entsprechenden Platzhalter 
-verwenden und die Rückgabeformate einhalten. Verpacken Sie ihre Dateien als 
-Zip mit der Bezeichnung `hw1.zip`. Achten Sie auch darauf, dass das Zip-Archiv 
-selbst keine Ordner enthält. Laden Sie die Datei dann in TUWEL hoch. 
-
-Sollten sie die Anwendung nicht verwenden, stellen Sie auch sicher, dass Ihre 
-Abfragen mit aktivierter Fremdschlüsselüberprüfung funktionieren. In dem von 
-Ihnen verwendetem Werkzeug können Sie diese mit folgendem Befehl aktivieren:
-
-```sql
-PRAGMA foreign_keys = ON;
-```
-Bei Verwendung der Vorgabeanwendung ist dies bereits vorkonfiguriert.
 
 
 #### Probleme, Unklarheiten
