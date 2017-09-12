@@ -48,14 +48,7 @@ mocha.run(function (failures) {
 
   archive.pipe(output)
 
-  archive.bulk([
-    {
-      expand: true,
-      cwd: 'solutions/' + hw,
-      src: ['**'],
-      dest: '/'
-    }
-  ])
+  archive.directory('solutions/' + hw, '/')
 
   archive.finalize()
 })
