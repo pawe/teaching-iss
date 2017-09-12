@@ -101,6 +101,8 @@ router.post('/migrationdown', function (req, res, next) {
   db.withSQLFromFile('hw2/migration_down.sql')
     .exec(function (err) {
       if (err) return next(err)
+
+      req.flash('success', 'Abwärtsmigration ausgeführt')
       res.redirect('/production')
     })
 })
@@ -109,6 +111,8 @@ router.post('/migrationup', function (req, res, next) {
   db.withSQLFromFile('hw2/migration_up.sql')
     .exec(function (err) {
       if (err) return next(err)
+
+      req.flash('success', 'Migration ausgeführt')
       res.redirect('/production')
     })
 })
@@ -123,6 +127,8 @@ router.post('/dataintake', function (req, res, next) {
       var sqlTemplate = fs.readFileSync('solutions/hw2/data_intake.sql', 'utf8')
       insertData(testdataProduction, sqlTemplate, function (err) {
         if (err) return next(err)
+
+        req.flash('success', 'Daten eingelesen')
         res.redirect('/production')
       })
     })
