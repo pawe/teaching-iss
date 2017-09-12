@@ -14,9 +14,8 @@ var solutionFolder = process.env.SOLUTIONS_FOLDER || 'solutions/'
 // LOGGING
 var logwritestream = fs.createWriteStream(process.env.SQLITE_PATH || dbname + '.log', { defaultEncoding: 'utf8' })
 
-db.on('trace', function (profile, time) {
-  logwritestream.write('-- Approx. in ' + time + ' milliseconds:\n')
-  logwritestream.write(profile + '\n\n')
+db.on('trace', function (trace) {
+  logwritestream.write(trace + '\n\n')
 })
 
 // CACHING
