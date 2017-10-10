@@ -1,1 +1,1 @@
--- Keine Platzhalter, kein Rückgabe. Vermutlich mehrere SQL Befehle
+-- Keine Platzhalter, keine Rückgabe. Vermutlich mehrere SQL Befehle.
