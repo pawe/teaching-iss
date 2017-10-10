@@ -29,7 +29,8 @@ var files = {
     'department_set_manager.sql',
     'department_remove.sql',
     'employee_max_rate.sql',
-    'employees_in_project.sql'
+    'employees_in_project.sql',
+    'students_department.sql'
   ],
   hw2: [
     'migration_up.sql',
