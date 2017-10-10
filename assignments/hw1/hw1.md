@@ -65,7 +65,7 @@ Basis ist dieses ER Diagramm aus dem Vortrag zur Hausübung.
 ![Users](/public/images/org.png)
 
 Aus dem ER Modell wurde folgenden Tabellendefinition erstellt. Dieselbe 
-Tabellendefinition finden sie in der Datei `solutions/hw1/migration_up.sql`. 
+Tabellendefinition finden sie in der Datei `assignments/hw1/migration_up.sql`. 
 
 ```sql
 CREATE TABLE Mitarbeiter (
@@ -153,7 +153,7 @@ Sie können die von Ihnen erstellten Abfragen mit dem Kommandozeilenbefehl
 die Anwendung installiert haben. Beschrieben in der [README](/).
 
 
-### Abfragen <a name="abfragen"></a>
+### Abfragen
 Ihre Abfragen sollen Funktionen zur Mitarbeiterverwaltung unterstützen. Die 
 Oberfläche ist nur Administratoren zugänglich. Melden Sie sich als `admin` 
 (Passwort: `admin`) an. Um sich anzumelden, finden sie in der rechten oberen 
@@ -220,26 +220,34 @@ Auf Basis der gegebenen Tabellen erstellen Sie eine SQL-Abfrage...
     * Platzhalter: `$projectName`
     * Rückgabeformat: `(ssn)`
 
-  10. Erstellen Sie eine Abteilung dessen Name Ihrer Matrikelnummer entspricht. Fügen Sie dann dieser Abeitlung Mitarbeiter hinzu. Die Anzahl der Mitarbeiter in der Abteilung soll der Quersumme der letzten zwei Ziffern Ihrer Matrikelnummer entsprechen. 
+  10. Erstellen Sie eine Abteilung dessen Name Ihrer Matrikelnummer entspricht. 
+  Fügen Sie dann dieser Abteilung  Mitarbeiter hinzu. Die Anzahl der Mitarbeiter 
+  in der Abteilung soll der Quersumme der letzten zwei Ziffern Ihrer 
+  Matrikelnummer entsprechen. 
 
   Beispielsweise ergibt die Matrikelnummer: 00123456
   eine Anzahl von 5 + 6 = 11.
 
   Hinterlegen Sie neue Mitarbeiter falls notwendig.
 
-  Damit die Tests bei Ihnen lokal erfolgreich durchlaufen, ändern Sie die Daten in der Datei .student.json Ihre Daten.
-
     * Datei: `students_department.sql`
     * Platzhalter: nicht relevant
     * Rückgabeformat: nicht relevant
 
+  Damit die Tests bei Ihnen lokal erfolgreich durchlaufen, ändern Sie die Daten 
+  in der Datei .student.json im root-Verzeichnis der Anwendung.
 
-#### Hinweis zur Abgabe <a name="abgabe"></a>
+#### Hinweis zur Abgabe
 Sie können die abzugebende Datei mit dem Kommandozeilenbefehl 
 `npm run release hw1` erstellen lassen. Eine Zip-Datei zum hochladen im TUWEL 
 finden Sie dann im Ordner `releases`. Kontrollieren Sie den Inhalt der 
 Zip-Datei bevor Sie sie hochladen.
 
+#### Hinweis zum Abgabegespräch
+Diskussionsgrundlage beim Abgabegespräch ist einer von uns generierter und 
+ausgedruckter Bericht. Sie können diesen Bericht zur Vorbereitung auch selbst 
+mit `npm run report hw1` erstellen. Nach ausführen des Befehls sollte sich 
+ebenfalls im Verzeichnis `releases` eine docx Dokument finden.
 
 #### Probleme, Unklarheiten
 Kommen Sie zu den Tutorien, schreiben Sie Ihre Fragen ins TISS Forum.

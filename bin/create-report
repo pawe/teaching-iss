@@ -191,5 +191,6 @@ async.waterfall([
   }
 ], function (err, result) {
   if (err) process.exit(1)
+  console.log('releases/report_' + hw + '.docx erstellt.')
   process.exit(0)
 })
