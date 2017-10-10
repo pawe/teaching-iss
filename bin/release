@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-var Mocha = require('mocha')
 var archiver = require('archiver')
 var fs = require('fs')
 
@@ -12,43 +11,26 @@ if (hws.indexOf(hw) === -1) {
   process.exit(1)
 }
 
-// first we test
-var mocha = new Mocha({
-  reporter: 'spec',
-  timeout: 50000
+try {
+  fs.unlinkSync('releases/' + hw + '.zip')
+} catch (err) {
+  if (err.code !== 'ENOENT') process.exit(1)
+}
+
+var output = fs.createWriteStream('releases/' + hw + '.zip')
+var archive = archiver('zip')
+
+output.on('close', function () {
+  console.log('releases/' + hw + '.zip erstellt.')
+  process.exit()
 })
-var testFile = 'tests/' + hw + '-spec.js'
 
-mocha.addFile(testFile)
-
-mocha.run(function (failures) {
-  // whatever the results from the tests, we create a zip
-  // try to delete old files
-  try {
-    fs.unlinkSync('releases/' + hw + '.zip')
-  } catch (err) {
-    if (err.code !== 'ENOENT') process.exit(1)
-  }
-
-  var output = fs.createWriteStream('releases/' + hw + '.zip')
-  var archive = archiver('zip')
-
-  output.on('close', function () {
-    console.log('releases/' + hw + '.zip erstellt.')
-    if (!failures) {
-      console.log('Laden sie diese Datei im TUWEL hoch. Danke!')
-      process.exit()
-    }
-    process.exit(1)
-  })
-
-  archive.on('error', function (err) {
-    throw err
-  })
-
-  archive.pipe(output)
-
-  archive.directory('solutions/' + hw, '/')
-
-  archive.finalize()
+archive.on('error', function (err) {
+  throw err
 })
+
+archive.pipe(output)
+
+archive.directory('solutions/' + hw, '/')
+
+archive.finalize()
