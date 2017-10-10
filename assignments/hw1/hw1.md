@@ -1,7 +1,7 @@
 # Erste Hausübung
 
 Erste Schritte mit Modellierung und einfache Datenbankabfragen. 
-[Beispiele aus dem Vortrag](/assignments/lecture1.md). 
+[Beispiele aus dem Vortrag](/assignments/lectures/lecture1.md). 
 
 ## Konzeptioneller Datenbankentwurf
 Sie arbeiten in einer Produktentwicklungsabteilung und möchten Informationen 

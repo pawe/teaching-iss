@@ -3,7 +3,7 @@
 # Dritte Hausübung
 
 Ansichten und rekursive Abfragen mittels Common Table Expressions. [Dritter 
-Vortrag](/assignments/lecture3.md)
+Vortrag](/assignments/lectures/lecture3.md)
 
 ## Produktstruktur
 Die in der Datenbank gespeicherte Produktstruktur ist auf folgende Tabellen verteilt. 

@@ -3,7 +3,7 @@
 #  Zweite Hausübung
 
 Normalisierung, Tabellen verknüpfen und Aggregieren. [Beispiele aus dem 
-Vortrag](/assignments/lecture2.md).
+Vortrag](/assignments/lectures/lecture2.md).
 
 ## Normalisierung
 In einem verteilten Fertigungsnetzwerk soll die Verwaltung von 
