@@ -1,7 +1,6 @@
-[tuwel_course_address]: https://tuwel.tuwien.ac.at/course/view.php?id=8260
+[tuwel_course_address]: https://tuwel.tuwien.ac.at/course/view.php?id=12259
 [repository]: https://bitbucket.org/mivp/iis
-[tiss_course_address]: https://tiss.tuwien.ac.at/course/educationDetails.xhtml?windowId=589&semester=2017W&courseNr=307421
-[tiss_forum]: https://tiss.tuwien.ac.at/forum/subForumList.xhtml?windowId=ccb&forumId=2017W-307421
+[tiss_course_address]: https://tiss.tuwien.ac.at/course/courseDetails.xhtml?courseNr=307421&semester=2017W
 
 # Übung: Industrielle Informationssysteme (2017W)
 Diese Webanwendung ist Teil der Übung Industrielle Informationssysteme (307.421)
@@ -155,8 +154,8 @@ angestellt. Die Tests sind für die Überprüfung der Aufgaben ausgelegt.
 
 ## Kontakt
 Fragen und Anregungen bitte an paul.weissenbach@tuwien.ac.at. Studenten können 
-auch im [TISS Forum][tiss_forum] bzw. bei den Tutorien Fragen stellen. 
-Die Tutorienterminen sind im [TISS][tiss_course_address] eingetragen.
+auch in den Tutorien Fragen stellen. Die Tutorienterminen sind im 
+[TISS][tiss_course_address] eingetragen.
 
 
 # Lizenz
