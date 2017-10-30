@@ -1,5 +1,3 @@
-[tuwel_course_address]: https://tuwel.tuwien.ac.at/course/view.php?id=8260
-
 # Dritte Hausübung
 
 Ansichten und rekursive Abfragen mittels Common Table Expressions. [Dritter 
@@ -110,9 +108,14 @@ Mit der von Ihnen erstellten Ansichten, erstellen Sie folgende Abfragen. Die Dat
     * Rückgabeformat: `(partNumber, avgProductionTime)` 
 
 
-#### Hinweis zur Abgabe <a name="abgabe"></a>
+#### Hinweis zur Abgabe
 Sie können die abzugebende Datei mit dem Kommandozeilenbefehl 
-`npm run release hw3` erstellen lassen. Eine Zip-Datei zum hochladen (im 
-[TUWEL][tuwel_course_address]) finden Sie dann im Ordner `releases`. 
-Kontrollieren Sie den Inhalt der Zip-Datei bevor Sie sie hochladen.
+`npm run release hw3` erstellen lassen. Eine Zip-Datei zum Hochladen im TUWEL 
+finden Sie dann im Ordner `releases`. Kontrollieren Sie den Inhalt der 
+Zip-Datei bevor Sie sie hochladen.
 
+#### Hinweis zum Abgabegespräch
+Diskussionsgrundlage beim Abgabegespräch ist einer von uns generierter und 
+ausgedruckter Bericht. Sie können diesen Bericht zur Vorbereitung auch selbst 
+mit `npm run report hw3` erstellen. Nach ausführen des Befehls sollte sich 
+ebenfalls im Verzeichnis `releases` eine docx Dokument finden.

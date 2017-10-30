@@ -235,11 +235,11 @@ Auf Basis der gegebenen Tabellen erstellen Sie eine SQL-Abfrage...
     * Rückgabeformat: nicht relevant
 
   Damit die Tests bei Ihnen lokal erfolgreich durchlaufen, ändern Sie die Daten 
-  in der Datei .student.json im root-Verzeichnis der Anwendung.
+  in der Datei `.student.json` im root-Verzeichnis der Anwendung.
 
 #### Hinweis zur Abgabe
 Sie können die abzugebende Datei mit dem Kommandozeilenbefehl 
-`npm run release hw1` erstellen lassen. Eine Zip-Datei zum hochladen im TUWEL 
+`npm run release hw1` erstellen lassen. Eine Zip-Datei zum Hochladen im TUWEL 
 finden Sie dann im Ordner `releases`. Kontrollieren Sie den Inhalt der 
 Zip-Datei bevor Sie sie hochladen.
 
