@@ -308,7 +308,7 @@ describe('Hausübung 1', function () {
     })
 
     describe('Abfrage 10: Mitarbeiter in Projekt (hw1/students_department.sql)', function () {
-      it('soll mitarbeiter', function (done) {
+      it('soll eine Abteilung mit Mitarbeiter entsprechend Ihrer Matrikelnummer erstellen', function (done) {
         db.withSQLFromFile('hw1/students_department.sql')
           .exec(function (err) {
             expect(err).not.to.be.ok()
