@@ -141,6 +141,7 @@ als Gesprächsgrundlage beim Abgabegespräch dienen. Diese Berichte können Sie
 auch mit obigem Befehl selbst erstellen. Im Ordner `releases` sollten Sie dann
 ein Worddokument finden.
 
+![Start Stop](/public/images/run-report.gif)
 
 ## Warnung
 Diese Anwendung ist __nicht__ für einen produktiven Einsatz geeignet. 
