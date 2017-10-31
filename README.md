@@ -35,10 +35,12 @@ Sie auf [nodejs.org](http://nodejs.org) herunterladen. Wählen sie die LTS (long
 time support) Option und folgen Sie dort den Anweisungen.
 
 #### Installation Anwendung und benötige Module
-Laden Sie die Zip-Datei entweder aus dem [TUWEL Kurs][tuwel_course_address] 
-oder von dem [Sourcecode Repository][repository].
+Laden Sie die Anwendung vom [Sourcecode Repository][repository]. Sie können 
+entweder eine Zip-Datei (unter dem Menupunkt "Downloads") herunterladen, oder 
+die Anwendung mittels `git` installieren. Mehr Informationen zu `git` finden Sie 
+auf [git-scm.com](https://git-scm.com/).
 
-Entpacken sie gegebenfalls die heruntergeladene Datei und öffnen sie den Ordner 
+Entpacken sie gegebenenfalls die heruntergeladene Datei und öffnen sie den Ordner 
 [im Terminal/in der Kommandozeile](https://de.wikipedia.org/wiki/Kommandozeile).
 
 ```bash
@@ -46,8 +48,8 @@ cd iis
 ```
 
 Mit `cd` (change directory) können Sie das Verzeichnis wechseln. Befindet sich 
-die entpackte Hausübung beispielsweise im Verzeichnis `\Users\pawe\Desktop\iis` 
-können Sie mittels `cd \Users\pawe\Desktop\iis` dorthin wechseln.
+die entpackte Hausübung beispielsweise im Verzeichnis `\Users\mivp\Desktop\iis` 
+können Sie mittels `cd \Users\mivp\Desktop\iis` dorthin wechseln.
 
 Mittels `dir` können Sie sich in der Windowskommandozeilenanwendung den Inhalt 
 eines Verzeichnisses auflisten lassen. Gleiches erreichen Sie mit `ls` auf 
@@ -103,6 +105,7 @@ npm run test hw1
 
 Eine fehlerloser durchlauf der Tests sieht aus wie im folgendem Bild 
 dargestellt.
+
 ![Testen der ersten Hausübung](/public/images/run-script-test-hw1.gif)
 
 Gleiches gilt für die anderen Hausübungen: `npm run test hw2`,
