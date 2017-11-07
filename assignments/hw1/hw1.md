@@ -59,7 +59,7 @@ Verzeichnis `solutions/hw1`. Wie Sie die Hausübung abgeben können, ist
 
 
 ## Mitarbeiterverwaltung
-Ihre Aufgabe ist es einfache SQL <a href="#abfragen">Abfragen</a> zu erstellen. 
+Ihre Aufgabe ist es einfache SQL [Abfragen](#abfragen) zu erstellen. 
 Basis ist dieses ER Diagramm aus dem Vortrag zur Hausübung.
 
 ![Users](/public/images/org.png)
