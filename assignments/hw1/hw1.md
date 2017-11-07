@@ -153,7 +153,7 @@ Sie können die von Ihnen erstellten Abfragen mit dem Kommandozeilenbefehl
 die Anwendung installiert haben. Beschrieben in der [README](/).
 
 
-### Abfragen <a name="abfragen"></a>
+### Abfragen  {#abfragen}
 Ihre Abfragen sollen Funktionen zur Mitarbeiterverwaltung unterstützen. Die 
 Oberfläche ist nur Administratoren zugänglich. Melden Sie sich als `admin` 
 (Passwort: `admin`) an. Um sich anzumelden, finden sie in der rechten oberen 
