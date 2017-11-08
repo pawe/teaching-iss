@@ -305,15 +305,37 @@ describe('Hausübung 1', function () {
             }
           )
       })
+      it('soll auch für andere Projekte funktionieren', function (done) {
+        db.withSQLFromFile('hw1/employees_in_project.sql')
+          .all({ $projectName: 'NewNewProduct' },
+            function (err, result) {
+              expect(err).to.not.be.ok()
+              expect(result).to.have.length(1)
+              expect(result[0]).to.only.have.keys('ssn')
+              done()
+            }
+          )
+      })
     })
 
     describe('Abfrage 10: Mitarbeiter in Projekt (hw1/students_department.sql)', function () {
+      var matrikelnummer = require('../.student.json').matrikelnummer
+      
+      it('vor ausführen der Aufgabe, soll keine Abteilung entsprechend der Matrikelnummer exisiteren',
+        function (done) {
+          db.get('SELECT COUNT() as studentTables FROM sqlite_master WHERE tbl_name = ?', matrikelnummer,
+            function (err, result) {
+              expect(err).not.to.be.ok()
+              expect(result.studentTables).to.be(0)
+              done()
+            })
+        }
+      )
+
       it('soll eine Abteilung mit Mitarbeiter entsprechend Ihrer Matrikelnummer erstellen', function (done) {
         db.withSQLFromFile('hw1/students_department.sql')
           .exec(function (err) {
             expect(err).not.to.be.ok()
-
-            var matrikelnummer = require('../.student.json').matrikelnummer
 
             db.get('SELECT COUNT() as employee_count FROM arbeitet_in WHERE Abteilung = ?', matrikelnummer,
               function (err, result) {
