@@ -29,7 +29,7 @@ Dokumentieren Sie Ihre Vorgehensweise mit Zwischenergebnissen.
 
 Die Testdaten befinden sich im CSV-Format (welche Sie mit dem  
 Tabellenkalkulationsprogramm ihrer Wahl öffnen können) in der Datei 
-`solutions/hw2/testdata.csv`. Hier ein Auszug:
+`assignments/hw2/testdata.csv`. Hier ein Auszug:
 
 ```
 $rueckmeldeNummer,$datum,$uhrzeit,$werkzeugNummer,$maschinenNummer,$vorgangssdauer,$maschinenBezeichnung,$hauptstandort,$maschinenBetreuerSVNR,$maschinenBetreuerVorname,$maschinenBetreuerNachname,$werkzeugBezeichnung,$standzeit,$laengengrad,$breitengrad
