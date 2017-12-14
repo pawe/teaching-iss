@@ -19,8 +19,8 @@ Informationen zur Durchführung der Lehrveranstaltung finden sich in
 
 #### Beispiele aus den Vorträgen
   * [Zur ersten Hausübung](/assignments/lectures/lecture1.md)
-  * [Zur zweiten Hausübung](/assignments/lecture/lecture2.md)
-  * [Zur dritten Hausübung](/assignments/lecture/lecture3.md)
+  * [Zur zweiten Hausübung](/assignments/lectures/lecture2.md)
+  * [Zur dritten Hausübung](/assignments/lectures/lecture3.md)
 
 
 #### Hinweis zur Bewertung
