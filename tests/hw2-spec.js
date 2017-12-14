@@ -4,6 +4,8 @@ var async = require('async')
 var fs = require('fs')
 var csv = require('fast-csv')
 
+var solutionFolder = process.env.SOLUTIONS_FOLDER || 'solutions/'
+
 // if this is needed in a third place, deduplicate it
 function insertData (testdata, sql, callback) {
   // just a _quick and dirty_ replace.
@@ -30,7 +32,7 @@ describe('Hausübung 2', function () {
   describe('Dokumentation', function () {
     it('Im Verzeichnis `solutions/hw2` soll genau eine PDF-Datei vorhanden sein',
       function (done) {
-        fs.readdir('solutions/hw2', function (err, files) {
+        fs.readdir(solutionFolder + 'hw2', function (err, files) {
           expect(err).to.not.be.ok()
           var patt1 = /\.pdf$/i
           var pdfs = files.filter(
@@ -66,7 +68,7 @@ describe('Hausübung 2', function () {
           testdataProduction.push(data)
         })
         .on('end', function () {
-          var sqlTemplate = fs.readFileSync('solutions/hw2/data_intake.sql', 'utf8')
+          var sqlTemplate = fs.readFileSync(solutionFolder + 'hw2/data_intake.sql', 'utf8')
           insertData(testdataProduction, sqlTemplate, function (err) {
             expect(err).to.not.be.ok()
             done()

@@ -68,10 +68,12 @@ var files = {
   ]
 }
 
+var filename = student.name + ' ' + student.matrikelnummer + ' report ' + hw + '.docx'
+
 async.waterfall([
   function deleteReportIfExists (callback) {
     try {
-      fs.unlinkSync('release/report' + hw + '.docx')
+      fs.unlinkSync('releases/' + filename)
     } catch (err) {
       if (err.code === 'ENOENT') callback() // ignore if file does not exist
       else { callback(err) }
@@ -188,10 +190,10 @@ async.waterfall([
     var buf = doc.getZip()
       .generate({ type: 'nodebuffer' })
 
-    fs.writeFile(path.join('releases', '/report_' + hw + '.docx'), buf, callback)
+    fs.writeFile(path.join('releases', filename), buf, callback)
   }
 ], function (err, result) {
   if (err) process.exit(1)
-  console.log('releases/report_' + hw + '.docx erstellt.')
+  console.log('releases/' + filename + ' erstellt.')
   process.exit(0)
 })
