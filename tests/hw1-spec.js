@@ -322,10 +322,10 @@ describe('Hausübung 1', function () {
 
     describe('Abfrage 10: Mitarbeiter in Projekt (hw1/students_department.sql)', function () {
       var matrikelnummer = require('../.student.json').matrikelnummer
-      
+
       it('vor ausführen der Aufgabe, soll keine Abteilung entsprechend der Matrikelnummer exisiteren',
         function (done) {
-          db.get('SELECT COUNT() as studentTables FROM sqlite_master WHERE tbl_name = ?', matrikelnummer,
+          db.get('SELECT COUNT() as studentTables FROM sqlite_master WHERE tbl_name = ? OR tbl_name = ?', [matrikelnummer, matrikelnummer.substr(1)],
             function (err, result) {
               expect(err).not.to.be.ok()
               expect(result.studentTables).to.be(0)
@@ -339,7 +339,7 @@ describe('Hausübung 1', function () {
           .exec(function (err) {
             expect(err).not.to.be.ok()
 
-            db.get('SELECT COUNT() as employee_count FROM arbeitet_in WHERE Abteilung = ?', matrikelnummer,
+            db.get('SELECT COUNT() as employee_count FROM arbeitet_in WHERE Abteilung = ? OR Abteilung = ?', [matrikelnummer, matrikelnummer.substr(1)],
               function (err, result) {
                 expect(err).not.to.be.ok()
                 // quersumme der letzten zwei Ziffern der Matrikelnummer
