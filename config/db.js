@@ -12,11 +12,13 @@ db.run('PRAGMA foreign_keys = ON;')
 var solutionFolder = process.env.SOLUTIONS_FOLDER || 'solutions/'
 
 // LOGGING
-var logwritestream = fs.createWriteStream(process.env.SQLITE_PATH || dbname + '.log', { defaultEncoding: 'utf8' })
+if (process.env.SQLITE_PATH !== ':memory:') {
+  var logwritestream = fs.createWriteStream(process.env.SQLITE_PATH || dbname + '.log', { defaultEncoding: 'utf8' })
 
-db.on('trace', function (trace) {
-  logwritestream.write(trace + '\n\n')
-})
+  db.on('trace', function (trace) {
+    logwritestream.write(trace + '\n\n')
+  })
+}
 
 // CACHING
 var cacheQueries = process.env.CACHE_QUERIES || false
