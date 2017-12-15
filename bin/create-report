@@ -12,6 +12,7 @@ var async = require('async')
 var student = require('../.student.json')
 
 var hw = process.argv[2]
+var outputPath = process.argv[3] || 'releases'
 
 var hws = ['hw1', 'hw2', 'hw3', 'hw4']
 if (hws.indexOf(hw) === -1) {
@@ -68,12 +69,12 @@ var files = {
   ]
 }
 
-var filename = student.name + ' ' + student.matrikelnummer + ' report ' + hw + '.docx'
+var filename = 'report_' + hw + '.docx'
 
 async.waterfall([
   function deleteReportIfExists (callback) {
     try {
-      fs.unlinkSync('releases/' + filename)
+      fs.unlinkSync(path.join(outputPath, filename))
     } catch (err) {
       if (err.code === 'ENOENT') callback() // ignore if file does not exist
       else { callback(err) }
@@ -190,10 +191,10 @@ async.waterfall([
     var buf = doc.getZip()
       .generate({ type: 'nodebuffer' })
 
-    fs.writeFile(path.join('releases', filename), buf, callback)
+    fs.writeFile(path.join(outputPath, filename), buf, callback)
   }
 ], function (err, result) {
   if (err) process.exit(1)
-  console.log('releases/' + filename + ' erstellt.')
+  console.log(path.join(outputPath, filename) + ' erstellt.')
   process.exit(0)
 })
