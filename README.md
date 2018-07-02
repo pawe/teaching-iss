@@ -124,13 +124,22 @@ aufzeigen, nicht die Abwesenheit Fehlern garantieren.
 npm run release hw1
 ```
 
-Dieser Befehl erstellt eine Zip-Datei (im Ordner `releases`), welche Sie 
-im TUWEL hochladen sollen. Kontrollieren Sie den Inhalt bevor sie die Datei 
-hochladen, es sollten alle Dateien aus dem Ordner `solutions/hw1` enthalten 
-sein. Gleiches gilt für die anderen Hausübungen `npm run release hw2`, 
+Dieser Befehl erstellt eine Zip-Datei (im Ordner `releases`), welche Sie im TUWEL hochladen sollen.  Gleiches gilt für die anderen Hausübungen `npm run release hw2`, 
 `npm run release hw3` und `npm run release hw4`.
 
 ![Release Homework](/public/images/run-release.gif)
+
+
+Kontrollieren Sie den Inhalt bevor sie die Datei 
+hochladen, es sollten alle Dateien aus dem Ordner `solutions/hw1` enthalten sein.
+
+### Testen der Abgabedatei
+
+```
+npm run test-release hw1
+```
+
+Kann Ihre Abgabe von uns nicht bearbeitet werden, könne wir sie auch nicht werten. Wollen Sie sichergehen, dass ihre Abgabefile funktioniert und der Inhalt der Zip-Datei die richtige Struktur aufweis, führen Sie obigen Befehl aus. Entsprechend für die Anderen Hausübungen.
 
 
 ## Abgabedokument

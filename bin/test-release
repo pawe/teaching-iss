@@ -1,0 +1,52 @@
+#!/usr/bin/env node
+
+var fs = require('fs')
+var fse = require('fs-extra')
+var path = require('path')
+var Zip = require('adm-zip')
+
+var hw = process.argv[2]
+
+var hws = ['hw1', 'hw2', 'hw3', 'hw4']
+if (hws.indexOf(hw) === -1) {
+  console.log('Hausübung nicht gefunden')
+  process.exit(1)
+}
+
+var destination = process.argv[3]
+var solutionFolder = destination || 'temp_folder/'
+var hwFolder = path.join(solutionFolder, hw)
+
+fse.emptyDirSync(hwFolder)
+
+var pathToZip = path.join('releases', hw + '.zip')
+
+if (!fs.existsSync(pathToZip)) console.log('zip file doesnt exists')
+if (!fs.existsSync(hwFolder)) console.log(`${hwFolder} folder doesnt exists`)
+
+var zip = new Zip(pathToZip)
+try {
+  zip.extractAllTo(hwFolder)
+} catch (err) {
+  console.error(`Cannot extract ${pathToZip}`)
+  throw err
+}
+
+// uiui, this is not nice
+process.env.SOLUTIONS_FOLDER = solutionFolder
+process.env.STUDENT_FILE = path.join('..', solutionFolder)
+
+var Mocha = require('mocha')
+
+// first we test
+var mocha = new Mocha({
+  reporter: 'spec',
+  timeout: 50000
+})
+var testFile = 'tests/' + hw + '-spec.js'
+
+mocha.addFile(testFile)
+
+mocha.run(function () {
+  process.exit()
+})

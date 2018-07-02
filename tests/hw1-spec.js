@@ -2,6 +2,7 @@ var db = require('../config/db.js')
 var expect = require('expect.js')
 var fs = require('fs')
 var async = require('async')
+var path = require('path')
 
 var solutionFolder = process.env.SOLUTIONS_FOLDER || 'solutions/'
 
@@ -321,7 +322,9 @@ describe('Hausübung 1', function () {
     })
 
     describe('Abfrage 10: Mitarbeiter in Projekt (hw1/students_department.sql)', function () {
-      var matrikelnummer = require('../.student.json').matrikelnummer
+      var matrikelnummer = require(path.join(process.env.STUDENT_FILE || '..', '.student.json')).matrikelnummer
+
+      console.log(matrikelnummer)
 
       it('vor ausführen der Aufgabe, soll keine Abteilung entsprechend der Matrikelnummer exisiteren',
         function (done) {

@@ -14,7 +14,10 @@ if (hws.indexOf(hw) === -1) {
 try {
   fs.unlinkSync('releases/' + hw + '.zip')
 } catch (err) {
-  if (err.code !== 'ENOENT') process.exit(1)
+  if (err.code !== 'ENOENT') {
+    console.error(err)
+    process.exit(1)
+  }
 }
 
 var output = fs.createWriteStream('releases/' + hw + '.zip')
