@@ -9,7 +9,7 @@ var JSZip = require('jszip')
 var xmlEscape = require('xml-escape')
 var async = require('async')
 
-var student = require('../.student.json')
+var student = require(path.join(process.env.STUDENT_FILE || '..', '.student.json'))
 
 var hw = process.argv[2]
 var outputPath = process.argv[3] || 'releases'
