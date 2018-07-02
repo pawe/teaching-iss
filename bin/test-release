@@ -34,7 +34,6 @@ try {
 
 // uiui, this is not nice
 process.env.SOLUTIONS_FOLDER = solutionFolder
-process.env.STUDENT_FILE = path.join('..', solutionFolder)
 
 var Mocha = require('mocha')
 
