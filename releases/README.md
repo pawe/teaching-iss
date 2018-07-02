@@ -1,0 +1,1 @@
+Hier sollten sie die Zip-Dateien zum hochladen finden, nachdem Sie `npm run release hw1` ausgeführt haben.
