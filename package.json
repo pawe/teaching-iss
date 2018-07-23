@@ -6,8 +6,8 @@
     "start": "node ./bin/www --init-db",
     "test": "node ./node_modules/cross-env/dist/bin/cross-env CACHE_QUERIES=true node ./bin/test",
     "release": "node ./node_modules/cross-env/dist/bin/cross-env CACHE_QUERIES=true node ./bin/release",
-    "report": "node ./node_modules/cross-env/dist/bin/cross-env CACHE_QUERIES=true node ./bin/report",
-    "test-release": "node ./node_modules/cross-env/dist/bin/cross-env CACHE_QUERIES=true node ./bin/test-release"
+    "create-report": "node ./node_modules/cross-env/dist/bin/cross-env CACHE_QUERIES=true node ./bin/create-report",
+    "report": "node ./node_modules/cross-env/dist/bin/cross-env CACHE_QUERIES=true node ./bin/test-release-create-report"
   },
   "dependencies": {
     "adm-zip": "^0.4.11",

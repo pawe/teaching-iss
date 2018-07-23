@@ -15,12 +15,13 @@ if (hws.indexOf(hw) === -1) {
 }
 
 var destination = process.argv[3]
-var solutionFolder = destination || 'temp_folder/'
+var zipFilePath = process.argv[4]
+var solutionFolder = destination || 'releases/temp/'
 var hwFolder = path.join(solutionFolder, hw)
 
 fse.emptyDirSync(hwFolder)
 
-var pathToZip = path.join('releases', hw + '.zip')
+var pathToZip = zipFilePath || path.join('releases', hw + '.zip')
 
 if (!fs.existsSync(pathToZip)) console.log('zip file doesnt exists')
 if (!fs.existsSync(hwFolder)) console.log(`${hwFolder} folder doesnt exists`)
@@ -33,13 +34,7 @@ try {
   throw err
 }
 
-// uiui, this is not nice
-process.env.SOLUTIONS_FOLDER = solutionFolder
-
-var execString = `npm run report ${hw} ${solutionFolder}`
-console.log(execString)
-
-exec(execString,
+exec(`npm run create-report ${hw} ${path.join(solutionFolder, '..')}`,
   {
     cwd: '.',
     env: {
@@ -54,20 +49,3 @@ exec(execString,
     console.log(stdout)
   }
 )
-
-/* var Mocha = require('mocha')
-
-// first we test
-var mocha = new Mocha({
-  reporter: 'spec',
-  timeout: 50000
-})
-var testFile = 'tests/' + hw + '-spec.js'
-
-mocha.addFile(testFile)
-
-mocha.run(function () {
-
-  process.exit()
-})
- */

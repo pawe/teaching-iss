@@ -133,16 +133,12 @@ Dieser Befehl erstellt eine Zip-Datei (im Ordner `releases`), welche Sie im TUWE
 Kontrollieren Sie den Inhalt bevor sie die Datei 
 hochladen, es sollten alle Dateien aus dem Ordner `solutions/hw1` enthalten sein.
 
-### Testen der Abgabedatei
-
-```
-npm run test-release hw1
-```
-
-Kann Ihre Abgabe von uns nicht bearbeitet werden, könne wir sie auch nicht werten. Wollen Sie sichergehen, dass ihre Abgabefile funktioniert und der Inhalt der Zip-Datei die richtige Struktur aufweis, führen Sie obigen Befehl aus. Entsprechend für die Anderen Hausübungen.
-
 
 ## Abgabedokument
+
+Unter der Bedingung, dass sich ihre Lösung (die Zip-Datei) im `releases` Ordner 
+befindet und als `hw1.zip` benannt wurde können Sie mit folgendem Befehl die 
+Abgabedokumente selbst erstellen. 
 
 ```bash
 npm run report hw1
