@@ -4,6 +4,7 @@ var fs = require('fs')
 var fse = require('fs-extra')
 var path = require('path')
 var Zip = require('adm-zip')
+var { exec } = require('child_process')
 
 var hw = process.argv[2]
 
@@ -35,7 +36,26 @@ try {
 // uiui, this is not nice
 process.env.SOLUTIONS_FOLDER = solutionFolder
 
-var Mocha = require('mocha')
+var execString = `npm run report ${hw} ${solutionFolder}`
+console.log(execString)
+
+exec(execString,
+  {
+    cwd: '.',
+    env: {
+      SOLUTIONS_FOLDER: solutionFolder,
+      STUDENT_FILE: process.env.STUDENT_FILE || '..',
+      APPDATA: process.env.APPDATA // idk why :(
+    }
+  },
+  (err, stdout, stderr) => {
+    if (err) console.log(err)
+    console.log(stderr)
+    console.log(stdout)
+  }
+)
+
+/* var Mocha = require('mocha')
 
 // first we test
 var mocha = new Mocha({
@@ -47,5 +67,7 @@ var testFile = 'tests/' + hw + '-spec.js'
 mocha.addFile(testFile)
 
 mocha.run(function () {
+
   process.exit()
 })
+ */
