@@ -16,6 +16,7 @@ if (hws.indexOf(hw) === -1) {
 
 var destination = process.argv[3]
 var zipFilePath = process.argv[4]
+var studentFilePath = process.argv[5]
 var solutionFolder = destination || 'releases/temp/'
 var hwFolder = path.join(solutionFolder, hw)
 
@@ -23,8 +24,10 @@ fse.emptyDirSync(hwFolder)
 
 var pathToZip = zipFilePath || path.join('releases', hw + '.zip')
 
-if (!fs.existsSync(pathToZip)) console.log('zip file doesnt exists')
-if (!fs.existsSync(hwFolder)) console.log(`${hwFolder} folder doesnt exists`)
+if (!fs.existsSync(pathToZip)) {
+  console.log(`Abgabedatei nicht gefunden. Bitte führen Sie 'npm run release ${hw}' aus, um die Abgabedatei zu erstellen.`)
+  process.exit(1)
+}
 
 var zip = new Zip(pathToZip)
 try {
@@ -39,7 +42,7 @@ exec(`npm run create-report ${hw} ${path.join(solutionFolder, '..')}`,
     cwd: '.',
     env: {
       SOLUTIONS_FOLDER: solutionFolder,
-      STUDENT_FILE: process.env.STUDENT_FILE || '..',
+      STUDENT_FILE: process.env.STUDENT_FILE || studentFilePath || '..',
       APPDATA: process.env.APPDATA // idk why :(
     }
   },
