@@ -40,9 +40,11 @@ var shutdown = function () {
 // if this is not the main entrypoint, the server needs to be explicitly started
 if (require.main === module) {
   boot()
+  console.log('Server listening on \x1b[4mhttp://localhost:' + port + '\x1b[0m')
 
   if (process.argv.indexOf('--init-db') >= 0) {
     require('./init-db')
+    console.log('Database initialized and seeded.')
   }
 } else {
   module.exports.boot = boot
@@ -88,11 +90,11 @@ function onError (error) {
     case 'EACCES':
       console.error(bind + ' requires elevated privileges')
       process.exit(1)
-      break
+
     case 'EADDRINUSE':
       console.error(bind + ' is already in use')
       process.exit(1)
-      break
+
     default:
       throw error
   }
