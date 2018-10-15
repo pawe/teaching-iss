@@ -13,14 +13,14 @@ describe('Hausübung 4', function () {
   // in an actual test setup, this could be done in an before hook (https://mochajs.org/#hooks)
   describe('Vorbereitung der Tests', function () {
     it('soll Organisationstabellen (für Projekte) ohne Fehler erstellen (`hw1/migration_up.sql`)', function (done) {
-      var sql = fs.readdirSync('../assignments/hw1/migration_up.sql')
+      var sql = fs.readdirSync(path.join(path.dirname(), 'assignments/hw1/migration_up.sql'))
       db.exec(sql, function (err) {
         expect(err).not.to.be.ok()
         done()
       })
     })
     it('soll Testdaten ohne Fehler hinzufügen (`hw1/employee_add.sql`)', function (done) {
-      var employeesToInsert = require('../assignments/hw1/testdata.json')
+      var employeesToInsert = require('assignments/hw1/testdata.json')
       async.each(employeesToInsert,
         function (employee, cb) {
           db.withSQLFromFile('hw1/employee_add.sql')
@@ -33,7 +33,7 @@ describe('Hausübung 4', function () {
       )
     })
     it('soll Projekte (u.a.) ohne Fehler in die Datenbank einfügen (`hw1/testdata.sql`)', function (done) {
-      var sql = fs.readFileSync('../assignments/hw1/testdata.sql')
+      var sql = fs.readFileSync(path.join(path.dirname(), 'assignments/hw1/testdata.sql'))
       db.exec(sql, function (err) {
         expect(err).not.to.be.ok()
         done()
