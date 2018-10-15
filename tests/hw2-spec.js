@@ -48,11 +48,11 @@ describe('Hausübung 2', function () {
 
   describe('Fertigungsrückmeldungen', function () {
     it('Organisationstabellen ohne Fehler erstellen (`hw1/migration_up.sql`)', function (done) {
-      db.withSQLFromFile('../assignments/hw1/migration_up.sql')
-        .exec(function (err) {
-          expect(err).not.to.be.ok()
-          done()
-        })
+      var sql = fs.readFileSync('../assignments/hw1/migration_up.sql')
+      db.exec(sql, function (err) {
+        expect(err).not.to.be.ok()
+        done()
+      })
     })
     it('Datenbankmigration soll ohne Fehler durchlaufen (`hw2/migration_up.sql`)', function (done) {
       db.withSQLFromFile('hw2/migration_up.sql')
