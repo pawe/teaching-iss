@@ -4,8 +4,10 @@
  * Oh god! There are style attributes all over 
  * the place...
 **/
+
+
 .row {
-  padding-top:3em;
+  padding-top:1.5em;
 }
 
 .row:first-of-type {
@@ -17,7 +19,7 @@ form .row {
 }
 
 form + h4 {
-  padding-top:1em;
+  padding-top:0.5em;
 }
 
 li > p {

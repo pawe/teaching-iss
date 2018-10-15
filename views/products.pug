@@ -1,24 +1,24 @@
 extends layout
 
 block content
-  .container(style='margin-top:1em;')
+  .container-fluid(style='margin-top:1em;')
     .row
       .col-md-4
         form(action='/products/migration_structure', method='POST')
-          input.form-control.btn.btn-secondary(type='submit', value='Produktstruktur Ansicht erstellen')
+          input.btn.btn-secondary(type='submit', value='Produktstruktur Ansicht erstellen')
       .col-md-5
         form(action='/products/migration_average_production_times', method='POST')
-          input.form-control.btn.btn-secondary(type='submit', value='Bearbeitungsdauer Ansicht erstellen')
+          input.btn.btn-secondary(type='submit', value='Bearbeitungsdauer Ansicht erstellen')
       .col-md-3
         form(action='/products/migrationdown', method='POST')
-          input.form-control.btn.btn-secondary(type='submit', value='Ansichten entfernen')
+          input.btn.btn-secondary(type='submit', value='Ansichten entfernen')
 
     .row
       .col-md-12
         h4 Auswahl für nachfolgende Abfragen
     .row(style='padding-top:0em')
       .col-md-6
-        form.form-control(action='/products', method='GET')
+        form(action='/products', method='GET')
           fieldset.form-group
             label Baugruppe
             select.form-control(name='baugruppe')
@@ -30,7 +30,7 @@ block content
           input(type='hidden', name='teil', value=selected_teil)
           input.form-control.btn.btn-primary(type='submit', value='Anzeigen')   
       .col-md-6
-        form.form-control(action='/products', method='GET')
+        form(action='/products', method='GET')
           fieldset.form-group
             label Teil
             select.form-control(name='teil')

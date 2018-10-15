@@ -1,17 +1,17 @@
 extends layout
 
 block content
-  .container(style='margin-top:1em;')
+  .container-fluid(style='margin-top:1em;')
     .row
-      .col-md-3.offset-md-9
+      .col-md-3.col-md-offset-9
         form(action='/org/createEmployees', method='POST')
-          input.form-control.btn.btn-secondary(type='submit', value='Testdaten einfügen')
+          input.btn.btn-secondary(type='submit', value='Testdaten einfügen')
 
 
     .row
       .col-md-6
         h4 1. MitarbeiterIn hinzufügen
-        form.form-control(action='/org/employee', method='POST')
+        form(action='/org/employee', method='POST')
           fieldset.form-group
             label SVNR
             input.form-control(type='text', name='ssn')
@@ -30,7 +30,7 @@ block content
         if (two_error)
           pre= two_error
         else
-          form.form-control(action='/org/employee_increase_rate', method='POST')
+          form(action='/org/employee_increase_rate', method='POST')
             fieldset.form-group
               label MitarbeiterIn
               select.form-control(name='ssn')
@@ -66,7 +66,7 @@ block content
         if (two_error)
           pre= two_error
         else
-          form.form-control(action='/org/employee_to_department', method='POST')
+          form(action='/org/employee_to_department', method='POST')
             fieldset.form-group
               label MitarbeiterIn
               select.form-control(name='ssn')
@@ -96,7 +96,7 @@ block content
         if (two_error)
           pre= two_error
         else
-          form.form-control(action='/org/department_set_manager', method='POST')
+          form(action='/org/department_set_manager', method='POST')
             fieldset.form-group
               label MitarbeiterIn
               select.form-control(name='ssn')
@@ -109,7 +109,7 @@ block content
                   option(value=dep.departmentShort)= dep.department
             input.form-control.btn.btn-primary(type='submit', value='Als Manager setzen') 
         h4 7. Abteilung Entfernen
-        form.form-control(action='/org/department_remove', method='POST')
+        form(action='/org/department_remove', method='POST')
           fieldset.form-group
             label Abteilung
             select.form-control(name='departmentShort')

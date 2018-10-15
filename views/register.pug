@@ -1,9 +1,9 @@
 extends layout
 
 block content
-  form.form-control(action='/users/register', method='POST', style="max-width:400px; margin: 30px auto")
+  form(action='/users/register', method='POST', style="max-width:400px; margin: 30px auto")
     input(type='hidden', name='_csrf', value=csrfToken)
-    .container
+    .container-fluid
       .row
         .col-md-12
           h4 Registrierung

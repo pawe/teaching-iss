@@ -1,17 +1,17 @@
 extends layout
 
 block content
-  .container(style='margin-top:1em;')
+  .container-fluid(style='margin-top:1em;')
     .row
-      .col-md-3.offset-md-3
+      .col-md-3.col-md-offset-3
         form(action='/production/migrationup', method='POST')
-          input.form-control.btn.btn-secondary(type='submit', value='Tabellen erstellen')
+          input.btn.btn-secondary(type='submit', value='Tabellen erstellen')
       .col-md-3
         form(action='/production/dataintake', method='POST')
-          input.form-control.btn.btn-secondary(type='submit', value='Daten einlesen')
+          input.btn.btn-secondary(type='submit', value='Daten einlesen')
       .col-md-3
         form(action='/production/migrationdown', method='POST')
-          input.form-control.btn.btn-secondary(type='submit', value='Tabellen entfernen')
+          input.btn.btn-secondary(type='submit', value='Tabellen entfernen')
 
 
     .row
@@ -39,7 +39,7 @@ block content
         if (machines_error)
           pre= machines_error
         else
-          form.form-control(action='/production', method='GET')
+          form(action='/production', method='GET')
             fieldset.form-group
               label Maschine
               select.form-control(name='machineNumber')

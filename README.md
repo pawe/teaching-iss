@@ -1,8 +1,8 @@
-[tuwel_course_address]: https://tuwel.tuwien.ac.at/course/view.php?id=12259
+[tuwel_course_address]: https://tuwel.tuwien.ac.at/course/view.php?id=15616
 [repository]: https://bitbucket.org/mivp/iis
-[tiss_course_address]: https://tiss.tuwien.ac.at/course/courseDetails.xhtml?courseNr=307421&semester=2017W
+[tiss_course_address]: https://tiss.tuwien.ac.at/course/courseDetails.xhtml?courseNr=307421&semester=2018W
 
-# Übung: Industrielle Informationssysteme (2017W)
+# Übung: Industrielle Informationssysteme (2018W)
 Diese Webanwendung ist Teil der Übung Industrielle Informationssysteme (307.421)
 in welcher Grundlagen relationaler Datenbanken, Datenmodellierung und SQL vermittelt
 werden. Diese Anwendung dient zur Illustration und als Kontext für Hausübungen 
@@ -28,9 +28,18 @@ Wir erwarten von Ihnen keinen auf Performance optimierten SQL Code. Wenn Ihre
 SQL Abfragen funktionieren haben Sie Ihr Ziel erreicht.
 
 ## Installation
+Folgende Schritte sind notwendig um die Aufgaben zu erfüllen. Die einzelnen Punkte 
+sind im Weiteren detailiert erklärt.
 
-#### Installation NodeJS 
-Um die Anwendung auszuführen ist die Runtime NodeJS notwendig. NodeJS können 
+  * Installation von [node.js](http://nodejs.org) (LTS)
+  * Download des [Source Codes der Anwendung][repository]
+  * Mittels Terminal/Kommandozeile in den Anwendungsordner navigieren
+  * Installieren der von der Anwendung benötigtet Module (`npm install`)
+  * Starten der Anwendung (`npm start`)
+  * Abgeben der erstellten Lösungen (`npm run release` und die dadurch erstellte Datei im TUWEL hochladen)
+
+#### Installation node.js 
+Um die Anwendung auszuführen ist die Runtime node.js notwendig. Diese Runtime können 
 Sie auf [nodejs.org](http://nodejs.org) herunterladen. Wählen sie die LTS (long 
 time support) Option und folgen Sie dort den Anweisungen.
 
@@ -115,7 +124,7 @@ Wir führen denselben Code aus um Ihre Abgabe auf Funktionstüchtigkeit zu
 überprüfen. Beachten Sie bitte, dass Sie Ihre Abfragen bei den Abgabegesprächen
 erklären müssen, d.h. ein erfolgreicher Durchlauf der Tests garantiert Ihnen 
 noch keine Punkte. Solche Tests können im Allgemeinen auch nur Fehler 
-aufzeigen, nicht die Abwesenheit Fehlern garantieren.
+aufzeigen, nicht die Abwesenheit von Fehlern garantieren.
 
 
 ## Abgeben
@@ -124,32 +133,33 @@ aufzeigen, nicht die Abwesenheit Fehlern garantieren.
 npm run release hw1
 ```
 
-Dieser Befehl erstellt eine Zip-Datei (im Ordner `releases`), welche Sie im TUWEL hochladen sollen.  Gleiches gilt für die anderen Hausübungen `npm run release hw2`, 
+Dieser Befehl erstellt eine Zip-Datei (im Ordner `releases`), welche Sie im TUWEL 
+hochladen sollen. Gleiches gilt für die anderen Hausübungen `npm run release hw2`, 
 `npm run release hw3` und `npm run release hw4`.
 
 ![Release Homework](/public/images/run-release.gif)
 
 
-Kontrollieren Sie den Inhalt bevor sie die Datei 
-hochladen, es sollten alle Dateien aus dem Ordner `solutions/hw1` enthalten sein.
+Kontrollieren Sie den Inhalt bevor sie die Datei hochladen, es sollten alle Dateien 
+aus dem Ordner `solutions/hw1` enthalten sein. Der  
 
 
 ## Abgabedokument
 
 Unter der Bedingung, dass sich ihre Lösung (die Zip-Datei) im `releases` Ordner 
-befindet und als `hw1.zip` benannt wurde können Sie mit folgendem Befehl die 
-Abgabedokumente selbst erstellen. 
+befindet und als `hw1.zip` benannt wurde können Sie mit folgendem Befehl das 
+Abgabedokument für die erste Hausübung selbst erstellen. Das erstellte Dokument sollten 
+sie dann im Ordner `releases` finden.
 
 ```bash
 npm run report hw1
 ```
 
-Nach der Abgabe führen wir Ihre Lösungen aus und erstellen Berichte, die dann 
-als Gesprächsgrundlage beim Abgabegespräch dienen. Diese Berichte können Sie 
-auch mit obigem Befehl selbst erstellen. Im Ordner `releases` sollten Sie dann
-ein Worddokument finden.
-
 ![Start Stop](/public/images/run-report.gif)
+
+Wie üblich, gilt für dies auch für die anderen Hausübungen: `npm run report hw2`, 
+`npm run report hw3` und `npm run report hw4`.
+
 
 ## Warnung
 Diese Anwendung ist __nicht__ für einen produktiven Einsatz geeignet. 

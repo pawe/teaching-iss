@@ -2,6 +2,7 @@ var express = require('express')
 var router = express.Router()
 var db = require('../config/db.js')
 var async = require('async')
+var path = require('path')
 
 router.get('/', function (req, res, next) {
   async.series({
@@ -228,6 +229,14 @@ router.post('/migrationup', function (req, res, next) {
       if (err) return next(err)
       res.redirect('/projects')
     })
+})
+
+router.get('/schema', function (_, res) {
+  res.sendFile(path.join(__dirname, '..', 'solutions/hw4/schema.json'))
+})
+
+router.post('/schemadata', function (req, res) {
+  console.log('request:', req)
 })
 
 module.exports = router

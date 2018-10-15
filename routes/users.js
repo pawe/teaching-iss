@@ -44,17 +44,17 @@ router.post('/register', function (req, res, next) {
       console.log(hash)
       db.withSQLFromFile('lecture1/user_add.sql')
         .run(
-        {
-          $login: req.body.username,
-          $hashedpassword: hash
-        },
+          {
+            $login: req.body.username,
+            $hashedpassword: hash
+          },
           function (err) {
             if (err) return next(err)
             res.redirect('/users/login')
           }
         )
     }
-  )
+    )
 })
 
 router.post('/changepassword', function (req, res, next) {

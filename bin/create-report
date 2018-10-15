@@ -5,7 +5,6 @@ var Docxtemplater = require('docxtemplater')
 var path = require('path')
 var Mocha = require('mocha')
 var JSZip = require('jszip')
-// var archiver = require('archiver')
 var xmlEscape = require('xml-escape')
 var async = require('async')
 
@@ -116,8 +115,6 @@ async.waterfall([
         passes.push(test)
       })
       .on('fail', function (test, err) {
-        // test.error = {}
-        // test.error['message'] = err.message
         failures.push(test)
       })
       .on('end', function () {
