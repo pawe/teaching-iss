@@ -49,7 +49,7 @@ describe('Hausübung 2', function () {
 
   describe('Fertigungsrückmeldungen', function () {
     it('Organisationstabellen ohne Fehler erstellen (`hw1/migration_up.sql`)', function (done) {
-      var sql = fs.readFileSync(path.join(__dirname, '..', 'assignments/hw1/migration_up.sql'))
+      var sql = fs.readFileSync(path.join(__dirname, '..', 'assignments/hw1/migration_up.sql'), 'utf8')
       db.exec(sql, function (err) {
         expect(err).not.to.be.ok()
         done()

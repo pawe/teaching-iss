@@ -42,7 +42,7 @@ describe('Vorbereitung der Tests', function () {
 
   describe('Einfügen der restlichen Testdaten (hw1/testdata.sql)', function () {
     it('soll ohne Fehler durchlaufen', function (done) {
-      var sql = fs.readFileSync(path.join(__dirname, '..', 'assignments/hw1/testdata.sql'))
+      var sql = fs.readFileSync(path.join(__dirname, '..', 'assignments/hw1/testdata.sql', 'utf8')
       db.exec(sql, function (err) {
         expect(err).not.to.be.ok()
         done()
