@@ -182,7 +182,9 @@ async.waterfall([
       'hw_9': contents[8],
       'hw_9_file': files[hw][8],
       'hw_10': contents[9],
-      'hw_10_file': files[hw][9]
+      'hw_10_file': files[hw][9],
+      'hw_11': contents[10],
+      'hw_11_file': files[hw][10]
     })
 
     doc.render()
