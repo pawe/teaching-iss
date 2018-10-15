@@ -1,12 +1,13 @@
 var db = require('../config/db.js')
 var expect = require('expect.js')
 var fs = require('fs')
+var path = require('path')
 
 describe('Hausübung 3', function () {
   // in an actual test setup, this could be done in an before hook (https://mochajs.org/#hooks)
   describe('Erstellen der Datenbanktabellen (`hw3/migration_up.sql`)', function () {
     it('soll ohne Fehler durchlaufen', function (done) {
-      var sql = fs.readFileSync('../assignments/hw3/migration_up.sql')
+      var sql = fs.readFileSync(path.join(__dirname, '..', 'assignments/hw3/migration_up.sql'))
       db.exec(sql, function (err) {
         expect(err).not.to.be.ok()
         done()

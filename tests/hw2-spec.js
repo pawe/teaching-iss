@@ -2,6 +2,7 @@ var db = require('../config/db.js')
 var expect = require('expect.js')
 var async = require('async')
 var fs = require('fs')
+var path = require('path')
 var csv = require('fast-csv')
 
 var solutionFolder = process.env.SOLUTIONS_FOLDER || 'solutions/'
@@ -48,7 +49,7 @@ describe('Hausübung 2', function () {
 
   describe('Fertigungsrückmeldungen', function () {
     it('Organisationstabellen ohne Fehler erstellen (`hw1/migration_up.sql`)', function (done) {
-      var sql = fs.readFileSync('../assignments/hw1/migration_up.sql')
+      var sql = fs.readFileSync(path.join(__dirname, '..', 'assignments/hw1/migration_up.sql'))
       db.exec(sql, function (err) {
         expect(err).not.to.be.ok()
         done()
@@ -63,7 +64,7 @@ describe('Hausübung 2', function () {
     })
     it('Einfügen der Datensätze soll ohne Fehler durchlaufen (`hw2/data_intake.sql`)', function (done) {
       var testdataProduction = []
-      csv.fromPath('assignments/hw2/testdata.csv', { headers: true })
+      csv.fromPath(path.join(__dirname, '..', 'assignments/hw2/testdata.csv'), { headers: true })
         .on('data', function (data) {
           testdataProduction.push(data)
         })
