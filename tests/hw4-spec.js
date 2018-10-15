@@ -2,6 +2,12 @@
 var db = require('../config/db.js')
 var expect = require('expect.js')
 var async = require('async')
+var fs = require('fs')
+var path = require('path')
+var process = require('process')
+var AJV = require('ajv')
+
+var solutionFolder = process.env.SOLUTIONS_FOLDER || 'solutions/'
 
 describe('Hausübung 4', function () {
   // in an actual test setup, this could be done in an before hook (https://mochajs.org/#hooks)
@@ -48,7 +54,7 @@ describe('Hausübung 4', function () {
   describe('Allgemeines Konto Hinzufügen (`hw4/account_add.sql`)', function () {
     it('soll ohne Fehler durchlaufen', function (done) {
       db.withSQLFromFile('hw4/account_add.sql')
-        .run({$accountName: 'AK'},
+        .run({ $accountName: 'AK' },
           function (err) {
             expect(err).to.not.be.ok()
             done()
@@ -59,7 +65,7 @@ describe('Hausübung 4', function () {
   describe('Allgemeines Konto erstellen und zu Projekt hinzufügen (`hw4/project_account_add.sql`)', function () {
     it('soll ohne Fehler durchlaufen', function (done) {
       db.withSQLFromFile('hw4/account_add.sql')
-        .run({$accountName: 'A'},
+        .run({ $accountName: 'A' },
           function (err) {
             expect(err).to.not.be.ok()
             db.withSQLFromFile('hw4/project_account_add.sql')
@@ -77,7 +83,7 @@ describe('Hausübung 4', function () {
   describe('Weitere Konten erstellen und Projekten zuweisen (`hw4/project_account_add.sql`)', function () {
     it('soll ohne Fehler durchlaufen', function (done) {
       db.withSQLFromFile('hw4/account_add.sql')
-        .run({$accountName: 'NNP'},
+        .run({ $accountName: 'NNP' },
           function (err) {
             expect(err).to.not.be.ok()
             db.withSQLFromFile('hw4/project_account_add.sql')
@@ -92,7 +98,7 @@ describe('Hausübung 4', function () {
     })
     it('soll ohne Fehler durchlaufen', function (done) {
       db.withSQLFromFile('hw4/account_add.sql')
-        .run({$accountName: 'RP'},
+        .run({ $accountName: 'RP' },
           function (err) {
             expect(err).to.not.be.ok()
             db.withSQLFromFile('hw4/project_account_add.sql')
@@ -333,6 +339,21 @@ describe('Hausübung 4', function () {
           ])
           done()
         })
+    })
+  })
+
+  describe('Projektbericht erstellen (`hw4/schema.json`)', function () {
+    it('soll ein gültiges JSON sein', function () {
+      var metaSchema = require('./meta-schema.json')
+      var solutionFile = path.join(solutionFolder, 'hw4', 'schema.json')
+      var userSchema = fs.readFileSync(solutionFile)
+      var parsedUserSchema = JSON.parse(userSchema)
+      expect(parsedUserSchema).to.not.be.empty()
+
+      var ajv = new AJV()
+      var valid = ajv.validate(metaSchema, parsedUserSchema)
+      expect(ajv.errors).not.to.be.ok()
+      expect(valid).to.be.ok()
     })
   })
 })
