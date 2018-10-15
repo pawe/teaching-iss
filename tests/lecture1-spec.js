@@ -20,10 +20,10 @@ describe('Lecture 1: User Management', function () {
           $login: 'test',
           $hashedpassword: 'testpw'
         },
-          function (err) {
-            expect(err).not.to.be.ok()
-            done()
-          }
+        function (err) {
+          expect(err).not.to.be.ok()
+          done()
+        }
         )
     })
 
@@ -33,11 +33,11 @@ describe('Lecture 1: User Management', function () {
           $login: 'test',
           $hashedpassword: 'password'
         },
-          function (err) {
-            expect(err).to.be.ok()
-            expect(err.code).to.be('SQLITE_CONSTRAINT')
-            done()
-          }
+        function (err) {
+          expect(err).to.be.ok()
+          expect(err.code).to.be('SQLITE_CONSTRAINT')
+          done()
+        }
         )
     })
 
@@ -47,10 +47,10 @@ describe('Lecture 1: User Management', function () {
           $login: 'test2',
           $hashedpassword: 'testpw'
         },
-          function (err) {
-            expect(err).not.to.be.ok()
-            done()
-          }
+        function (err) {
+          expect(err).not.to.be.ok()
+          done()
+        }
         )
     })
 
@@ -59,12 +59,12 @@ describe('Lecture 1: User Management', function () {
         .get({
           $login: 'test'
         },
-          function (err, user) {
-            expect(err).not.to.be.ok()
-            expect(user.login).to.eql('test')
-            expect(user.admin).not.to.be.ok()
-            done()
-          }
+        function (err, user) {
+          expect(err).not.to.be.ok()
+          expect(user.login).to.eql('test')
+          expect(user.admin).not.to.be.ok()
+          done()
+        }
         )
     })
 
@@ -73,11 +73,11 @@ describe('Lecture 1: User Management', function () {
         .get({
           $login: 'test'
         },
-          function (err, user) {
-            expect(err).not.to.be.ok()
-            expect(user).to.eql({hashedpassword: 'testpw'})
-            done()
-          }
+        function (err, user) {
+          expect(err).not.to.be.ok()
+          expect(user).to.eql({ hashedpassword: 'testpw' })
+          done()
+        }
         )
     })
 
@@ -86,24 +86,24 @@ describe('Lecture 1: User Management', function () {
         .run({
           $login: 'test'
         },
-          function (err) {
-            expect(err).not.to.be.ok()
-            db.withSQLFromFile('lecture1/user_find.sql')
-              .get({$login: 'test'},
-                function (err, user) {
-                  expect(err).to.not.be.ok()
-                  expect(user.login).to.eql('test')
-                  expect(user.admin).to.be.ok()
-                  done()
-                }
-              )
-          }
+        function (err) {
+          expect(err).not.to.be.ok()
+          db.withSQLFromFile('lecture1/user_find.sql')
+            .get({ $login: 'test' },
+              function (err, user) {
+                expect(err).to.not.be.ok()
+                expect(user.login).to.eql('test')
+                expect(user.admin).to.be.ok()
+                done()
+              }
+            )
+        }
         )
     })
 
     it('giving admin status to one user should leave other users unaffected', function (done) {
       db.withSQLFromFile('lecture1/user_find.sql')
-        .get({$login: 'test2'},
+        .get({ $login: 'test2' },
           function (err, user) {
             expect(err).to.not.be.ok()
             expect(user.login).to.eql('test2')
@@ -118,15 +118,15 @@ describe('Lecture 1: User Management', function () {
         .run({
           $login: 'test'
         },
-          function (err) {
-            expect(err).not.to.be.ok()
-            db.withSQLFromFile('lecture1/user_find.sql')
-              .get({$login: 'test'}, function (err, user) {
-                expect(err).to.not.be.ok()
-                expect(user).to.not.be.ok()
-                done()
-              })
-          })
+        function (err) {
+          expect(err).not.to.be.ok()
+          db.withSQLFromFile('lecture1/user_find.sql')
+            .get({ $login: 'test' }, function (err, user) {
+              expect(err).to.not.be.ok()
+              expect(user).to.not.be.ok()
+              done()
+            })
+        })
     })
 
     it('deleting should leave other users unaffected', function (done) {
@@ -134,11 +134,11 @@ describe('Lecture 1: User Management', function () {
         .get({
           $login: 'test2'
         },
-          function (err, user) {
-            expect(err).to.not.be.ok()
-            expect(user).to.be.ok()
-            done()
-          })
+        function (err, user) {
+          expect(err).to.not.be.ok()
+          expect(user).to.be.ok()
+          done()
+        })
     })
   })
 

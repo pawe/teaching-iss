@@ -11,7 +11,7 @@ describe('Vorbereitung der Tests', function () {
   // hook (https://mochajs.org/#hooks)
   describe('Erstellen der Datenbanktabellen (hw1/migration_up.sql)', function () {
     it('soll ohne Fehler durchlaufen', function (done) {
-      var sql = fs.readdirSync(path.join(__dirname, '..', 'assignments/hw1/migration_up.sql'))
+      var sql = fs.readFileSync(path.join(__dirname, '..', 'assignments/hw1/migration_up.sql'))
       db.exec(sql, function (err) {
         expect(err).not.to.be.ok()
         done()
