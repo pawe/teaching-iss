@@ -64,7 +64,8 @@ var files = {
     'accounting_entry_line_add.sql',
     'records.sql',
     'entry_lines.sql',
-    'projects_budget_overview.sql'
+    'projects_budget_overview.sql',
+    'schema.json'
   ]
 }
 
