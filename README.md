@@ -81,6 +81,9 @@ industriellen Informationssystemen als geteilte Datenablage dienen. Mehr
 Informationen zu geeigneten Einsatzmöglichen finden sie 
 [hier](https://www.sqlite.org/whentouse.html).
 
+![Installation](/public/images/install-app.gif)
+
+
 Die Installation sollte auf den meisten Systemen fehlerfrei durchlaufen.
 Sollten Sie eine Plattform verwenden, für die das SQLite Modul kein 
 kompiliertes Binary mitliefert melden Sie sich bitte unter 
