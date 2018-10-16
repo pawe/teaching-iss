@@ -11,11 +11,11 @@ describe('Vorbereitung der Tests', function () {
   // hook (https://mochajs.org/#hooks)
   describe('Erstellen der Datenbanktabellen (hw1/migration_up.sql)', function () {
     it('soll ohne Fehler durchlaufen', function (done) {
-      db.withSQLFromFile('../assignments/hw1/migration_up.sql')
-        .exec(function (err) {
-          expect(err).not.to.be.ok()
-          done()
-        })
+      var sql = fs.readFileSync(path.join(__dirname, '..', 'assignments/hw1/migration_up.sql'), 'utf8')
+      db.exec(sql, function (err) {
+        expect(err).not.to.be.ok()
+        done()
+      })
     })
   })
 
@@ -42,11 +42,11 @@ describe('Vorbereitung der Tests', function () {
 
   describe('Einfügen der restlichen Testdaten (hw1/testdata.sql)', function () {
     it('soll ohne Fehler durchlaufen', function (done) {
-      db.withSQLFromFile('../assignments/hw1/testdata.sql')
-        .exec(function (err) {
-          expect(err).not.to.be.ok()
-          done()
-        })
+      var sql = fs.readFileSync(path.join(__dirname, '..', 'assignments/hw1/testdata.sql'), 'utf8')
+      db.exec(sql, function (err) {
+        expect(err).not.to.be.ok()
+        done()
+      })
     })
   })
 })

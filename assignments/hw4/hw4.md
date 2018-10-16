@@ -84,6 +84,9 @@ Erstellen Sie SQL Code, mit dem ...
     * Rückgabeformat: `(projectName, budget, spent, remaining)`
 
 
+## Projektbericht (JSON Schema)
+
+
 
 #### Hinweis zur Abgabe
 Sie können die abzugebende Datei mit dem Kommandozeilenbefehl 

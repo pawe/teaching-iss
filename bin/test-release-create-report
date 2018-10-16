@@ -41,6 +41,7 @@ exec(`npm run create-report ${hw} ${path.join(solutionFolder, '..')}`,
   {
     cwd: '.',
     env: {
+      ...process.env,
       SOLUTIONS_FOLDER: solutionFolder,
       STUDENT_FILE: process.env.STUDENT_FILE || studentFilePath || '..',
       APPDATA: process.env.APPDATA // idk why :(
