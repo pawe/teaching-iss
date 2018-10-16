@@ -136,8 +136,8 @@ aufzeigen, nicht die Abwesenheit von Fehlern garantieren.
 npm run release hw1
 ```
 
-Dieser Befehl erstellt eine Zip-Datei (im Ordner `releases`), welche Sie im TUWEL 
-hochladen sollen. Gleiches gilt für die anderen Hausübungen `npm run release hw2`, 
+Dieser Befehl erstellt eine Zip-Datei (im Ordner `releases`), welche Sie im __TUWEL 
+hochladen__ sollen. Gleiches gilt für die anderen Hausübungen `npm run release hw2`, 
 `npm run release hw3` und `npm run release hw4`.
 
 ![Release Homework](/public/images/run-release.gif)
