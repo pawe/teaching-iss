@@ -85,7 +85,23 @@ Erstellen Sie SQL Code, mit dem ...
 
 
 ## Projektbericht (JSON Schema)
+Sie möchten ein einfaches Formular erstellen um Berichte zu Projekten zu speichern.
 
+### Anforderungen
+Der Bericht soll folgende Informationen beinhalten:
+- Nummer des Berichts: soll ein Integer sein.
+- Art des Berichtes: kann entweder ein Zwischen oder Endbericht sein, es soll keine weitere Auswahl möglich sein.
+- Budgetzustand: der Zustand kann entweder: Gut, Schlecht, Neutral sein.
+- Beschreibung: maximal 400 Zeichen lang sein dürfen.
+- Datum: der Berichtserstellung.
+- Projektname: String und mit dem Namen `projectName`
+- Personen: Personen können Autoren und Gutachter oder nur Gutachter sein. Personen haben:
+    - Vornamen
+    - Nachnamen
+    - ID im Unternehmen
+
+### JSON Schema in Hinterlegen 
+Das JSON schema bitte in `solutions/hw4/schema.json` einfügen.
 
 
 #### Hinweis zur Abgabe

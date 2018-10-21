@@ -7,3 +7,4 @@ database_backups/*
 releases/*
 !releases/README.md
 npm-debug.log
+.idea/
