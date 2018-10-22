@@ -3,6 +3,7 @@ var router = express.Router()
 var db = require('../config/db.js')
 var async = require('async')
 var path = require('path')
+var AJV = require('ajv')
 
 router.get('/', function (req, res, next) {
   async.series({
@@ -237,13 +238,35 @@ router.get('/schema', function (_, res) {
 
 router.post('/report', function (req, res, next) {
   console.log('request.body:', req.body)
-  if (!req.body.data || !req.body.schema) {
-    return next(new Error('Data Missing'))
+
+  if (!req.body.data) {
+    return res.status(400).send('Missing form data')
   }
+  if (!req.body.schema) {
+    // TODO: read schema from file schema.json in solutions folder
+    return res.status(400).send('Missing schema')
+  }
+
+  var metaSchema = require('../assignments/hw4/meta-schema.json')
+
+  var parsedUserSchema = JSON.parse(req.body.schema)
+
+  var ajv = new AJV()
+  var validSchema = ajv.validate(metaSchema, parsedUserSchema)
+
+  if (!validSchema) return res.status(400).send('Not a valid Schema')
+
+  var validData = ajv.validate(parsedUserSchema, req.body.data)
+
+  if (!validData) return res.status(400).send('Data not valid')
+
+  var $projectName = req.body.data.projectName || 'Kein Projektname'
+
   var $report = JSON.stringify(req.body.data)
   var $schema = JSON.stringify(req.body.schema)
 
-  db.run('INSERT INTO reports (report, schema) VALUES($report, $schema);', {
+  db.run('INSERT INTO reports (project, report, schema) VALUES($projectName, $report, $schema);', {
+    $projectName,
     $report,
     $schema
   },
