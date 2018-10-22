@@ -9,3 +9,4 @@ pipelines:
         script:
           - apt-get install gzip
           - gzip iis.zip ./*
+          - ls -l
