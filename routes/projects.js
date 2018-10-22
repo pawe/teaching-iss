@@ -235,8 +235,21 @@ router.get('/schema', function (_, res) {
   res.sendFile(path.join(__dirname, '..', 'solutions/hw4/schema.json'))
 })
 
-router.post('/schemadata', function (req, res) {
-  console.log('request:', req)
+router.post('/report', function (req, res, next) {
+  console.log('request.body:', req.body)
+  if (!req.body.data || !req.body.schema) {
+    return next(new Error('Data Missing'))
+  }
+
+  db.run('INSERT INTO reports(report, schema) VALUES($report, $schema);', {
+    report: JSON.stringify(req.body.data),
+    schema: JSON.stringify(req.body.schema)
+  },
+  function (err, id) {
+    if (err) return next(err)
+    res.send('ok, danke')
+  }
+  )
 })
 
 module.exports = router

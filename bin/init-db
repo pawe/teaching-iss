@@ -10,7 +10,8 @@ var dbsetup = [
   'lecture1/migration_up.sql',
   '../assignments/hw1/migration_up.sql',
   'lecture2/migration_up.sql',
-  '../assignments/hw3/migration_up.sql'
+  '../assignments/hw3/migration_up.sql',
+  '../assignments/hw4/migration_up.sql'
 ]
 
 dbsetup.forEach(function (setup) {
