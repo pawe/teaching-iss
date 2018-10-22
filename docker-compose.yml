@@ -1,0 +1,22 @@
+version: "3.2"
+
+services:
+  app:
+    build: .
+    volumes:
+    - type: bind
+      source: ./solutions
+      target: /home/node/app/solutions
+    - type: bind
+      source: ./releases
+      target: /home/node/app/releases
+    environment:
+      HOST: 0.0.0.0
+      PORT: 3000
+    command: npm start
+    ports:
+    - "127.0.0.1:3000:3000"
+
+
+#note for release/test/report just use docker-compose exec app <command> e.g.:
+# docker-compose exec app npm run test hw1
