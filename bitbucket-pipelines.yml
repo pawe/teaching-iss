@@ -7,5 +7,5 @@ pipelines:
   default:
     - step:
         script:
-          - apt-get install zip
+          - apt-get install gzip
           - zip iis.zip ./*
