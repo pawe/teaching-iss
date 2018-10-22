@@ -237,7 +237,7 @@ router.get('/schema', function (_, res) {
 })
 
 router.get('/report', function (_, res, next) {
-  db.get('SELECT id, project FROM reports', function (err, results) {
+  db.all('SELECT id, project FROM reports', function (err, results) {
     if (err) return next(err)
     res.json(results || [])
   })
