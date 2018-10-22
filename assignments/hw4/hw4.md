@@ -94,7 +94,7 @@ Der Bericht soll folgende Informationen beinhalten:
 - Budgetzustand: der Zustand kann entweder: Gut, Schlecht, Neutral sein.
 - Beschreibung: maximal 400 Zeichen lang sein dürfen.
 - Datum: der Berichtserstellung.
-- Projektname: String und mit dem Namen `projectName`
+- Projektname: String mit dem Namen `projectName`
 - Personen: Personen können Autoren und Gutachter oder nur Gutachter sein. Personen haben:
     - Vornamen
     - Nachnamen

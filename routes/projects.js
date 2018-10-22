@@ -290,7 +290,7 @@ router.post('/report', function (req, res, next) {
   },
   function (err, id) {
     if (err) return next(err)
-    res.send('ok, danke')
+    res.send('OK')
   }
   )
 })
