@@ -239,7 +239,7 @@ router.get('/schema', function (_, res) {
 router.get('/report', function (_, res, next) {
   db.get('SELECT id, project FROM reports', function (err, results) {
     if (err) return next(err)
-    res.json(results)
+    res.json(results || [])
   })
 })
 
@@ -247,7 +247,7 @@ router.get('/report/:id', function (req, res, next) {
   db.get('SELECT id, project, report, schema FROM reports WHERE id=?;', req.params.id,
     function (err, result) {
       if (err) return next(err)
-      res.json(result)
+      res.json(result || {})
     }
   )
 })
