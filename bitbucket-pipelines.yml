@@ -1,21 +1,20 @@
 image: node:8.12.0
 
 pipelines:
-  default:
-  - step:
-      script:
-      - apt-get update
-      - apt-get install unzip zip
-      - zip -r ${BITBUCKET_BRANCH}.zip ./*
-      - ls -l
-      - curl -u ${user}:${build} -X POST https://api.bitbucket.org/2.0/repositories/mivp/iis/downloads -F files=@${BITBUCKET_BRANCH}.zip
+#  default:
+#  - step:
+#      script:
+#      - apt-get update
+#      - apt-get install unzip zip
+#      - zip -r ${BITBUCKET_BRANCH}.zip ./*
+#      - ls -l
+#      - curl -u ${user}:${build} -X POST https://api.bitbucket.org/2.0/repositories/mivp/iis/downloads -F files=@${BITBUCKET_BRANCH}.zip
   tags:
     iis-release-*:
     - step:
         script:
         - apt-get update
         - apt-get install unzip zip
-        - name =
         - zip -r ${BITBUCKET_TAG}.zip ./*
         - ls -l
         - curl -u ${user}:${build} -X POST https://api.bitbucket.org/2.0/repositories/mivp/iis/downloads -F files=${BITBUCKET_TAG}.zip
