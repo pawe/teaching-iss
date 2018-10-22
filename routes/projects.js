@@ -247,6 +247,8 @@ router.get('/report/:id', function (req, res, next) {
   db.get('SELECT id, project, report, schema FROM reports WHERE id=?;', req.params.id,
     function (err, result) {
       if (err) return next(err)
+      result.project = JSON.parse(result.project)
+      result.report = JSON.parse(result.report)
       res.json(result || {})
     }
   )
