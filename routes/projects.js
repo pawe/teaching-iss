@@ -240,6 +240,8 @@ router.post('/report', function (req, res, next) {
   if (!req.body.data || !req.body.schema) {
     return next(new Error('Data Missing'))
   }
+  console.log('data: ', JSON.stringify(req.body.data))
+  console.log('schema: ', JSON.stringify(req.body.schema))
 
   db.run('INSERT INTO reports(report, schema) VALUES($report, $schema);', {
     report: JSON.stringify(req.body.data),
