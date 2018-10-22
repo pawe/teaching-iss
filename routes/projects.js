@@ -236,6 +236,22 @@ router.get('/schema', function (_, res) {
   res.sendFile(path.join(__dirname, '..', 'solutions/hw4/schema.json'))
 })
 
+router.get('/report/:id', function (req, res, next) {
+  db.get('SELECT id, project, report, schema FROM reports WHERE id=?;', req.params.id,
+    function (err, result) {
+      if (err) return next(err)
+      res.json(result)
+    }
+  )
+})
+
+router.get('/report', function (req, res, next) {
+  db.get('SELET id, project FROM reports', function (err, results) {
+    if (err) return next(err)
+    res.json(results)
+  })
+})
+
 router.post('/report', function (req, res, next) {
   console.log('request.body:', req.body)
 
@@ -249,7 +265,7 @@ router.post('/report', function (req, res, next) {
 
   var metaSchema = require('../assignments/hw4/meta-schema.json')
 
-  var parsedUserSchema = JSON.parse(req.body.schema)
+  var parsedUserSchema = req.body.schema
 
   var ajv = new AJV()
   var validSchema = ajv.validate(metaSchema, parsedUserSchema)
