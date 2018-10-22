@@ -245,8 +245,8 @@ router.get('/report/:id', function (req, res, next) {
   )
 })
 
-router.get('/report', function (req, res, next) {
-  db.get('SELET id, project FROM reports', function (err, results) {
+router.get('/report', function (_, res, next) {
+  db.get('SELECT id, project FROM reports', function (err, results) {
     if (err) return next(err)
     res.json(results)
   })
