@@ -8,4 +8,4 @@ pipelines:
     - step:
         script:
           - apt-get install gzip
-          - zip iis.zip ./*
+          - gzip iis.zip ./*
