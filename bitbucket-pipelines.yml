@@ -1,6 +1,3 @@
-# This is a sample build configuration for Javascript (Node.js).
-# Check our guides at https://confluence.atlassian.com/x/14UWN for more examples.
-
 image: node:8.12.0
 
 pipelines:
@@ -11,4 +8,4 @@ pipelines:
           - apt-get install unzip zip
           - zip -r iis.zip ./*
           - ls -l
-          - curl -u ${user}:${build} -X POST https://api.bitbucket.org/2.0/repositories/mivp/iis/downloads -F iis.zip=@iis.zip
+          - curl -u ${user}:${build} -X POST https://api.bitbucket.org/2.0/repositories/mivp/iis/downloads -F files=@iis.zip
