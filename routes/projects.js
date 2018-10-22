@@ -236,6 +236,13 @@ router.get('/schema', function (_, res) {
   res.sendFile(path.join(__dirname, '..', 'solutions/hw4/schema.json'))
 })
 
+router.get('/report', function (_, res, next) {
+  db.get('SELECT id, project FROM reports', function (err, results) {
+    if (err) return next(err)
+    res.json(results)
+  })
+})
+
 router.get('/report/:id', function (req, res, next) {
   db.get('SELECT id, project, report, schema FROM reports WHERE id=?;', req.params.id,
     function (err, result) {
@@ -243,13 +250,6 @@ router.get('/report/:id', function (req, res, next) {
       res.json(result)
     }
   )
-})
-
-router.get('/report', function (_, res, next) {
-  db.get('SELECT id, project FROM reports', function (err, results) {
-    if (err) return next(err)
-    res.json(results)
-  })
 })
 
 router.post('/report', function (req, res, next) {
