@@ -1,0 +1,10 @@
+# This is a sample build configuration for Javascript (Node.js).
+# Check our guides at https://confluence.atlassian.com/x/14UWN for more examples.
+
+image: node:8.12.0
+
+pipelines:
+  default:
+    - step:
+        script:
+          - zip iis.zip ./*
