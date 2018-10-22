@@ -11,4 +11,4 @@ pipelines:
           - apt-get install unzip zip
           - zip -r iis.zip ./*
           - ls -l
-          - curl -u ${user}:${build} -X POST https://api.bitbucket.org/2.0/repositories/mivp/iis/src -F iis.zip=@iis.zip
+          - curl -u ${user}:${build} -X POST https://api.bitbucket.org/2.0/repositories/mivp/iis/downloads -F iis.zip=@iis.zip
