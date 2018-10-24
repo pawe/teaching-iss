@@ -15,6 +15,6 @@ pipelines:
         script:
         - apt-get update
         - apt-get install unzip zip
-        - zip -r ${BITBUCKET_TAG}.zip .
+        - zip -r ${BITBUCKET_TAG}.zip . -x .git/\* -x .vscode/\*
         - ls -al
         - curl -u ${user}:${build} -X POST https://api.bitbucket.org/2.0/repositories/mivp/iis/downloads -F files=@${BITBUCKET_TAG}.zip
