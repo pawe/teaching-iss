@@ -27,6 +27,7 @@ var queryCache = {}
 /*
   for several reasons this needs refactoring
     * it's not a good idea to add stuff to an object you don't own (the db object)
+    * the error intercepting is unclean
 */
 
 function stripComments (query) {
@@ -52,43 +53,105 @@ db.withSQLFromFile = function (file) {
     error = err // like I say, refactoring necessary
   }
 
+  // sometimes the encoding of the read files is wrong and it throughs a syntax error
+  function createInterceptEncodingError (callback) {
+    return function interceptEncodingError (error, results) {
+      if (!error || error.code !== 'SQLITE_ERROR') return callback(error, results)
+
+      var idxOfNear = error.message.indexOf('near')
+      var idxOfSyntax = error.message.indexOf('syntax error')
+
+      // it should be a syntax error
+      if (!idxOfNear || !idxOfSyntax) return callback(error, results)
+
+      // the near text should be 1 char (equals 10 between 'near' and 'syntax')
+      if ((idxOfSyntax - idxOfNear) !== 10) return callback(error, results)
+
+      // the suspicious character has codePoint of 65279
+      if (error.message.codePointAt(idxOfNear + 6) === 65279) {
+        var newError = new Error('The encoding of the file `' + solutionFolder + file + "` might be wrong. Try to change it to 'UTF-8 no BOM'. Original error messages: " + error.message)
+        newError.stack = error
+        error = newError
+      }
+      callback(error, results)
+    }
+  }
+
   return {
     run: function () {
       // it's ugly. last element of arguments is the callback
+      var callback = arguments[arguments.length - 1]
+
       if (error) {
-        return arguments[arguments.length - 1](error)
+        return callback(error)
       }
       if (!stripComments(query)) {
-        return arguments[arguments.length - 1](new Error("File doesn't contain any SQL statements: " + solutionFolder + file))
+        return callback(new Error("File doesn't contain any SQL statements: " + solutionFolder + file))
       }
-      return db.run.apply(db, [query].concat(Array.prototype.slice.call(arguments)))
+
+      var args = [query].concat(Array.prototype.slice.call(arguments))
+
+      // replace callback with intercepted callbackhandler
+      args[args.length - 1] = createInterceptEncodingError(callback)
+
+      return db.run.apply(db, args)
     },
-    exec: function (callback) {
+
+    exec: function () {
+      // it's ugly. last element of arguments is the callback
+      var callback = arguments[arguments.length - 1]
+
       if (error) {
-        return arguments[arguments.length - 1](error)
+        return callback(error)
       }
       if (!stripComments(query)) {
-        return arguments[arguments.length - 1](new Error("File doesn't contain any SQL statements: " + solutionFolder + file))
+        return callback(new Error("File doesn't contain any SQL statements: " + solutionFolder + file))
       }
-      return db.exec.apply(db, [query].concat(Array.prototype.slice.call(arguments)))
+
+      var args = [query].concat(Array.prototype.slice.call(arguments))
+
+      // replace callback with intercepted callbackhandler
+      args[args.length - 1] = createInterceptEncodingError(callback)
+
+      return db.exec.apply(db, args)
     },
-    get: function (callback) {
+
+    get: function () {
+      // it's ugly. last element of arguments is the callback
+      var callback = arguments[arguments.length - 1]
+
       if (error) {
-        return arguments[arguments.length - 1](error)
+        return callback(error)
       }
       if (!stripComments(query)) {
-        return arguments[arguments.length - 1](new Error("File doesn't contain any SQL statements: " + solutionFolder + file))
+        return callback(new Error("File doesn't contain any SQL statements: " + solutionFolder + file))
       }
-      return db.get.apply(db, [query].concat(Array.prototype.slice.call(arguments)))
+
+      var args = [query].concat(Array.prototype.slice.call(arguments))
+
+      // replace callback with intercepted callbackhandler
+      args[args.length - 1] = createInterceptEncodingError(callback)
+
+      return db.get.apply(db, args)
     },
-    all: function (callback) {
+
+    all: function () {
+      // it's ugly. last element of arguments is the callback
+      var callback = arguments[arguments.length - 1]
+
       if (error) {
-        return arguments[arguments.length - 1](error)
+        return callback(error)
       }
       if (!stripComments(query)) {
-        return arguments[arguments.length - 1](new Error("File doesn't contain any SQL statements: " + solutionFolder + file))
+        return callback(new Error("File doesn't contain any SQL statements: " + solutionFolder + file))
       }
-      return db.all.apply(db, [query].concat(Array.prototype.slice.call(arguments)))
+
+      var args = [query].concat(Array.prototype.slice.call(arguments))
+
+      // replace callback with intercepted callbackhandler
+      args[args.length - 1] = createInterceptEncodingError(callback)
+
+      return db.all.apply(db, args)
     }
   }
 }
