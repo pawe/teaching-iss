@@ -33,7 +33,7 @@ describe('Hausübung 2', function () {
   describe('Dokumentation', function () {
     it('Im Verzeichnis `solutions/hw2` soll genau eine PDF-Datei vorhanden sein',
       function (done) {
-        fs.readdir(solutionFolder + 'hw2', function (err, files) {
+        fs.readdir(path.join(solutionFolder, 'hw2'), function (err, files) {
           expect(err).to.not.be.ok()
           var patt1 = /\.pdf$/i
           var pdfs = files.filter(
@@ -69,7 +69,7 @@ describe('Hausübung 2', function () {
           testdataProduction.push(data)
         })
         .on('end', function () {
-          var sqlTemplate = fs.readFileSync(solutionFolder + 'hw2/data_intake.sql', 'utf8')
+          var sqlTemplate = fs.readFileSync(path.join(solutionFolder, 'hw2/data_intake.sql'), 'utf8')
           insertData(testdataProduction, sqlTemplate, function (err) {
             expect(err).to.not.be.ok()
             done()

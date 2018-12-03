@@ -9,6 +9,7 @@ var xmlEscape = require('xml-escape')
 var async = require('async')
 
 var student = require(path.join(process.env.STUDENT_FILE || '..', '.student.json'))
+var solutionsFolder = process.env.SOLUTIONS_FOLDER || 'solutions'
 
 var hw = process.argv[2]
 var outputPath = process.argv[3] || 'releases'
@@ -139,7 +140,7 @@ async.waterfall([
 
     var contents = files[hw].map(filename => {
       try {
-        var content = xmlEscape(fs.readFileSync(path.join('solutions/', hw, filename), 'utf8'))
+        var content = xmlEscape(fs.readFileSync(path.join(solutionsFolder, hw, filename), 'utf8'))
         return pre + content.replace(/(?:\r\n|\r|\n)/g, lineBreak) + post
       } catch (err) {
         return pre + 'keine Datei gefunden' + post

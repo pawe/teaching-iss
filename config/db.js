@@ -1,5 +1,6 @@
 var sqlite3 = require('sqlite3').verbose()
 var fs = require('fs')
+var path = require('path')
 
 // every time this application is started it stores its database in database_backups
 var dbname = 'database_backups/iis.' + Date.now() + '.db'
@@ -9,7 +10,7 @@ var db = new sqlite3.Database(process.env.SQLITE_PATH || dbname)
 
 db.run('PRAGMA foreign_keys = ON;')
 
-var solutionFolder = process.env.SOLUTIONS_FOLDER || 'solutions/'
+var solutionFolder = process.env.SOLUTIONS_FOLDER || 'solutions'
 
 // LOGGING
 if (process.env.SQLITE_PATH !== ':memory:') {
@@ -42,12 +43,12 @@ db.withSQLFromFile = function (file) {
 
   try {
     if (cacheQueries && !queryCache[file]) {
-      query = fs.readFileSync(solutionFolder + file, 'utf8')
+      query = fs.readFileSync(path.join(solutionFolder, file), 'utf8')
       queryCache[file] = query
     } else if (cacheQueries) {
       query = queryCache[file]
     } else {
-      query = fs.readFileSync(solutionFolder + file, 'utf8')
+      query = fs.readFileSync(path.join(solutionFolder, file), 'utf8')
     }
   } catch (err) {
     error = err // like I say, refactoring necessary
@@ -69,7 +70,7 @@ db.withSQLFromFile = function (file) {
 
       // the suspicious character has codePoint of 65279
       if (error.message.codePointAt(idxOfNear + 6) === 65279) {
-        var newError = new Error('The encoding of the file `' + solutionFolder + file + "` might be wrong. Try to change it to 'UTF-8 no BOM'. Original error messages: " + error.message)
+        var newError = new Error('The encoding of the file `' + path.join(solutionFolder, file) + "` might be wrong. Try to change it to 'UTF-8 no BOM'. Original error messages: " + error.message)
         newError.stack = error
         error = newError
       }
@@ -86,7 +87,7 @@ db.withSQLFromFile = function (file) {
         return callback(error)
       }
       if (!stripComments(query)) {
-        return callback(new Error("File doesn't contain any SQL statements: " + solutionFolder + file))
+        return callback(new Error("File doesn't contain any SQL statements: " + path.join(solutionFolder, file)))
       }
 
       var args = [query].concat(Array.prototype.slice.call(arguments))
@@ -105,7 +106,7 @@ db.withSQLFromFile = function (file) {
         return callback(error)
       }
       if (!stripComments(query)) {
-        return callback(new Error("File doesn't contain any SQL statements: " + solutionFolder + file))
+        return callback(new Error("File doesn't contain any SQL statements: " + path.join(solutionFolder, file)))
       }
 
       var args = [query].concat(Array.prototype.slice.call(arguments))
@@ -124,7 +125,7 @@ db.withSQLFromFile = function (file) {
         return callback(error)
       }
       if (!stripComments(query)) {
-        return callback(new Error("File doesn't contain any SQL statements: " + solutionFolder + file))
+        return callback(new Error("File doesn't contain any SQL statements: " + path.join(solutionFolder, file)))
       }
 
       var args = [query].concat(Array.prototype.slice.call(arguments))
@@ -143,7 +144,7 @@ db.withSQLFromFile = function (file) {
         return callback(error)
       }
       if (!stripComments(query)) {
-        return callback(new Error("File doesn't contain any SQL statements: " + solutionFolder + file))
+        return callback(new Error("File doesn't contain any SQL statements: " + path.join(solutionFolder, file)))
       }
 
       var args = [query].concat(Array.prototype.slice.call(arguments))

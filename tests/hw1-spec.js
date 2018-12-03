@@ -55,7 +55,7 @@ describe('Hausübung 1', function () {
   describe('Aufgabe 1.1: Konzeptioneller Datenbankentwurf ', function () {
     it('Im Verzeichnis `solutions/hw1` soll genau eine PDF-Datei vorhanden sein',
       function (done) {
-        fs.readdir(solutionFolder + 'hw1', function (err, files) {
+        fs.readdir(path.join(solutionFolder, 'hw1'), function (err, files) {
           expect(err).to.not.be.ok()
           var patt1 = /\.pdf$/i
           var pdfs = files.filter(
