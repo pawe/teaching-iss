@@ -324,18 +324,24 @@ describe('Hausübung 4', function () {
           expect(err).to.not.be.ok()
           expect(results).to.have.length(3)
           expect(results).to.eql([
-            { projectName: 'Automation',
+            {
+              projectName: 'Automation',
               budget: 150000,
               spent: 51000,
-              remaining: 99000 },
-            { projectName: 'RevolutionaryProduct',
+              remaining: 99000
+            },
+            {
+              projectName: 'RevolutionaryProduct',
               budget: 500000000,
               spent: 496004000,
-              remaining: 3996000 },
-            { projectName: 'NewNewProduct',
+              remaining: 3996000
+            },
+            {
+              projectName: 'NewNewProduct',
               budget: 4000000,
               spent: 4000,
-              remaining: 3996000 }
+              remaining: 3996000
+            }
           ])
           done()
         })

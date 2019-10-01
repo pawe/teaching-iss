@@ -4,7 +4,6 @@ var fs = require('fs')
 var async = require('async')
 var csv = require('fast-csv')
 
-
 function insertData (testdata, sql, callback) {
   // just a _quick and dirty_ replace.
   // it's one of the things you would never do in a production system
@@ -66,21 +65,21 @@ describe('Lecture 2: Normalisierung', function () {
       db.all(`SELECT Mitarbeiter, Sprache, Grad 
               FROM SprachFähigkeiten 
               ORDER BY Mitarbeiter, Sprache, Grad`, // we need a definitive order, if we want to compare it a fixed result...
-        function (err, results) {
-          expect(err).to.not.be.ok()
-          expect(results).to.eql(
-            [
-              { Mitarbeiter: 19, Sprache: 'englisch', Grad: 2 },
-              { Mitarbeiter: 19, Sprache: 'russisch', Grad: 3 },
-              { Mitarbeiter: 20, Sprache: 'französisch', Grad: 1 },
-              { Mitarbeiter: 21, Sprache: 'französisch', Grad: 3 },
-              { Mitarbeiter: 21, Sprache: 'portugisisch', Grad: 2 },
-              { Mitarbeiter: 21, Sprache: 'spanisch', Grad: 3 },
-              { Mitarbeiter: 22, Sprache: 'polnisch', Grad: 3 }
-            ]
-          )
-          done()
-        }
+      function (err, results) {
+        expect(err).to.not.be.ok()
+        expect(results).to.eql(
+          [
+            { Mitarbeiter: 19, Sprache: 'englisch', Grad: 2 },
+            { Mitarbeiter: 19, Sprache: 'russisch', Grad: 3 },
+            { Mitarbeiter: 20, Sprache: 'französisch', Grad: 1 },
+            { Mitarbeiter: 21, Sprache: 'französisch', Grad: 3 },
+            { Mitarbeiter: 21, Sprache: 'portugisisch', Grad: 2 },
+            { Mitarbeiter: 21, Sprache: 'spanisch', Grad: 3 },
+            { Mitarbeiter: 22, Sprache: 'polnisch', Grad: 3 }
+          ]
+        )
+        done()
+      }
       )
     })
 
@@ -89,41 +88,55 @@ describe('Lecture 2: Normalisierung', function () {
         .all(function (err, results) {
           expect(err).to.not.be.ok()
           expect(results).to.eql([
-            { SVNR: 20,
+            {
+              SVNR: 20,
               Vorname: 'Hugo',
               Nachname: 'Hundt',
               Sprache: 'französisch',
-              Grad: 1 },
-            { SVNR: 19,
+              Grad: 1
+            },
+            {
+              SVNR: 19,
               Vorname: 'Monika',
               Nachname: 'Müller',
               Sprache: 'englisch',
-              Grad: 2 },
-            { SVNR: 21,
+              Grad: 2
+            },
+            {
+              SVNR: 21,
               Vorname: 'Siegfried',
               Nachname: 'Stinger',
               Sprache: 'portugisisch',
-              Grad: 2 },
-            { SVNR: 19,
+              Grad: 2
+            },
+            {
+              SVNR: 19,
               Vorname: 'Monika',
               Nachname: 'Müller',
               Sprache: 'russisch',
-              Grad: 3 },
-            { SVNR: 21,
+              Grad: 3
+            },
+            {
+              SVNR: 21,
               Vorname: 'Siegfried',
               Nachname: 'Stinger',
               Sprache: 'französisch',
-              Grad: 3 },
-            { SVNR: 21,
+              Grad: 3
+            },
+            {
+              SVNR: 21,
               Vorname: 'Siegfried',
               Nachname: 'Stinger',
               Sprache: 'spanisch',
-              Grad: 3 },
-            { SVNR: 22,
+              Grad: 3
+            },
+            {
+              SVNR: 22,
               Vorname: 'Anita',
               Nachname: 'Almer',
               Sprache: 'polnisch',
-              Grad: 3 }
+              Grad: 3
+            }
           ])
           done()
         })

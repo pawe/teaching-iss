@@ -24,7 +24,7 @@ describe('Vorbereitung der Tests', function () {
         var employeesToInsert = require('../solutions/hw1/testdata.json')
         async.each(employeesToInsert,
           function (employee, cb) {
-            db.run(`INSERT INTO Mitarbeiter VALUES ($ssn, $forename, $surename, $rate)`,
+            db.run('INSERT INTO Mitarbeiter VALUES ($ssn, $forename, $surename, $rate)',
               employee, cb)
           },
           function (err) {
@@ -89,4 +89,3 @@ describe('Lecture 3', function () {
       })
   })
 })
-

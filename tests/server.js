@@ -5,7 +5,6 @@ var superagent = require('superagent')
 var expect = require('expect.js')
 var db = require('../config/db')
 
-
 describe('http', function () {
   before('start', function () {
     // before we run this tests, we purge all tables from the database.
@@ -33,6 +32,5 @@ describe('http', function () {
           done()
         })
     })
-
   })
 })

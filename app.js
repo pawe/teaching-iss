@@ -5,7 +5,6 @@ var logger = require('morgan')
 var cookieParser = require('cookie-parser')
 var bodyParser = require('body-parser')
 var session = require('express-session')
-var expressValidator = require('express-validator')
 var flash = require('express-flash')
 
 // authenticiation
@@ -28,7 +27,6 @@ app.use('/public', express.static(path.join(__dirname, 'public')))
 // for dynamic content
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
-app.use(expressValidator())
 app.use(cookieParser())
 app.use(session({
   secret: process.env.SESSION_SECRET || 'f3$$s23uidsnY',
