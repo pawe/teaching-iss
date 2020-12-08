@@ -22,7 +22,7 @@
     "express": "^4.17.1",
     "express-flash": "0.0.2",
     "express-session": "^1.16.2",
-    "fast-csv": "^3.4.0",
+    "fast-csv": "^4.3.6",
     "fs-extra": "^8.1.0",
     "jstransformer-marked": "^1.0.1",
     "jszip": "^2.6.1",
